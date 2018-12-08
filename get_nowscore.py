@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import re
 import os
-# from pyvirtualdisplay import Display
+from pyvirtualdisplay import Display
 import time
 
 chrome_options = Options()
