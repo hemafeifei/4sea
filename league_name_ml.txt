@@ -1,0 +1,19 @@
+league_lty,league_nsc,league,league_007
+比甲,比甲,BEL D1,比甲
+英冠,英冠,ENG LCH,英冠
+英超,英超,ENG PR,英超
+法甲,法甲,FRA D1,法甲
+法乙,法乙,FRA D2,法乙
+德甲,德甲,GER D1,德甲
+德乙,德乙,GER D2,德乙
+荷甲,荷甲,HOL D1,荷甲
+荷乙,荷乙,HOL D2,荷乙
+意甲,意甲,ITA D1,意甲
+日职,日職聯,JPN D1,日职联
+韩职,韓K聯,KOR D1,韩K联
+挪超,挪超,NOR D1,挪超
+瑞超,瑞典超,SWE D1,瑞典超
+葡超,葡超,POR D1,葡超
+西甲,西甲,SPA D1,西甲
+欧冠,歐冠盃,UEFA CL,欧冠杯
+欧罗巴,歐霸盃,UEFA EL,欧罗巴杯

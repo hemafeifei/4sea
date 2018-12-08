@@ -153,9 +153,12 @@ def get_asian_differ(dataframe):
     return df_table
 
 cur_path = os.getcwd()
+os.chdir('..')
+cur_path = os.getcwd()
+kelly_path =cur_path + '/data/ml_data/'
 match_file = 'kelly_' + ytd[:10] + '.txt'
 his_file = 'en_his_' + ytd[:10] + '.txt'
-kelly_path =cur_path + '/ml_data/'
+
 
 def get_nowscore_asian_differ():
     match_nsc = pd.read_csv(cur_path + '/his_data/' + his_file)

@@ -120,10 +120,12 @@ def get_match_en(url, lty=True):
     return df
 
 cur_path = os.getcwd()
-his_path = cur_path + '/his_data/'
+os.chdir('..')
+cur_path = os.getcwd()
+his_path = cur_path + '/data/his_data/'
 match_file ='nsc_his_' + today_utc0[:10] + '.txt'
 match_file_en = 'en_his_' + today_utc0[:10]  + '.txt'
-match_file_td = 'td_his_' + today_utc0[:10]  + '.txt'
+# match_file_td = 'td_his_' + today_utc0[:10]  + '.txt'
 
 if not os.path.exists(his_path + match_file_en):
     print("UTC-2: ", today_utc0)
@@ -132,10 +134,6 @@ if not os.path.exists(his_path + match_file_en):
     df_en.to_csv(his_path + match_file_en, index=False)
     print("generated file: " ,match_file_en )
 
-    df_td = get_match(base_url)
-    df_td['lang'] = 'td_cn'
-    df_td.to_csv(his_path + match_file_td, index=False, encoding='utf-8')
-    print("generated file: ", match_file_td)
 
     df = get_match_007(base_url_007)
     df['lang'] = 'zh_cn'
