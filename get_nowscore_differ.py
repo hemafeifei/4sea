@@ -167,3 +167,4 @@ if len(differ >0):
     print("write files: ", differ.shape)
 else:
     print("no result writen")
+globals()
