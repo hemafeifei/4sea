@@ -156,12 +156,13 @@ cur_path = os.getcwd()
 os.chdir('..')
 cur_path = os.getcwd()
 kelly_path =cur_path + '/data/ml_data/'
+match_path = cur_path + '/data/'
 match_file = 'kelly_' + ytd[:10] + '.txt'
 his_file = 'en_his_' + ytd[:10] + '.txt'
 
 
 def get_nowscore_asian_differ():
-    match_nsc = pd.read_csv(cur_path + '/his_data/' + his_file)
+    match_nsc = pd.read_csv(match_path + '/his_data/' + his_file)
     match_nsc = match_nsc.loc[match_nsc.mtype.isin(df_name['league'])].reset_index(drop=True)
     print(match_nsc.shape)
     if len(match_nsc) > 0:
