@@ -70,6 +70,7 @@ def get_match_007(url, lty=True):
         match = []
         match.append(mlist[1])
         match.append(mlist[2])
+        match.append(mlist[3])
         match.append(mlist[4])
         match.append(mlist[5])
         match.append(mlist[6])
@@ -78,11 +79,12 @@ def get_match_007(url, lty=True):
 
     now = str(datetime.today())
     # tomorrow = pd.to_datetime(now[:10], format='%Y-%m-%d') + timedelta(days=1)
-    df = pd.DataFrame(match_f, columns=['mtype','tm_utc08', 'home', 'result', 'away', 'href_nsc'])
+    df = pd.DataFrame(match_f, columns=['mtype','tm_utc08', 'status', 'home', 'result', 'away', 'href_nsc'])
     df = df.loc[(df.tm_utc08 >= '12:00') | (df.tm_utc08 < '06:00')].reset_index(drop=True)
     df['date'] = [str(today)[:10] if df['tm_utc08'][i] <= '06:00' else today_utc0[:10] for i in range(len(df))]
     #     df['date'] = now[:10]
     df['dt_utc08'] = df['date']  + ' ' + df['tm_utc08']
+    df = df.loc[df.status=='完']
     df = df[['mtype', 'dt_utc08', 'home', 'result', 'away', 'href_nsc']]
     if lty==True:
         df = df.loc[df.mtype.isin(df_name['league_007'])].reset_index(drop=True)
@@ -99,6 +101,7 @@ def get_match_en(url, lty=True):
         match = []
         match.append(mlist[1])
         match.append(mlist[2])
+        match.append(mlist[3])
         match.append(str.lstrip(mlist[4]))
         match.append(mlist[5])
         match.append(str.rstrip(mlist[6]))
@@ -107,11 +110,12 @@ def get_match_en(url, lty=True):
 
     now = str(datetime.today())
     # ytd = pd.to_datetime(now[:10], format='%Y-%m-%d') + timedelta(days=1)
-    df = pd.DataFrame(match_f, columns=['mtype','tm_utc08', 'home', 'result', 'away', 'href_nsc'])
+    df = pd.DataFrame(match_f, columns=['mtype','tm_utc08', 'status', 'home', 'result', 'away', 'href_nsc'])
     df = df.loc[(df.tm_utc08 >= '12:00') | (df.tm_utc08 < '06:00')].reset_index(drop=True)
     df['date'] = [str(today)[:10] if df['tm_utc08'][i] <= '06:00' else today_utc0[:10] for i in range(len(df))]
     #     df['date'] = now[:10]
     df['dt_utc08'] = df['date'] + ' ' + df['tm_utc08']
+    df = df.loc[df.status=='FT']
     df = df[['mtype', 'dt_utc08', 'home', 'result', 'away', 'href_nsc']]
     if lty==True:
         df = df.loc[df.mtype.isin(df_name['league'])].reset_index(drop=True)
