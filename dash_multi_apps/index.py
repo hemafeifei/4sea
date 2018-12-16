@@ -17,7 +17,7 @@ app.layout = html.Div([
 def display_page(pathname):
     if pathname == '/':
          return app_home.layout
-    elif pathname == '/ml_his':
+    elif pathname == '/history':
          return app_his.layout
     elif pathname == '/ml':
          return app_ml.layout
@@ -26,4 +26,4 @@ def display_page(pathname):
         return '404'
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, host='0.0.0.0')

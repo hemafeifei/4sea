@@ -9,16 +9,15 @@ import pandas as pd
 
 enddate = datetime.now() -timedelta(days=1 ,hours=11)
 # tomorrow = str(pd.to_datetime(str(enddate)[:10], format='%Y-%m-%d') + timedelta(days=1))
-my_path ='../spyre/data/'
-odds_path = '../spyre/odds_data/'
+his_path ='/home/centos/football/data/his_data/'
+odds_path = '/home/centos/football/data/odds_data/'
 
 
 def get_match_all(date, lang):
-    match_nsc = pd.read_csv(my_path + str(date)[:10] + '.txt')
-    match_nsc_en = pd.read_csv(my_path + str(date)[:10]  + '_en.txt')
-    match_nsc_td = pd.read_csv(my_path + str(date)[:10] + '_td.txt')
-    match_nsc_all = pd.concat([match_nsc, match_nsc_en, match_nsc_td], ignore_index=True)
-    return match_nsc_all.loc[match_nsc_all.lang==str(lang)].reset_index(drop=True)
+    his_nsc = pd.read_csv(his_path + 'nsc_his_' + str(date)[:10] + '.txt')
+    his_nsc_en = pd.read_csv(his_path + 'en_his_' + str(date)[:10]  + '.txt')
+    his_nsc_all = pd.concat([his_nsc, his_nsc_en], ignore_index=True)
+    return his_nsc_all.loc[his_nsc_all.lang==str(lang)].reset_index(drop=True)
 
 def get_odds_eu(date, ref):
     df_eu = pd.read_csv(odds_path + str(date)[:10] + '/' + str(ref) + '_eu.txt', index_col=False)
@@ -42,18 +41,16 @@ my_header = html.Div(
                     html.H4(children=" 顶级赛事赔率观测 |\nFootball match odds monitor"
                             , style={'textAlign': 'left',
                                      'color': '#F8F9FA', 'font-size': '24px', 'font': 'Bebas Neue'}),
-                ], className='column'),
+                ], className='col m6'),
                 html.Div([
                     html.H4(children="四海 | \nfoursea"
                             , style={'textAlign': 'right',
                                      'color': '#F8F9FA', 'font-size': '24px', 'font': 'Bebas Neue'}),
-                ], className='column'),
+                ], className='col m6'),
             ], className="row"),
 
-
-
         ]),
-        className="gs-header gs-text-header padded"  # 'no-print'
+        className="row gs-header gs-text-header"  # 'no-print'
     )
 
 
@@ -63,28 +60,16 @@ layout = html.Div([
     my_header,
 
     html.Div([
-        html.Div([dcc.Link(html.H5(html.Strong('Home')), href='/'), ],
-                 className='column', style={'font-size': '14px', "textAlign": 'center'}),
-        html.Div([dcc.Link(html.H5(html.Strong('Result')), href='/history'), ],
-                 className='column', style={'font-size': '14px', "textAlign": 'center'}),
-        html.Div([dcc.Link(html.H5(html.Strong('Machine Learning')), href='/ml'), ],
-                 className='column ', style={'font-size': '14px', "textAlign": 'center', }),
-        html.Div([dcc.Link(html.H5(html.Strong('About us')), href='/about'), ],
-                 className='column ', style={'font-size': '14px', "textAlign": 'center', }),
-    ], className='row', style={'backgroundColor': '#2C3859'}),
-    html.Div([
-        html.Div([html.H6('今日赛事')],
-                 className='column', style={'color': '#ADB9CA', "textAlign": 'center'}),
-        html.Div([html.H6('历史查询')],
-                 className='column', style={'color': '#ADB9CA', "textAlign": 'center'}),
-        html.Div([html.H6('赛事预测')],
-                 className='column', style={'color': '#ADB9CA', "textAlign": 'center'}),
-        html.Div([html.H6('关于我们')],
-                 className='column', style={'color': '#ADB9CA', "textAlign": 'center'}),
-    ], className='row', style={'backgroundColor': '#2C3859'})
-    ,
+            html.Br(style={'backgroundColor': '#2C3859',}),
+            html.Div([dcc.Link(html.H5(html.Strong('Home')), href='/'), html.H6('今日赛事')],
+                     className='col m4', style={'font-size': '14px', "textAlign": 'center', 'color': '#ADB9CA'}),
+            html.Div([dcc.Link(html.H5(html.Strong('Result')), href='/history'), html.H6('历史查询')],
+                     className='col m4', style={'font-size': '14px', "textAlign": 'center', 'color': '#ADB9CA'}),
+            html.Div([dcc.Link(html.H5(html.Strong('Machine Learning')), href='/ml'), html.H6('赛事预测')],
+                     className='col m4', style={'font-size': '14px', "textAlign": 'center', 'color': '#ADB9CA'}),
+        ], className='row', style={'backgroundColor': '#2C3859',}),
 
-    html.Br(),
+    # html.Br(),
     html.Div([
         html.Div([
             html.Div([
@@ -106,7 +91,7 @@ layout = html.Div([
                         multi=True),
                 ]),
                 # html.Div(id='output-container-date-picker-single')
-            ], className='column column-40', style={'font-size': '12px', "textAlign": 'left'}),
+            ], className='col m5', style={'font-size': '12px', "textAlign": 'left'}),
 
             html.Div([
                 html.Label('language', style={'font-size': '12px'}),
@@ -115,12 +100,12 @@ layout = html.Div([
                     options=[
                         {'label': 'EN', 'value': 'en'},
                         {'label': '中文', 'value': 'zh_cn'},
-                        {'label': '繁体', 'value': 'td_cn'},
+                        # {'label': '繁体', 'value': 'td_cn'},
 
                     ],
                     value='en', labelStyle={'display': 'inline-block', 'font-size': '13px'}
                 ),
-            ], className='column column-60', style={'font-size': '13px', "textAlign": 'right'}),
+            ], className='col m7', style={'font-size': '13px', "textAlign": 'right'}),
 
         ], className='row'),
         # html.Br([]),
@@ -139,7 +124,7 @@ layout = html.Div([
                 # html.Hr(),
 
             ],
-                className='column column-40', style={'height': '850px', 'overflowY': 'scroll'}),
+                className='col m5', style={'height': '850px', 'overflowY': 'scroll'}),
 
             html.Div([
                 html.Div([
@@ -148,11 +133,11 @@ layout = html.Div([
                 html.Div([
                     dcc.Graph(id='selected-odds-asia_his', ),
                 ], ),
-            ], className='column column-60')
+            ], className='col m7')
 
         ],
             className='row'),
-    ], className='container'),
+    ], className='row'),
 
 
 
@@ -163,13 +148,15 @@ layout = html.Div([
 
 ])
 
+
 #
 #
 #
 #
 @app.callback(
     dash.dependencies.Output('match-type-checklist_his', 'options'),
-    [dash.dependencies.Input('my-date-picker-single', 'date'), dash.dependencies.Input('lang-select', 'value')])
+    [dash.dependencies.Input('my-date-picker-single', 'date'),
+     dash.dependencies.Input('lang-select', 'value')])
 def select_lang(date, selected_lang):
     match_all = get_match_all(str(date[:10]), selected_lang)
     mtype = list(match_all['mtype'].unique())
@@ -191,7 +178,7 @@ def set_match(match_type_options):
 def set_href_options(date, selected_lang, selected_match_type):
     match_nsc_all = get_match_all(date[:10], selected_lang)
     effect_options = match_nsc_all.loc[(match_nsc_all['mtype'].isin(selected_match_type))].reset_index(drop=True)
-    return [{"label": effect_options.loc[i, 'dt_utc08'][11:] + ' ' + effect_options.loc[i, 'mtype'] + ' ' + '('  + ')' + ' ' + effect_options.loc[i, 'home'] + '-' +effect_options.loc[i, 'away'],
+    return [{"label": effect_options.loc[i, 'dt_utc08'][11:] + ' '+ effect_options.loc[i, 'mtype'] + ' '+ '(' + effect_options.loc[i, 'result'] + ')' + ' ' + effect_options.loc[i, 'home'] + '-' + effect_options.loc[i, 'away'],
              "value": effect_options.loc[i, 'href_nsc']} for i in range(len(effect_options))]
 
 

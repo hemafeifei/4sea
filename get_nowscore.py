@@ -163,16 +163,16 @@ if not os.path.exists(today_utc0_path):
     print("makedirs for today's odds")
 
 
-# now = today[:16]
-# print("Start Time is ",str(now)[:16])
-# for i in range(len(df)):
-#     if df.loc[i, 'dt_utc08'] >= now:
-#         href = df.loc[i, 'href_nsc']
-#         print("odds of ", href)
-#         df_eu, df_asia =  get_trend(href)
-#         df_eu.to_csv(today_utc0_path + '/' + str(href) + '_eu.txt', index=False, encoding='utf-8')
-#         df_asia.to_csv(today_utc0_path+ '/' + str(href) + '_asia.txt', index=False, encoding='utf-8')
-#         time.sleep(0.8)
-#
-# end = str(datetime.now())[:16]
-# print("End Time is ", end)
+now = today[:16]
+print("Start Time is ",str(now)[:16])
+for i in range(len(df)):
+    if df.loc[i, 'dt_utc08'] >= now:
+        href = df.loc[i, 'href_nsc']
+        print("odds of ", href)
+        df_eu, df_asia =  get_trend(href)
+        df_eu.to_csv(today_utc0_path + '/' + str(href) + '_eu.txt', index=False, encoding='utf-8')
+        df_asia.to_csv(today_utc0_path+ '/' + str(href) + '_asia.txt', index=False, encoding='utf-8')
+        time.sleep(0.8)
+
+end = str(datetime.now())[:16]
+print("End Time is ", end)

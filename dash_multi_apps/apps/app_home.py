@@ -2,6 +2,7 @@ from dash.dependencies import Input, Output
 import dash_html_components as html
 import dash_core_components as dcc
 import dash
+import os
 
 from app import app
 import plotly.graph_objs as go
@@ -10,15 +11,24 @@ import pandas as pd
 
 today = str(datetime.now() -timedelta(hours=9))
 tomorrow = str(pd.to_datetime(today[:10], format='%Y-%m-%d') + timedelta(days=1))
-my_path ='/Users/weizheng/PycharmProjects/Learning_flask/spyre/data/'
-odds_path = '/Users/weizheng/PycharmProjects/Learning_flask/spyre/odds_data/'
+match_path ='/home/centos/football/data/match_data/'
+odds_path = '/home/centos/football/data/odds_data/'
 today_odds_path = odds_path+ today[:10]
 
-match_nsc = pd.read_csv(my_path+ today[:10] + '.txt')
-match_nsc_en = pd.read_csv(my_path+ today[:10] + '_en.txt')
-match_nsc_td = pd.read_csv(my_path+ today[:10] + '_td.txt')
+match_nsc = pd.read_csv(match_path+ today[:10] + '.txt')
+match_nsc_en = pd.read_csv(match_path+ today[:10] + '_en.txt')
 match_nsc_all = pd.concat([match_nsc, match_nsc_en], ignore_index=True)
-match_nsc_all = pd.concat([match_nsc_all, match_nsc_td], ignore_index=True)
+
+
+if os.path.exists(match_path + today[:10] + '_en.txt'):
+    match_nsc_all = pd.concat([match_nsc, match_nsc_en], ignore_index=True)
+else:
+    today = pd.to_datetime('2018-12-10', format='%Y-%m-%d')
+    match_nsc = pd.read_csv(match_path+ today[:10] + '.txt')
+    match_nsc_en = pd.read_csv(match_path+ today[:10] + '_en.txt')
+    match_nsc_all = pd.concat([match_nsc, match_nsc_en], ignore_index=True)
+    tomorrow = str(pd.to_datetime(today[:10], format='%Y-%m-%d') + timedelta(days=1))
+
 
 def get_match_type(lang):
     return list(match_nsc_all.loc[match_nsc_all.lang==str(lang)]['mtype'].unique())
@@ -43,18 +53,16 @@ my_header = html.Div(
                     html.H4(children=" 顶级赛事赔率观测 |\nFootball match odds monitor"
                             , style={'textAlign': 'left',
                                      'color': '#F8F9FA', 'font-size': '24px', 'font': 'Bebas Neue'}),
-                ], className='column'),
+                ], className='col m6'),
                 html.Div([
                     html.H4(children="四海 | \nfoursea"
                             , style={'textAlign': 'right',
                                      'color': '#F8F9FA', 'font-size': '24px', 'font': 'Bebas Neue'}),
-                ], className='column'),
+                ], className='col m6'),
             ], className="row"),
 
-
-
         ]),
-        className="gs-header gs-text-header padded"  # 'no-print'
+        className="row gs-header gs-text-header"  # 'no-print'
     )
 
 
@@ -63,28 +71,14 @@ layout = html.Div([
 
     # html.Br(),
     html.Div([
-        html.Div([dcc.Link(html.H5(html.Strong('Home')), href='/'), ],
-                 className='column', style={'font-size': '14px', "textAlign": 'center'}),
-        html.Div([dcc.Link(html.H5(html.Strong('Result')), href='/history'), ],
-                 className='column', style={'font-size': '14px', "textAlign": 'center'}),
-        html.Div([dcc.Link(html.H5(html.Strong('Machine Learning')), href='/ml'), ],
-                 className='column ', style={'font-size': '14px', "textAlign": 'center', }),
-        html.Div([dcc.Link(html.H5(html.Strong('About us')), href='/about'), ],
-                 className='column ', style={'font-size': '14px', "textAlign": 'center', }),
-    ], className='row', style={'backgroundColor': '#2C3859'}),
-    html.Div([
-        html.Div([html.H6('今日赛事')],
-                 className='column', style={'color': '#ADB9CA', "textAlign": 'center'}),
-        html.Div([html.H6('历史查询')],
-                 className='column', style={'color': '#ADB9CA', "textAlign": 'center'}),
-        html.Div([html.H6('赛事预测')],
-                 className='column', style={'color': '#ADB9CA', "textAlign": 'center'}),
-        html.Div([html.H6('关于我们')],
-                 className='column', style={'color': '#ADB9CA', "textAlign": 'center'}),
-    ], className='row', style={'backgroundColor': '#2C3859'})
-    ,
-
-    html.Br(),
+        html.Br(style={'backgroundColor': '#2C3859', }),
+        html.Div([dcc.Link(html.H5(html.Strong('Home')), href='/'), html.H6('今日赛事')],
+                 className='col m4', style={'font-size': '14px', "textAlign": 'center', 'color': '#ADB9CA'}),
+        html.Div([dcc.Link(html.H5(html.Strong('Result')), href='/history'), html.H6('历史查询')],
+                 className='col m4', style={'font-size': '14px', "textAlign": 'center', 'color': '#ADB9CA'}),
+        html.Div([dcc.Link(html.H5(html.Strong('Machine Learning')), href='/ml'), html.H6('赛事预测')],
+                 className='col m4', style={'font-size': '14px', "textAlign": 'center', 'color': '#ADB9CA'}),
+    ], className='row', style={'backgroundColor': '#2C3859', }),
 
     html.Div([
 
@@ -99,9 +93,11 @@ layout = html.Div([
                     id='match-type-checklist',
                     #     options=option_type,
                     #     values=[option_type[i]['value'] for i in range(len(option_type))],
-                    #     labelStyle={'display': 'inline-block', 'font-size': '13px'}
-                    multi=True),
-            ], className='column column-40 column-offset-5', style={'font-size': '12px', "textAlign": 'left'}),
+                    # labelStyle={'display': 'inline-block', 'font-size': '10px'},
+                    multi=True
+                ),
+            ], className='col m4', style={'font-size': '11px', "textAlign": 'left',}),
+
 
             html.Div([
                 html.Label('language', style={'display': 'inline-block', 'font-size': '12px'}),
@@ -110,12 +106,11 @@ layout = html.Div([
                     options=[
                         {'label': 'EN', 'value': 'en'},
                         {'label': '中文', 'value': 'zh_cn'},
-                        {'label': '繁体', 'value': 'td_cn'},
 
                     ],
-                    value='zh_cn', labelStyle={'display': 'inline-block', 'font-size': '13px'}
+                    value='en', labelStyle={'display': 'inline-block', 'font-size': '13px'}
                 ),
-            ], className='column-offset-5 column column-60', style={'font-size': '13px', "textAlign": 'right'}),
+            ], className='col m8', style={'font-size': '13px', "textAlign": 'right'}),
 
         ], className='row'),
         # html.Br([]),
@@ -135,7 +130,7 @@ layout = html.Div([
                 # html.Hr(),
 
             ],
-                className='column column-33', style={'height': '850px', 'overflowY': 'scroll'}),
+                className='col m4', style={'height': '850px', 'overflowY': 'scroll'}),
 
             html.Div([
                 html.Div([
@@ -151,10 +146,10 @@ layout = html.Div([
                 ], ),
 
             ],
-                className='column column-67')
+                className='col m8')
 
         ], className='row'),
-    ], className='container'),
+    ], className='row'),
     html.H6(children="Contact & Copyright: 4sea.club@gmail.com",
             style={'textAlign': 'center', 'backgroundColor': '#2C3859',
                    'color': '#ADB9CA', 'font-size': '16px'}),
@@ -185,11 +180,10 @@ def set_match(match_type_options):
      dash.dependencies.Input('match-type-checklist', 'value')]
 )
 def set_href_options(selected_lang, selected_match_type):
-    match = match_nsc_all.loc[match_nsc_all['lang']==selected_lang]
+    match = match_nsc_all.loc[match_nsc_all['lang']==selected_lang].reset_index(drop=True)
     effect_options = match.loc[(match['mtype'].isin(selected_match_type))].reset_index(drop=True)
     return [{"label": effect_options.loc[i, 'dt_utc08'][11:] + ' '+ effect_options.loc[i, 'mtype'] + ' ' + effect_options.loc[i, 'home'] + '-' + effect_options.loc[i, 'away'],
              "value": effect_options.loc[i, 'href_nsc']} for i in range(len(effect_options))]
-
 
 @app.callback(
     dash.dependencies.Output('href-dropdown', 'value'),
