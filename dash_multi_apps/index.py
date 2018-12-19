@@ -4,6 +4,7 @@ import dash_html_components as html
 
 from app import app
 from apps import app_home, app_his, app_ml
+server = app.server
 
 
 app.layout = html.Div([

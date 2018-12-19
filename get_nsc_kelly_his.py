@@ -18,7 +18,7 @@ base_url_en = 'http://www.nowgoal.com/'
 today = str(datetime.now())
 today_utc0 = str(datetime.now() - timedelta(hours=10))
 ytd = str(datetime.now() - timedelta(hours=24))
-kelly_sum = 1.98
+kelly_sum = 1.94
 
 def get_soup(url):
     display = Display(visible=0, size=(800, 600))
