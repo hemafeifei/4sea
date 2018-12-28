@@ -18,7 +18,7 @@ base_url_en = 'http://www.nowgoal.com/'
 today = str(datetime.now())
 today_utc0 = str(datetime.now() - timedelta(hours=10))
 ytd = str(datetime.now() - timedelta(hours=24))
-kelly_sum = 1.94
+kelly_sum = 1.98
 
 def get_soup(url):
     display = Display(visible=0, size=(800, 600))
@@ -109,6 +109,7 @@ def get_asian_differ(dataframe):
         # df_trend = df_trend.round({'differ_hw': 2, 'differ_dw':2, 'differ_aw':2})
         df_trend['trend'] = 'NA'
         df_trend['asian_hdp'] = 'NA'
+        df_trend['kelly_sum'] = 2.00
         for i in range(len(df_trend)):
 
             if (df_trend.loc[i, 'hw1'] <= 1.48) | (df_trend.loc[i, 'aw1'] <= 1.48):
@@ -125,13 +126,18 @@ def get_asian_differ(dataframe):
             if (df_trend.loc[i, 'differ_dw'] > 0) & (df_trend.loc[i, 'differ_hw'] > 0) & (
                 df_trend.loc[i, 'differ_aw'] < 0) & (df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'A'
+                df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1']
 
             elif (df_trend.loc[i, 'differ_dw'] > 0) & (df_trend.loc[i, 'differ_aw'] > 0) & (
                 df_trend.loc[i, 'differ_hw'] < 0) & (df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'H'
+                df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1']
+
             elif (df_trend.loc[i, 'differ_hw'] > 0) & (df_trend.loc[i, 'differ_aw'] > 0) & (
                 df_trend.loc[i, 'differ_dw'] < 0) & (df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'D'
+                df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1']
+
             else:
                 df_trend.loc[i, 'trend'] = 'None'
                 #         print(df_trend.head())
@@ -140,15 +146,15 @@ def get_asian_differ(dataframe):
 
         df_table = df_trend.merge(dataframe[['href_nsc', 'dt_utc08', 'mtype', 'home', 'result', 'away']], on='href_nsc', how='left')
         df_table = df_table[['dt_utc08', 'mtype', 'home', 'result', 'away', 'trend', 'href_nsc', 'asian_hdp','hw1', 'dw1', 'aw1',
-                                                     'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3',  'kly_h1',
-                                                     'kly_d1', 'kly_a1', 'kly_h2','kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw']]
+                            'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3',  'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2','kly_d2', 'kly_a2',
+                             'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum']]
         # df_table = df_table.loc[df_table.trend!='None']
 
     else:
         print('No match found')
         df_table = pd.DataFrame(columns=['dt_utc08', 'mtype', 'home', 'result', 'away', 'trend', 'href_nsc', 'asian_hdp', 'hw1', 'dw1', 'aw1',
-                                                     'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3',  'kly_h1',
-                                                     'kly_d1', 'kly_a1', 'kly_h2','kly_d2', 'kly_a2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw'])
+                                         'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3',  'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2','kly_d2', 'kly_a2', 'kly_a2',
+                                         'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum'])
 
     return df_table
 

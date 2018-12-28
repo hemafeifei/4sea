@@ -22,7 +22,13 @@ match_path = data_path + '/match_data/'
 match_nsc = pd.read_csv(match_path+ today[:10] + '.txt')
 match_nsc_en = pd.read_csv(match_path+ today[:10] + '_en.txt')
 match_nsc_all = pd.concat([match_nsc, match_nsc_en], ignore_index=True)
-ml_pred = pd.read_csv(cur_path + '/ml_prediction.txt')
+
+ml_pred = pd.read_csv(cur_path + '/ml_prediction_94_more.txt')
+scaler_file_1 = '/std_scaler_94_more.pickle'
+model_file_1 = '/model_lgb_94_more.pickle'
+
+
+
 
 differ_path = data_path + '/differ_data/'
 differ_file = differ_path + today[:10] + '.txt'
@@ -52,33 +58,35 @@ def generate_table(dataframe, max_rows=15):
 
 def get_differ_data(file, time_differ=20):
     if os.path.exists(file):
-        df_differ = pd.read_csv(differ_file, header=None, names = ['Time', 'League', 'Home', 'Away', 'Trend', 'Updated', 'href_nsc', 'Handicap', 'hw1', 'dw1', 'aw1',
-        'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw'])
+        df_differ = pd.read_csv(differ_file, header=None, names = ['Time', 'League', 'Home', 'Away', 'Trend', 'Updated',
+                    'href_nsc', 'Handicap', 'hw1', 'dw1', 'aw1','hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1',
+                     'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum'])
         df_differ = df_differ.drop_duplicates(subset=['Time', 'League', 'Home', 'Away', 'Trend', 'href_nsc'], keep='last')
-        df_differ = df_differ[['Trend', 'href_nsc', 'Updated', 'Handicap']]
+        df_differ = df_differ[['Trend', 'href_nsc', 'Updated', 'Handicap', 'hw1', 'dw1', 'aw1', 'hw2', 'dw2', 'aw2',
+                     'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum']]
 
     else:
-        df_differ = pd.DataFrame(columns=['Trend', 'href_nsc', 'Updated', 'Handicap'])
+        df_differ = pd.DataFrame(columns=['Trend', 'href_nsc', 'Updated', 'Handicap', 'hw1', 'dw1', 'aw1', 'hw2', 'dw2', 'aw2',
+                     'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum'])
     return df_differ
 
-def calculate_proba(file):
-    if os.path.exists(file):
-        df_tmp = pd.read_csv(file, header=None, names = ['Time', 'League', 'Home', 'Away', 'Trend', 'Updated', 'href_nsc', 'Handicap', 'hw1', 'dw1', 'aw1',
-        'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw'])
-        df_tmp = df_tmp.drop_duplicates(subset=['Time', 'League', 'Home', 'Away', 'Trend', 'href_nsc'], keep='last')
-
-        tmp = df_tmp.merge(ml_pred, on=['League', 'Handicap', 'Trend'], how='inner')
+def calculate_proba(df_differ_filter,rules_data, scaler, model):
+    if len(df_differ_filter) > 0:
+        df_tmp = df_differ_filter
+        # effective Trend
+        tmp = df_tmp.merge(rules_data, on=['League', 'Handicap', 'Trend'], how='inner')
         if len(tmp) > 0:
-            df_num = tmp[['hw1', 'dw1', 'aw1', 'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw']]
-            with open(model_path + '/std_scaler_94.pickle', 'rb') as f:
+            df_num = tmp[['hw1', 'dw1', 'aw1', 'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2',
+                          'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw']]
+            with open(model_path + scaler, 'rb') as f:
                 std_scaler = cPickle.load(f)
             df_num_scaled = std_scaler.transform(df_num)
 
             df_dummy = pd.DataFrame(tmp['League']).merge(dummy_data, on='League', how='left')
-            df_dummy = df_dummy.drop('League', axis=1)
+            df_dummy = df_dummy.drop('League', axis=1).reset_index(drop=True)
             X_data = pd.concat([pd.DataFrame(df_num_scaled), df_dummy], axis=1)
 
-            with open(model_path + '/model_lgb_94.pickle', 'rb') as f2:
+            with open(model_path + model, 'rb') as f2:
                 clf = cPickle.load(f2)
             y_pred = clf.predict(X_data)
             tmp['Probability'] = [round(i, 2) for i in y_pred]
@@ -105,12 +113,16 @@ def get_differ_his(date):
         df_differ = pd.read_csv(differ_his_file, header=None, names = ['Time', 'League', 'Home', 'Away', 'Trend', 'Updated', 'href_nsc', 'Handicap', 'hw1', 'dw1', 'aw1',
         'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw'])
         df_differ = df_differ.drop_duplicates(subset=['Time', 'League', 'Home', 'Away', 'Trend', 'href_nsc'], keep='last')
-        df_differ = df_differ[['Trend', 'href_nsc', 'Updated', 'Handicap']]
+        df_differ = df_differ[['Trend', 'href_nsc', 'Updated', 'Handicap', 'hw1', 'dw1', 'aw1', 'hw2', 'dw2', 'aw2',
+                               'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw',
+                               'differ_aw', 'League']]
 
     else:
-        df_differ = pd.DataFrame(columns=['Trend', 'href_nsc', 'Updated', 'Handicap'])
+        df_differ = pd.DataFrame(columns=['Trend', 'href_nsc', 'Updated', 'Handicap', 'hw1', 'dw1', 'aw1', 'hw2', 'dw2', 'aw2',
+                     'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw', 'League'])
 
-    df_proba = calculate_proba(differ_his_file)
+    df_proba = calculate_proba(df_differ, ml_pred, scaler_file_1, model_file_1)
+    df_differ = df_differ.drop('League', axis=1)
     return df_differ, df_proba
 
 
@@ -290,29 +302,27 @@ layout = html.Div([
 
 @app.callback(Output('table-container', 'children'),
               [Input('lang-select', 'value')])
+
 def update_table(value):
     df = match_nsc_all.loc[match_nsc_all.lang==value]# update with your own logic
     df_differ = get_differ_data(differ_file)
     dff = pd.merge(df_differ, df, on='href_nsc', how='left')
+    # origional filter with kelly
+    dff = dff.rename(columns={'mtype': 'League', 'dt_utc08': 'Time', 'home': 'Home', 'away': "Away"})
+    dff = dff.loc[dff.kelly_sum<1.94].reset_index(drop=True)
 
-    dff = dff.rename(columns={'mtype':'League', 'dt_utc08':'Time', 'home':'Home', 'away':"Away"})
+    df_proba = calculate_proba(dff, ml_pred, scaler_file_1, model_file_1)
     dff = dff[['href_nsc', 'League', 'Time', 'Home', 'Away','Handicap', 'Updated', 'Trend']]
-    dff['Time'] = [i[5:] for i in dff['Time'].values]
+    dff['Time'] = [i[11:] for i in dff['Time'].values]
     dff = dff.merge(ml_pred, on=['League', 'Handicap', 'Trend'], how='left')
 
-    df_proba = calculate_proba(differ_file)
     if len(df_proba) > 0:
         dff = dff.merge(df_proba, on='href_nsc', how='left')
-
-        # dff = dff.rename(columns={'href_nsc': 'ID'})
         dff = dff[['Time', 'League', 'Home', 'Away', 'Updated','Handicap', 'Trend', 'Prediction', 'Probability']]
     else:
-
         dff = dff[['Time', 'League', 'Home', 'Away', 'Updated','Handicap', 'Trend', 'Prediction']]
 
-    # dff['Updated'] = [str(i)[11:16] for i in dff['Updated'].values]
-    return generate_table(dff.tail(15))
-
+    return generate_table(dff)
 
 @app.callback(
     dash.dependencies.Output('table-container-2', 'children'),
@@ -339,5 +349,3 @@ def select_lang(date, value):
 
     # dff['Updated'] = [str(i)[11:16] for i in dff['Updated'].values]
     return generate_table(dff)
-
-

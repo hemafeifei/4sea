@@ -85,14 +85,9 @@ def get_asian_differ(dataframe):
         df_trend['differ_aw'] = df_trend['aw2'] - df_trend['aw1']
         df_trend['trend'] = 'NA'
         df_trend['asian_hdp'] = 'NA'
+        df_trend['kelly_sum'] = 2.00
         for i in range(len(df_trend)):
 
-            # if (df_trend.loc[i, 'hw1'] <= 1.45) | (df_trend.loc[i, 'aw1'] < 1.5):
-            #     df_trend.loc[i, 'asian_hdp'] = 'Deep'
-            # elif (df_trend.loc[i, 'hw1'] < 3.0) & (df_trend.loc[i, 'aw1'] < 3.0):
-            #     df_trend.loc[i, 'asian_hdp'] = 'Shallow'
-            # else:
-            #     df_trend.loc[i, 'asian_hdp'] = 'Balanced'
             if (df_trend.loc[i, 'hw1'] <= 1.48) | (df_trend.loc[i, 'aw1'] <= 1.48):
                 df_trend.loc[i, 'asian_hdp'] = 'Deep'
             elif (df_trend.loc[i, 'hw1'] <= 1.68) | (df_trend.loc[i, 'aw1'] <= 1.68):
@@ -107,13 +102,18 @@ def get_asian_differ(dataframe):
             if (df_trend.loc[i, 'differ_dw'] > 0) & (df_trend.loc[i, 'differ_hw'] > 0) & (
                 df_trend.loc[i, 'differ_aw'] < 0) & (df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'A'
+                df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1']
 
             elif (df_trend.loc[i, 'differ_dw'] > 0) & (df_trend.loc[i, 'differ_aw'] > 0) & (
                 df_trend.loc[i, 'differ_hw'] < 0) & (df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'H'
+                df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1']
+
             elif (df_trend.loc[i, 'differ_hw'] > 0) & (df_trend.loc[i, 'differ_aw'] > 0) & (
                 df_trend.loc[i, 'differ_dw'] < 0) & (df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'D'
+                df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1']
+
             else:
                 df_trend.loc[i, 'trend'] = 'None'
                 #         print(df_trend.head())
@@ -124,7 +124,7 @@ def get_asian_differ(dataframe):
         #                      axis=1).merge(dataframe[['href_nsc', 'dt_utc08', 'mtype', 'home', 'away']], on='href_nsc', how='left')
         df_table  = df_trend.merge(dataframe[['href_nsc', 'dt_utc08', 'mtype', 'home', 'away']], on='href_nsc', how='left')
         df_table = df_table[['dt_utc08', 'mtype', 'home', 'away', 'trend', 'updated', 'href_nsc', 'asian_hdp', 'hw1', 'dw1', 'aw1',
-        'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw']]
+        'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum']]
         df_table = df_table.loc[(df_table.trend!='None')].reset_index(drop=True)
 
 
@@ -134,7 +134,7 @@ def get_asian_differ(dataframe):
     else:
         print('No match found')
         df_table = pd.DataFrame(columns=['dt_utc08', 'mtype', 'home', 'away', 'trend', 'updated', 'href_nsc', 'asian_hdp', 'hw1', 'dw1', 'aw1',
-        'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw'])
+        'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum'])
 
     return df_table
 
@@ -151,10 +151,10 @@ match_file = today_utc0[:10] + '.txt'
 match_file_en = today_utc0[:10] + '_en.txt'
 
 
-def get_nowscore_asian_differ(hours=1):
+def get_nowscore_asian_differ(hours=0):
     match_nsc = pd.read_csv(match_pth + match_file_en)
     match_nsc = match_nsc.loc[match_nsc.mtype.isin(df_name['league'])].reset_index(drop=True)
-    now_to_hours = str(datetime.today() + timedelta(hours=hours, minutes=10))
+    now_to_hours = str(datetime.today() + timedelta(hours=hours, minutes=50))
     match_nsc = match_nsc.loc[(match_nsc.dt_utc08>=today[:16]) & (match_nsc.dt_utc08 < now_to_hours)].reset_index(drop=True)
     df_differ = get_asian_differ(match_nsc)
     return df_differ
