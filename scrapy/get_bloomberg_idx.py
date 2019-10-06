@@ -114,7 +114,7 @@ his_shanghai = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_shanghai_
 his_gold = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_gold_his.txt'), index_col=False)
 his_oil = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_oil_his.txt'), index_col=False)
 
-filter_dax30 = upd_dax30.loc[upd_dax30.date>his_dax30['date'].max()]
+filter_dax30 = upd_dax30.loc[upd_dax30.date > his_dax30['date'].max()]
 if len(filter_dax30) > 0:
     print("Update Dax30")
     his_dax30 = pd.concat([his_dax30, filter_dax30], ignore_index=True)
@@ -123,7 +123,7 @@ if len(filter_dax30) > 0:
     his_dax30.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_dax30_his.txt'), index=False)
     print(' ')
 
-filter_sp500 = upd_sp500.loc[upd_sp500.date>his_sp500['date'].max()]
+filter_sp500 = upd_sp500.loc[upd_sp500.date > his_sp500['date'].max()]
 if len(filter_sp500) > 0:
     print("Update SP500")
     his_sp500 = pd.concat([his_sp500, filter_sp500], ignore_index=True)
@@ -132,7 +132,7 @@ if len(filter_sp500) > 0:
     his_sp500.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_sp500_his.txt'), index=False)
     print(' ')
 
-filter_hsi = upd_hsi.loc[upd_hsi.date>his_hsi['date'].max()]
+filter_hsi = upd_hsi.loc[upd_hsi.date > his_hsi['date'].max()]
 if len(filter_hsi) > 0:
     print("Update HSI^")
     his_hsi = pd.concat([his_hsi, filter_hsi], ignore_index=True)
@@ -141,7 +141,7 @@ if len(filter_hsi) > 0:
     his_hsi.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_hsi_his.txt'), index=False)
     print(' ')
 
-filter_shanghai = upd_shanghai.loc[upd_shanghai.date>his_shanghai['date'].max()]
+filter_shanghai = upd_shanghai.loc[upd_shanghai.date > his_shanghai['date'].max()]
 if len(filter_shanghai) > 0:
     print("Update Shanghai")
     his_shanghai = pd.concat([his_shanghai, filter_shanghai], ignore_index=True)
@@ -150,7 +150,7 @@ if len(filter_shanghai) > 0:
     his_shanghai.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_shanghai_his.txt'), index=False)
     print(' ')
 
-filter_gold = upd_gold.loc[upd_gold.date>his_gold['date'].max()]
+filter_gold = upd_gold.loc[upd_gold.date > his_gold['date'].max()]
 if len(filter_gold) > 0:
     print("Update Gold")
     his_gold = pd.concat([his_gold, filter_gold], ignore_index=True)
@@ -159,7 +159,7 @@ if len(filter_gold) > 0:
     his_gold.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_gold_his.txt'), index=False)
     print(' ')
 
-filter_oil = upd_oil.loc[upd_oil.date>his_oil['date'].max()]
+filter_oil = upd_oil.loc[upd_oil.date > his_oil['date'].max()]
 if len(filter_oil) > 0:
     print("Update Oil")
     his_oil = pd.concat([his_oil, filter_oil], ignore_index=True)
@@ -171,7 +171,7 @@ if len(filter_oil) > 0:
 
 # Check fx
 his_fx_usd_jpy = pd.read_csv(os.path.join(bloombg_dict['path_fx'], 'fx_usd_jpy.txt'), index_col=False)
-filter_fx_usd_jpy = upd_fx_usd_jpy.loc[upd_fx_usd_jpy.date>his_fx_usd_jpy['date'].max()]
+filter_fx_usd_jpy = upd_fx_usd_jpy.loc[upd_fx_usd_jpy.date > his_fx_usd_jpy['date'].max()]
 if len(filter_fx_usd_jpy) > 0:
     print("Update FX USD-JPY")
     his_fx_usd_jpy = pd.concat([his_fx_usd_jpy, filter_fx_usd_jpy], ignore_index=True)
