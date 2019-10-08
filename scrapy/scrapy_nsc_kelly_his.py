@@ -138,3 +138,4 @@ if not os.path.exists(tools.path_parms['kelly_path'] + match_file):
             differ.to_csv(f, index=False)
     else:
         print("no result found, {}".format(today[:16]))
+    print("****Finished {}****".format(str(datetime.now())[:16]))

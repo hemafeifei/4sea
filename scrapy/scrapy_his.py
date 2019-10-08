@@ -27,4 +27,5 @@ if not os.path.exists(tools.path_parms['his_path'] + his_file):
     df.to_csv(tools.path_parms['his_path'] + his_file, index=False, encoding='utf-8')
     print(df.shape)
     print("generated file: ", his_file)
+    print("****Finished {}****".format(str(datetime.now())[:16]))
 
