@@ -96,23 +96,23 @@ upd_dax30 = parse_index_data_1(bloombg_dict['url_dax30'])
 time.sleep(1.1)
 upd_sp500 = parse_index_data_1(bloombg_dict['url_sp500'])
 time.sleep(1.1)
-# upd_hsi = parse_index_data_1(bloombg_dict['url_hsi'])
-# time.sleep(1.1)
-# upd_shanghai = parse_index_data_1(bloombg_dict['url_shanghai'])
-# time.sleep(1.1)
-# upd_gold = parse_index_data_1(bloombg_dict['url_gold'])
-# time.sleep(1.1)
-# upd_oil = parse_index_data_2(bloombg_dict['url_oil'])
-# time.sleep(1.1)
-# upd_fx_usd_jpy = parse_index_data_3(bloombg_dict['url_fx_usd_jpy'])
+upd_hsi = parse_index_data_1(bloombg_dict['url_hsi'])
+time.sleep(1.1)
+upd_shanghai = parse_index_data_1(bloombg_dict['url_shanghai'])
+time.sleep(1.1)
+upd_gold = parse_index_data_1(bloombg_dict['url_gold'])
+time.sleep(1.1)
+upd_oil = parse_index_data_2(bloombg_dict['url_oil'])
+time.sleep(1.1)
+upd_fx_usd_jpy = parse_index_data_3(bloombg_dict['url_fx_usd_jpy'])
 
 # check Global Index
 his_dax30 = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_dax30_his.txt'), parse_dates=[0], index_col=False)
 his_sp500 = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_sp500_his.txt'), parse_dates=[0], index_col=False)
-# his_hsi = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_hsi_his.txt'), parse_dates=[0], index_col=False)
-# his_shanghai = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_shanghai_his.txt'), parse_dates='date', index_col=False)
-# his_gold = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_gold_his.txt'), parse_dates='date', index_col=False)
-# his_oil = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_oil_his.txt'), parse_dates='date', index_col=False)
+his_hsi = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_hsi_his.txt'), parse_dates=[0], index_col=False)
+his_shanghai = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_shanghai_his.txt'), parse_dates=[0], index_col=False)
+his_gold = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_gold_his.txt'), parse_dates=[0], index_col=False)
+his_oil = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_oil_his.txt'), parse_dates=[0], index_col=False)
 
 filter_dax30 = upd_dax30.loc[upd_dax30.date > his_dax30['date'].max()]
 if len(filter_dax30) > 0:
@@ -132,53 +132,53 @@ if len(filter_sp500) > 0:
     his_sp500.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_sp500_his.txt'), index=False)
     print(' ')
 
-# filter_hsi = upd_hsi.loc[upd_hsi.date > his_hsi['date'].max()]
-# if len(filter_hsi) > 0:
-#     print("Update HSI^")
-#     his_hsi = pd.concat([his_hsi, filter_hsi], ignore_index=True)
-#     his_hsi = his_hsi.sort_values('date').reset_index(drop=True)
-#     print(his_hsi.tail(2))
-#     his_hsi.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_hsi_his.txt'), index=False)
-#     print(' ')
-#
-# filter_shanghai = upd_shanghai.loc[upd_shanghai.date > his_shanghai['date'].max()]
-# if len(filter_shanghai) > 0:
-#     print("Update Shanghai")
-#     his_shanghai = pd.concat([his_shanghai, filter_shanghai], ignore_index=True)
-#     his_shanghai = his_shanghai.sort_values('date').reset_index(drop=True)
-#     print(his_shanghai.tail(2))
-#     his_shanghai.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_shanghai_his.txt'), index=False)
-#     print(' ')
-#
-# filter_gold = upd_gold.loc[upd_gold.date > his_gold['date'].max()]
-# if len(filter_gold) > 0:
-#     print("Update Gold")
-#     his_gold = pd.concat([his_gold, filter_gold], ignore_index=True)
-#     his_gold = his_gold.sort_values('date').reset_index(drop=True)
-#     print(his_gold.tail(2))
-#     his_gold.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_gold_his.txt'), index=False)
-#     print(' ')
-#
-# filter_oil = upd_oil.loc[upd_oil.date > his_oil['date'].max()]
-# if len(filter_oil) > 0:
-#     print("Update Oil")
-#     his_oil = pd.concat([his_oil, filter_oil], ignore_index=True)
-#     his_oil = his_oil.sort_values('date').reset_index(drop=True)
-#     print(his_oil.tail(2))
-#     his_oil.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_oil_his.txt'), index=False)
-#     print(' ')
-#
-#
-# # Check fx
-# his_fx_usd_jpy = pd.read_csv(os.path.join(bloombg_dict['path_fx'], 'fx_usd_jpy.txt'), parse_dates='date', index_col=False)
-# filter_fx_usd_jpy = upd_fx_usd_jpy.loc[upd_fx_usd_jpy.date > his_fx_usd_jpy['date'].max()]
-# if len(filter_fx_usd_jpy) > 0:
-#     print("Update FX USD-JPY")
-#     his_fx_usd_jpy = pd.concat([his_fx_usd_jpy, filter_fx_usd_jpy], ignore_index=True)
-#     his_fx_usd_jpy = his_fx_usd_jpy.sort_values('date').reset_index(drop=True)
-#     print(his_fx_usd_jpy.tail(2))
-#     his_fx_usd_jpy.to_csv(os.path.join(bloombg_dict['path_fx'], 'fx_usd_jpy.txt'), index=False)
-#     print(' ')
+filter_hsi = upd_hsi.loc[upd_hsi.date > his_hsi['date'].max()]
+if len(filter_hsi) > 0:
+    print("Update HSI^")
+    his_hsi = pd.concat([his_hsi, filter_hsi], ignore_index=True)
+    his_hsi = his_hsi.sort_values('date').reset_index(drop=True)
+    print(his_hsi.tail(2))
+    his_hsi.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_hsi_his.txt'), index=False)
+    print(' ')
+
+filter_shanghai = upd_shanghai.loc[upd_shanghai.date > his_shanghai['date'].max()]
+if len(filter_shanghai) > 0:
+    print("Update Shanghai")
+    his_shanghai = pd.concat([his_shanghai, filter_shanghai], ignore_index=True)
+    his_shanghai = his_shanghai.sort_values('date').reset_index(drop=True)
+    print(his_shanghai.tail(2))
+    his_shanghai.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_shanghai_his.txt'), index=False)
+    print(' ')
+
+filter_gold = upd_gold.loc[upd_gold.date > his_gold['date'].max()]
+if len(filter_gold) > 0:
+    print("Update Gold")
+    his_gold = pd.concat([his_gold, filter_gold], ignore_index=True)
+    his_gold = his_gold.sort_values('date').reset_index(drop=True)
+    print(his_gold.tail(2))
+    his_gold.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_gold_his.txt'), index=False)
+    print(' ')
+
+filter_oil = upd_oil.loc[upd_oil.date > his_oil['date'].max()]
+if len(filter_oil) > 0:
+    print("Update Oil")
+    his_oil = pd.concat([his_oil, filter_oil], ignore_index=True)
+    his_oil = his_oil.sort_values('date').reset_index(drop=True)
+    print(his_oil.tail(2))
+    his_oil.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_oil_his.txt'), index=False)
+    print(' ')
+
+
+# Check fx
+his_fx_usd_jpy = pd.read_csv(os.path.join(bloombg_dict['path_fx'], 'fx_usd_jpy.txt'), parse_dates=[0], index_col=False)
+filter_fx_usd_jpy = upd_fx_usd_jpy.loc[upd_fx_usd_jpy.date > his_fx_usd_jpy['date'].max()]
+if len(filter_fx_usd_jpy) > 0:
+    print("Update FX USD-JPY")
+    his_fx_usd_jpy = pd.concat([his_fx_usd_jpy, filter_fx_usd_jpy], ignore_index=True)
+    his_fx_usd_jpy = his_fx_usd_jpy.sort_values('date').reset_index(drop=True)
+    print(his_fx_usd_jpy.tail(2))
+    his_fx_usd_jpy.to_csv(os.path.join(bloombg_dict['path_fx'], 'fx_usd_jpy.txt'), index=False)
+    print(' ')
 
 
 print("****Finished {}****".format(str(datetime.now())[:16]))
