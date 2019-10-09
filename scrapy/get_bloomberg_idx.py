@@ -170,7 +170,7 @@ if len(filter_oil) > 0:
 
 
 # Check fx
-his_fx_usd_jpy = pd.read_csv(os.path.join(bloombg_dict['path_fx'], 'fx_usd_jpy.txt'), index_col=False)
+his_fx_usd_jpy = pd.read_csv(os.path.join(bloombg_dict['path_fx'], 'fx_usd_jpy.txt'), parse_dates='date', index_col=False)
 filter_fx_usd_jpy = upd_fx_usd_jpy.loc[upd_fx_usd_jpy.date > his_fx_usd_jpy['date'].max()]
 if len(filter_fx_usd_jpy) > 0:
     print("Update FX USD-JPY")
