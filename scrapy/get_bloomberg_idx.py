@@ -107,12 +107,12 @@ time.sleep(1.1)
 upd_fx_usd_jpy = parse_index_data_3(bloombg_dict['url_fx_usd_jpy'])
 
 # check Global Index
-his_dax30 = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_dax30_his.txt'), index_col=False)
-his_sp500 = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_sp500_his.txt'), index_col=False)
-his_hsi = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_hsi_his.txt'), index_col=False)
-his_shanghai = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_shanghai_his.txt'), index_col=False)
-his_gold = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_gold_his.txt'), index_col=False)
-his_oil = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_oil_his.txt'), index_col=False)
+his_dax30 = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_dax30_his.txt'), parse_dates='date', index_col=False)
+his_sp500 = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_sp500_his.txt'), parse_dates='date', index_col=False)
+his_hsi = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_hsi_his.txt'), parse_dates='date', index_col=False)
+his_shanghai = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_shanghai_his.txt'), parse_dates='date', index_col=False)
+his_gold = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_gold_his.txt'), parse_dates='date', index_col=False)
+his_oil = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_oil_his.txt'), parse_dates='date', index_col=False)
 
 filter_dax30 = upd_dax30.loc[upd_dax30.date > his_dax30['date'].max()]
 if len(filter_dax30) > 0:
