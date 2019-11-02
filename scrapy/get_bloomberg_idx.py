@@ -105,9 +105,9 @@ def parse_index_data_3(url):
 # time.sleep(1.1)
 # upd_oil = parse_index_data_2(bloombg_dict['url_oil'])
 #
-# time.sleep(1.1)
-# upd_fx_usd_jpy = parse_index_data_3(bloombg_dict['url_fx_usd_jpy'])
-# time.sleep(1.1)
+time.sleep(1.1)
+upd_fx_usd_jpy = parse_index_data_3(bloombg_dict['url_fx_usd_jpy'])
+time.sleep(1.1)
 upd_fx_gbp_jpy = parse_index_data_3(bloombg_dict['url_fx_gbp_jpy'])
 
 # # check Global Index
