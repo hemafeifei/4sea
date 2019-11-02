@@ -28,8 +28,8 @@ def get_soup(url, timesleep=1.1):
         display = Display(visible=0, size=(800, 600))
         display.start()
         driver = webdriver.Chrome(executable_path=chrome_path, chrome_options=chrome_options)
-        driver.get(timesleep)
-        time.sleep(5)
+        driver.get(url)
+        time.sleep(timesleep)
         html = driver.page_source
         soup = BeautifulSoup(html, 'lxml')
         driver.quit()
