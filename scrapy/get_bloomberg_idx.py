@@ -19,6 +19,7 @@ bloombg_dict = {
     'url_oil': 'https://www.investing.com/commodities/brent-oil-historical-data',
     # function 3
     'url_fx_usd_jpy': 'https://cn.investing.com/currencies/usd-jpy-historical-data',
+    'url_fx_gbp_jpy': 'https://cn.investing.com/currencies/gbp-jpy-historical-data',
 
     # path
     'path_idx': '/home/centos/PythonApp/database/finance/idx/',
@@ -103,8 +104,11 @@ time.sleep(1.1)
 upd_gold = parse_index_data_1(bloombg_dict['url_gold'])
 time.sleep(1.1)
 upd_oil = parse_index_data_2(bloombg_dict['url_oil'])
+
 time.sleep(1.1)
 upd_fx_usd_jpy = parse_index_data_3(bloombg_dict['url_fx_usd_jpy'])
+time.sleep(1.1)
+upd_fx_gbp_jpy = parse_index_data_3(bloombg_dict['url_fx_gbp_jpy'])
 
 # check Global Index
 his_dax30 = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_dax30_his.txt'), parse_dates=[0], index_col=False)
@@ -178,6 +182,17 @@ if len(filter_fx_usd_jpy) > 0:
     his_fx_usd_jpy = his_fx_usd_jpy.sort_values('date').reset_index(drop=True)
     print(his_fx_usd_jpy.tail(2))
     his_fx_usd_jpy.to_csv(os.path.join(bloombg_dict['path_fx'], 'fx_usd_jpy.txt'), index=False)
+    print(' ')
+
+
+his_fx_gbp_jpy = pd.read_csv(os.path.join(bloombg_dict['path_fx'], 'fx_gbp_jpy.txt'), parse_dates=[0], index_col=False)
+filter_fx_gbp_jpy = upd_fx_gbp_jpy.loc[upd_fx_gbp_jpy.date > his_fx_usd_jpy['date'].max()]
+if len(filter_fx_usd_jpy) > 0:
+    print("Update FX GBP-JPY")
+    his_fx_gbp_jpy = pd.concat([his_fx_gbp_jpy, filter_fx_gbp_jpy], ignore_index=True)
+    his_fx_gbp_jpy = his_fx_gbp_jpy.sort_values('date').reset_index(drop=True)
+    print(his_fx_gbp_jpy.tail(2))
+    his_fx_gbp_jpy.to_csv(os.path.join(bloombg_dict['path_fx'], 'fx_gbp_jpy.txt'), index=False)
     print(' ')
 
 
