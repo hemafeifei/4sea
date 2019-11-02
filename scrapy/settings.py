@@ -15,7 +15,7 @@ def get_soup(url):
     display.start()
     driver = webdriver.Chrome(executable_path=chrome_path, chrome_options=chrome_options)
     driver.get(url)
-    time.sleep(5)
+    time.sleep(1.6)
     html = driver.page_source
     soup = BeautifulSoup(html, 'lxml')
     driver.quit()
