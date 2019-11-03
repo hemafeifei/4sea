@@ -12,7 +12,7 @@ bloombg_dict = {
     # function 1
     'url_dax30': 'https://www.investing.com/indices/germany-30-historical-data',
     'url_sp500': 'https://www.investing.com/indices/us-spx-500-historical-data',
-    'url_hsi':  'https://www.investing.com/indices/hang-sen-40-historical-data',
+    'url_hsi': 'https://www.investing.com/indices/hang-sen-40-historical-data',
     'url_shanghai': 'https://www.investing.com/indices/shanghai-composite-historical-data',
     'url_gold': 'https://www.investing.com/commodities/gold-historical-data',
     # function 2
@@ -114,7 +114,8 @@ upd_fx_gbp_jpy = parse_index_data_3(bloombg_dict['url_fx_gbp_jpy'])
 his_dax30 = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_dax30_his.txt'), parse_dates=[0], index_col=False)
 his_sp500 = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_sp500_his.txt'), parse_dates=[0], index_col=False)
 his_hsi = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_hsi_his.txt'), parse_dates=[0], index_col=False)
-his_shanghai = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_shanghai_his.txt'), parse_dates=[0], index_col=False)
+his_shanghai = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_shanghai_his.txt'), parse_dates=[0],
+                           index_col=False)
 his_gold = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_gold_his.txt'), parse_dates=[0], index_col=False)
 his_oil = pd.read_csv(os.path.join(bloombg_dict['path_idx'], 'idx_oil_his.txt'), parse_dates=[0], index_col=False)
 
@@ -184,7 +185,6 @@ if len(filter_fx_usd_jpy) > 0:
     his_fx_usd_jpy.to_csv(os.path.join(bloombg_dict['path_fx'], 'fx_usd_jpy.txt'), index=False)
     print(' ')
 
-
 his_fx_gbp_jpy = pd.read_csv(os.path.join(bloombg_dict['path_fx'], 'fx_gbp_jpy.txt'), parse_dates=[0], index_col=False)
 filter_fx_gbp_jpy = upd_fx_gbp_jpy.loc[upd_fx_gbp_jpy.date > his_fx_usd_jpy['date'].max()]
 if len(filter_fx_usd_jpy) > 0:
@@ -194,6 +194,5 @@ if len(filter_fx_usd_jpy) > 0:
     print(his_fx_gbp_jpy.tail(2))
     his_fx_gbp_jpy.to_csv(os.path.join(bloombg_dict['path_fx'], 'fx_gbp_jpy.txt'), index=False)
     print(' ')
-
 
 print("****Finished {}****".format(str(datetime.now())[:16]))
