@@ -100,11 +100,13 @@ def get_sohu_summary(url):
 
 
 def main_func():
-    today = datetime.today() - timedelta(days=2)
+    # today = datetime.today() - timedelta(days=2)
+    today = datetime.today()
     fn_eft_txn_top50 = 'etf_txn_top50_' + str(today)[:10] + '.txt'
     fn_sec_txn_top100 = 'sec_txn_top100_' + str(today)[:10] + '.txt'
     fn_smry_sec = 'sec_txn_summary.txt'
-    if not os.path.exists(PARAM_DICT['path_sec'] + fn_sec_txn_top100):
+    if (not os.path.exists(PARAM_DICT['path_sec'] + fn_sec_txn_top100)) or (
+    not os.path.exists(PARAM_DICT['path_sec'] + fn_eft_txn_top50)):
         print("---Start Time: {}----".format(str(datetime.now())[:16]))
         txn_etf, mkt_dt = get_jrj_etf_info(PARAM_DICT['url_jrj_etf'])
         print("Market date is", mkt_dt)
@@ -124,7 +126,7 @@ def main_func():
         jrj_smry['txn_sec_top100'] = int(txn_top100['txn_amt'].sum())
         jrj_smry['txn_etf_top50'] = int(txn_etf['txn_amt'].sum())
         jrj_smry['date'] = str(today)[:10]
-        # print(jrj_smry)
+
         if len(jrj_smry) > 0:
             if not os.path.exists(PARAM_DICT['path_sec'] + fn_smry_sec):
                 jrj_smry.to_csv((PARAM_DICT['path_sec'] + fn_smry_sec), index=False)

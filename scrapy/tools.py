@@ -5,7 +5,6 @@ from settings import *
 import pandas as pd
 from datetime import datetime, timedelta
 
-
 df_name = pd.read_csv('league_name.txt', encoding='utf8')
 path_parms = {
     # Main path
@@ -20,12 +19,13 @@ path_parms = {
     'kelly_path': '/home/centos/PythonApp/database/football/ml_data/',
     # URL
     'base_url_nsc': 'http://score.nowscore.com/index.aspx',
-    'base_url_007': 'http://live.win007.com', # updated on 2019-08-12
+    'base_url_007': 'http://live.win007.com',  # updated on 2019-08-12
     'base_url_en': 'http://www.nowgoal.com/',
 
 }
-# chrome_path = '/Users/weizheng/PycharmProjects/tickets/chromedriver'
 
+
+# chrome_path = '/Users/weizheng/PycharmProjects/tickets/chromedriver'
 
 
 # Get matches
@@ -44,14 +44,14 @@ def get_match_007(url, lty=True):
 
     now = str(datetime.today())
     tomorrow = pd.to_datetime(now[:10], format='%Y-%m-%d') + timedelta(days=1)
-    df = pd.DataFrame(match_f, columns=['mtype','tm_utc08', 'home', 'away', 'href_nsc'])
+    df = pd.DataFrame(match_f, columns=['mtype', 'tm_utc08', 'home', 'away', 'href_nsc'])
     df = df.loc[(df.tm_utc08 >= '12:00') | (df.tm_utc08 < '06:00')].reset_index(drop=True)
     df['date'] = [str(tomorrow)[:10] if df['tm_utc08'][i] <= '06:00' else now[:10] for i in range(len(df))]
     #     df['date'] = now[:10]
-    df['dt_utc08'] = df['date']  + ' ' + df['tm_utc08']
+    df['dt_utc08'] = df['date'] + ' ' + df['tm_utc08']
     df = df[['mtype', 'dt_utc08', 'home', 'away', 'href_nsc']]
     print("Before filtering, ", df.shape)
-    if lty==True:
+    if lty == True:
         df = df.loc[df.mtype.isin(df_name['league_007'])].reset_index(drop=True)
     else:
         df = df
@@ -74,30 +74,29 @@ def get_match_en(url, lty=True):
 
     now = str(datetime.today())
     tomorrow = pd.to_datetime(now[:10], format='%Y-%m-%d') + timedelta(days=1)
-    df = pd.DataFrame(match_f, columns=['mtype','tm_utc08', 'home', 'away', 'href_nsc'])
+    df = pd.DataFrame(match_f, columns=['mtype', 'tm_utc08', 'home', 'away', 'href_nsc'])
     df = df.loc[(df.tm_utc08 >= '12:00') | (df.tm_utc08 < '06:00')].reset_index(drop=True)
     df['date'] = [str(tomorrow)[:10] if df['tm_utc08'][i] <= '06:00' else now[:10] for i in range(len(df))]
     #     df['date'] = now[:10]
-    df['dt_utc08'] = [row['date'] + ' ' + row['tm_utc08'] for i,row in df.iterrows()]
+    df['dt_utc08'] = [row['date'] + ' ' + row['tm_utc08'] for i, row in df.iterrows()]
     df = df[['mtype', 'dt_utc08', 'home', 'away', 'href_nsc']]
-    if lty==True:
+    if lty == True:
         df = df.loc[df.mtype.isin(df_name['league'])].reset_index(drop=True)
     else:
         df = df
     return df
 
 
-
 # Get trend
 def get_trend_en(ref):
     now = str(datetime.now())
     odd_start = datetime.now() - timedelta(hours=12)
-    trend_url = 'http://data.nowgoal.com/3in1odds/14_' + str(ref) +'.html' # nowgoal
+    trend_url = 'http://data.nowgoal.com/3in1odds/14_' + str(ref) + '.html'  # nowgoal
     soup = get_soup(trend_url)
 
     asian = []
     e0 = soup.find_all('table', {'class': 'gts'})[1]
-    for tr in e0.find_all('tr')[2:14]: # nowgoal:2, nsc:1
+    for tr in e0.find_all('tr')[2:14]:  # nowgoal:2, nsc:1
         asian.append([td.get_text() for td in tr.find_all('td')])
 
     if len(asian) > 0:
@@ -111,21 +110,20 @@ def get_trend_en(ref):
         df_asian = pd.DataFrame(asian, columns=['home', 'pankou', 'away', 'dt', 'others'])
     df_asian = df_asian.drop('others', axis=1)
 
-
     odds = []
-    e2 = soup.find_all('table', {'class': 'gts'})[0] # nowgoal
-    for tr in e2.find_all('tr')[2:14]: # nsc
+    e2 = soup.find_all('table', {'class': 'gts'})[0]  # nowgoal
+    for tr in e2.find_all('tr')[2:14]:  # nsc
         odds.append([td.get_text() for td in tr.find_all('td')])
     if len(odds) > 0:
         df_odds = pd.DataFrame(odds, columns=['na1', 'na2', 'home',
                                               'draw', 'away', 'dt', 'others']).loc[:, 'home':]
-        df_odds.dt = [(now[:5] + df_odds.loc[i, 'dt'][-11:] ) for i in range(len(df_odds))]
+        df_odds.dt = [(now[:5] + df_odds.loc[i, 'dt'][-11:]) for i in range(len(df_odds))]
         df_odds = df_odds.loc[df_odds.dt >= str(odd_start)[:16]]
         df_odds.dt = pd.to_datetime(df_odds.dt, format='%Y-%m-%d %H:%M')
         df_odds = df_odds.sort_values(by='dt').reset_index(drop=True)
         # df_odds['title'] = title
     else:
-        df_odds = pd.DataFrame(columns=['home','draw', 'away', 'dt', 'others'])
+        df_odds = pd.DataFrame(columns=['home', 'draw', 'away', 'dt', 'others'])
     df_odds = df_odds.drop('others', axis=1)
 
     return df_odds, df_asian
@@ -137,8 +135,8 @@ def get_odds_differ(dataframe, kelly_sum):
     end = datetime.now() - timedelta(minutes=15)
 
     length = len(dataframe.loc[dataframe.dt_utc08 <= str(end)[:16]])
-    if length > 0 :
-        print("有",length,"场比赛已经开始， 将被筛除")
+    if length > 0:
+        print("有", length, "场比赛已经开始， 将被筛除")
     else:
         print(now[:16], ' start parsing match...')
     dataframe = dataframe.loc[dataframe.dt_utc08 > str(end)[:16]]
@@ -177,9 +175,9 @@ def get_odds_differ(dataframe, kelly_sum):
 
         df_trend = pd.DataFrame(odds_table, columns=['href_nsc', 'hw1', 'dw1', 'aw1',
                                                      'hw2', 'dw2', 'aw2', 'kly_h1',
-                                                     'kly_d1', 'kly_a1', 'kly_h2','kly_d2', 'kly_a2'])
+                                                     'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2'])
 
-        df_trend.iloc[:,1:]=df_trend.iloc[:,1:].astype(float)
+        df_trend.iloc[:, 1:] = df_trend.iloc[:, 1:].astype(float)
 
         df_trend['differ_hw'] = df_trend['hw2'] - df_trend['hw1']
         df_trend['differ_dw'] = df_trend['dw2'] - df_trend['dw1']
@@ -201,17 +199,20 @@ def get_odds_differ(dataframe, kelly_sum):
                 df_trend.loc[i, 'asian_hdp'] = 'Shallow'
 
             if (df_trend.loc[i, 'differ_dw'] > 0) & (df_trend.loc[i, 'differ_hw'] > 0) & (
-                df_trend.loc[i, 'differ_aw'] < 0) & (df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1'] < kelly_sum):
+                    df_trend.loc[i, 'differ_aw'] < 0) & (
+                    df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'A'
                 df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1']
 
             elif (df_trend.loc[i, 'differ_dw'] > 0) & (df_trend.loc[i, 'differ_aw'] > 0) & (
-                df_trend.loc[i, 'differ_hw'] < 0) & (df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1'] < kelly_sum):
+                    df_trend.loc[i, 'differ_hw'] < 0) & (
+                    df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'H'
                 df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1']
 
             elif (df_trend.loc[i, 'differ_hw'] > 0) & (df_trend.loc[i, 'differ_aw'] > 0) & (
-                df_trend.loc[i, 'differ_dw'] < 0) & (df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1'] < kelly_sum):
+                    df_trend.loc[i, 'differ_dw'] < 0) & (
+                    df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'D'
                 df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1']
 
@@ -221,20 +222,25 @@ def get_odds_differ(dataframe, kelly_sum):
         df_trend['updated'] = now[11:16]
         # df_trend = df_trend.loc[(df_trend.hw1 >= 1.3) & (df_trend.aw1 >= 1.3)].reset_index(drop=True)
 
-        df_table  = df_trend.merge(dataframe[['href_nsc', 'dt_utc08', 'mtype', 'home', 'away']], on='href_nsc', how='left')
-        df_table = df_table[['dt_utc08', 'mtype', 'home', 'away', 'trend', 'updated', 'href_nsc', 'asian_hdp', 'hw1', 'dw1', 'aw1',
-        'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum']]
-        df_table = df_table.loc[(df_table.trend!='None')].reset_index(drop=True)
+        df_table = df_trend.merge(dataframe[['href_nsc', 'dt_utc08', 'mtype', 'home', 'away']], on='href_nsc',
+                                  how='left')
+        df_table = df_table[
+            ['dt_utc08', 'mtype', 'home', 'away', 'trend', 'updated', 'href_nsc', 'asian_hdp', 'hw1', 'dw1', 'aw1',
+             'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw',
+             'differ_aw', 'kelly_sum']]
+        df_table = df_table.loc[(df_table.trend != 'None')].reset_index(drop=True)
     else:
         print('No match found')
-        df_table = pd.DataFrame(columns=['dt_utc08', 'mtype', 'home', 'away', 'trend', 'updated', 'href_nsc', 'asian_hdp', 'hw1', 'dw1', 'aw1',
-        'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum'])
+        df_table = pd.DataFrame(
+            columns=['dt_utc08', 'mtype', 'home', 'away', 'trend', 'updated', 'href_nsc', 'asian_hdp', 'hw1', 'dw1',
+                     'aw1',
+                     'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw',
+                     'differ_dw', 'differ_aw', 'kelly_sum'])
 
     return df_table
 
 
 def get_odds_differ_nsc(dataframe, kelly_sum):
-
     now = str(datetime.now())
     end = datetime.now() - timedelta(minutes=30)
 
@@ -254,7 +260,8 @@ def get_odds_differ_nsc(dataframe, kelly_sum):
         if tb is not None:
 
             oddstr_list = [tr['id'] for tr in tb.find_all('tr')]
-            if ('oddstr_80' in oddstr_list) & ('oddstr_432' in oddstr_list) & ('oddstr_649' in oddstr_list) & ('oddstr_81' in oddstr_list):
+            if ('oddstr_80' in oddstr_list) & ('oddstr_432' in oddstr_list) & ('oddstr_649' in oddstr_list) & (
+                    'oddstr_81' in oddstr_list):
                 print(ref, ",该比赛包含香港-澳门赔率，继续分析....")
                 odd_list = [ref]
 
@@ -281,13 +288,13 @@ def get_odds_differ_nsc(dataframe, kelly_sum):
 
         df_trend = pd.DataFrame(odds_table, columns=['href_nsc', 'hw1', 'dw1', 'aw1',
                                                      'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3', 'kly_h1',
-                                                     'kly_d1', 'kly_a1', 'kly_h2','kly_d2', 'kly_a2'])
+                                                     'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2'])
 
-        df_trend.iloc[:,1:]=df_trend.iloc[:,1:].astype(float)
+        df_trend.iloc[:, 1:] = df_trend.iloc[:, 1:].astype(float)
 
-        df_trend['differ_hw'] =  (df_trend['hw2'] - df_trend['hw1'])
-        df_trend['differ_dw'] =  (df_trend['dw2'] - df_trend['dw1'])
-        df_trend['differ_aw'] =  (df_trend['aw2'] - df_trend['aw1'])
+        df_trend['differ_hw'] = (df_trend['hw2'] - df_trend['hw1'])
+        df_trend['differ_dw'] = (df_trend['dw2'] - df_trend['dw1'])
+        df_trend['differ_aw'] = (df_trend['aw2'] - df_trend['aw1'])
         # df_trend = df_trend.round({'differ_hw': 2, 'differ_dw':2, 'differ_aw':2})
         df_trend['trend'] = 'NA'
         df_trend['asian_hdp'] = 'NA'
@@ -306,17 +313,20 @@ def get_odds_differ_nsc(dataframe, kelly_sum):
                 df_trend.loc[i, 'asian_hdp'] = 'Shallow'
 
             if (df_trend.loc[i, 'differ_dw'] > 0) & (df_trend.loc[i, 'differ_hw'] > 0) & (
-                df_trend.loc[i, 'differ_aw'] < 0) & (df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1'] < kelly_sum):
+                    df_trend.loc[i, 'differ_aw'] < 0) & (
+                    df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'A'
                 df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1']
 
             elif (df_trend.loc[i, 'differ_dw'] > 0) & (df_trend.loc[i, 'differ_aw'] > 0) & (
-                df_trend.loc[i, 'differ_hw'] < 0) & (df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1'] < kelly_sum):
+                    df_trend.loc[i, 'differ_hw'] < 0) & (
+                    df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'H'
                 df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1']
 
             elif (df_trend.loc[i, 'differ_hw'] > 0) & (df_trend.loc[i, 'differ_aw'] > 0) & (
-                df_trend.loc[i, 'differ_dw'] < 0) & (df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1'] < kelly_sum):
+                    df_trend.loc[i, 'differ_dw'] < 0) & (
+                    df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'D'
                 df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1']
 
@@ -326,19 +336,25 @@ def get_odds_differ_nsc(dataframe, kelly_sum):
         df_trend['updated'] = now[11:16]
         # df_trend = df_trend.loc[(df_trend.hw1 >= 1.3) & (df_trend.aw1 >= 1.3)].reset_index(drop=True)
 
-        df_table = df_trend.merge(dataframe[['href_nsc', 'dt_utc08', 'mtype', 'home', 'result', 'away']], on='href_nsc', how='left')
-        df_table = df_table[['dt_utc08', 'mtype', 'home', 'result', 'away', 'trend', 'href_nsc', 'asian_hdp','hw1', 'dw1', 'aw1',
-                            'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3',  'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2','kly_d2', 'kly_a2',
-                             'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum']]
+        df_table = df_trend.merge(dataframe[['href_nsc', 'dt_utc08', 'mtype', 'home', 'result', 'away']], on='href_nsc',
+                                  how='left')
+        df_table = df_table[
+            ['dt_utc08', 'mtype', 'home', 'result', 'away', 'trend', 'href_nsc', 'asian_hdp', 'hw1', 'dw1', 'aw1',
+             'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2',
+             'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum']]
         # df_table = df_table.loc[df_table.trend!='None']
 
     else:
         print('No match found')
-        df_table = pd.DataFrame(columns=['dt_utc08', 'mtype', 'home', 'result', 'away', 'trend', 'href_nsc', 'asian_hdp', 'hw1', 'dw1', 'aw1',
-                                         'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3',  'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2','kly_d2', 'kly_a2', 'kly_a2',
-                                         'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum'])
+        df_table = pd.DataFrame(
+            columns=['dt_utc08', 'mtype', 'home', 'result', 'away', 'trend', 'href_nsc', 'asian_hdp', 'hw1', 'dw1',
+                     'aw1',
+                     'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2',
+                     'kly_a2', 'kly_a2',
+                     'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum'])
 
     return df_table
+
 
 # historic differ for kelly_nsc
 def get_asian_differ(dataframe, kelly_sum):
@@ -353,7 +369,8 @@ def get_asian_differ(dataframe, kelly_sum):
         if tb is not None:
 
             oddstr_list = [tr['id'] for tr in tb.find_all('tr')]
-            if ('oddstr_80' in oddstr_list) & ('oddstr_432' in oddstr_list) & ('oddstr_649' in oddstr_list) & ('oddstr_81' in oddstr_list):
+            if ('oddstr_80' in oddstr_list) & ('oddstr_432' in oddstr_list) & ('oddstr_649' in oddstr_list) & (
+                    'oddstr_81' in oddstr_list):
                 print(ref, ",该比赛包含香港-澳门赔率，继续分析....")
                 odd_list = [ref]
 
@@ -380,13 +397,13 @@ def get_asian_differ(dataframe, kelly_sum):
 
         df_trend = pd.DataFrame(odds_table, columns=['href_nsc', 'hw1', 'dw1', 'aw1',
                                                      'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3', 'kly_h1',
-                                                     'kly_d1', 'kly_a1', 'kly_h2','kly_d2', 'kly_a2'])
+                                                     'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2'])
 
-        df_trend.iloc[:,1:]=df_trend.iloc[:,1:].astype(float)
+        df_trend.iloc[:, 1:] = df_trend.iloc[:, 1:].astype(float)
 
-        df_trend['differ_hw'] =  (df_trend['hw2'] - df_trend['hw1'])
-        df_trend['differ_dw'] =  (df_trend['dw2'] - df_trend['dw1'])
-        df_trend['differ_aw'] =  (df_trend['aw2'] - df_trend['aw1'])
+        df_trend['differ_hw'] = (df_trend['hw2'] - df_trend['hw1'])
+        df_trend['differ_dw'] = (df_trend['dw2'] - df_trend['dw1'])
+        df_trend['differ_aw'] = (df_trend['aw2'] - df_trend['aw1'])
         # df_trend = df_trend.round({'differ_hw': 2, 'differ_dw':2, 'differ_aw':2})
         df_trend['trend'] = 'NA'
         df_trend['asian_hdp'] = 'NA'
@@ -405,17 +422,20 @@ def get_asian_differ(dataframe, kelly_sum):
                 df_trend.loc[i, 'asian_hdp'] = 'Shallow'
 
             if (df_trend.loc[i, 'differ_dw'] > 0) & (df_trend.loc[i, 'differ_hw'] > 0) & (
-                df_trend.loc[i, 'differ_aw'] < 0) & (df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1'] < kelly_sum):
+                    df_trend.loc[i, 'differ_aw'] < 0) & (
+                    df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'A'
                 df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1']
 
             elif (df_trend.loc[i, 'differ_dw'] > 0) & (df_trend.loc[i, 'differ_aw'] > 0) & (
-                df_trend.loc[i, 'differ_hw'] < 0) & (df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1'] < kelly_sum):
+                    df_trend.loc[i, 'differ_hw'] < 0) & (
+                    df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'H'
                 df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1']
 
             elif (df_trend.loc[i, 'differ_hw'] > 0) & (df_trend.loc[i, 'differ_aw'] > 0) & (
-                df_trend.loc[i, 'differ_dw'] < 0) & (df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1'] < kelly_sum):
+                    df_trend.loc[i, 'differ_dw'] < 0) & (
+                    df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'D'
                 df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1']
 
@@ -425,17 +445,22 @@ def get_asian_differ(dataframe, kelly_sum):
         df_trend['updated'] = now[11:16]
         # df_trend = df_trend.loc[(df_trend.hw1 >= 1.3) & (df_trend.aw1 >= 1.3)].reset_index(drop=True)
 
-        df_table = df_trend.merge(dataframe[['href_nsc', 'dt_utc08', 'mtype', 'home', 'result', 'away']], on='href_nsc', how='left')
-        df_table = df_table[['dt_utc08', 'mtype', 'home', 'result', 'away', 'trend', 'href_nsc', 'asian_hdp','hw1', 'dw1', 'aw1',
-                            'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3',  'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2','kly_d2', 'kly_a2',
-                             'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum']]
+        df_table = df_trend.merge(dataframe[['href_nsc', 'dt_utc08', 'mtype', 'home', 'result', 'away']], on='href_nsc',
+                                  how='left')
+        df_table = df_table[
+            ['dt_utc08', 'mtype', 'home', 'result', 'away', 'trend', 'href_nsc', 'asian_hdp', 'hw1', 'dw1', 'aw1',
+             'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2',
+             'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum']]
         # df_table = df_table.loc[df_table.trend!='None']
 
     else:
         print('No match found')
-        df_table = pd.DataFrame(columns=['dt_utc08', 'mtype', 'home', 'result', 'away', 'trend', 'href_nsc', 'asian_hdp', 'hw1', 'dw1', 'aw1',
-                                         'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3',  'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2','kly_d2', 'kly_a2', 'kly_a2',
-                                         'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum'])
+        df_table = pd.DataFrame(
+            columns=['dt_utc08', 'mtype', 'home', 'result', 'away', 'trend', 'href_nsc', 'asian_hdp', 'hw1', 'dw1',
+                     'aw1',
+                     'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2',
+                     'kly_a2', 'kly_a2',
+                     'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum'])
 
     return df_table
 
@@ -459,17 +484,15 @@ def get_his_007(url, lty=True):
         today = str(datetime.now())
     today_utc0 = str(datetime.now() - timedelta(hours=10))
     # tomorrow = pd.to_datetime(now[:10], format='%Y-%m-%d') + timedelta(days=1)
-    df = pd.DataFrame(match_f, columns=['mtype','tm_utc08', 'status', 'home', 'result', 'away', 'href_nsc'])
+    df = pd.DataFrame(match_f, columns=['mtype', 'tm_utc08', 'status', 'home', 'result', 'away', 'href_nsc'])
     df = df.loc[(df.tm_utc08 >= '12:00') | (df.tm_utc08 < '06:00')].reset_index(drop=True)
     df['date'] = [str(today)[:10] if df['tm_utc08'][i] <= '06:00' else today_utc0[:10] for i in range(len(df))]
     #     df['date'] = now[:10]
-    df['dt_utc08'] = df['date']  + ' ' + df['tm_utc08']
-    df = df.loc[df.status=='完']
+    df['dt_utc08'] = df['date'] + ' ' + df['tm_utc08']
+    df = df.loc[df.status == '完']
     df = df[['mtype', 'dt_utc08', 'home', 'result', 'away', 'href_nsc']]
-    if lty==True:
+    if lty == True:
         df = df.loc[df.mtype.isin(df_name['league_007'])].reset_index(drop=True)
     else:
         df = df
     return df
-
-
