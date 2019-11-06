@@ -172,8 +172,7 @@ if len(filter_oil) > 0:
     print(his_oil.tail(2))
     his_oil.to_csv(os.path.join(bloombg_dict['path_idx'], 'idx_oil_his.txt'), index=False)
     print(' ')
-#
-#
+
 # Check fx
 his_fx_usd_jpy = pd.read_csv(os.path.join(bloombg_dict['path_fx'], 'fx_usd_jpy.txt'), parse_dates=[0], index_col=False)
 filter_fx_usd_jpy = upd_fx_usd_jpy.loc[upd_fx_usd_jpy.date > his_fx_usd_jpy['date'].max()]

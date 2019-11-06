@@ -1,0 +1,121 @@
+League,Handicap,Trend,Prediction
+BEL D1,Balanced,A,"H,D"
+BEL D1,Balanced,H,H
+BEL D1,Deep,A,A
+BEL D1,Deep,H,H
+BEL D1,Lucky,A,A
+BEL D1,Shallow,A,"H,D"
+BEL D1,Shallow,H,"D,A"
+ENG LCH,Balanced,A,"H,D"
+ENG LCH,Deep,H,H
+ENG LCH,Lucky,H,"D,A"
+ENG LCH,Medium,A,"H,D"
+ENG PR,Balanced,A,A
+ENG PR,Balanced,H,H
+ENG PR,Deep,H,H
+ENG PR,Lucky,A,A
+ENG PR,Lucky,H,H
+ENG PR,Medium,A,A
+ENG PR,Medium,H,H
+ENG PR,Shallow,A,"H,D"
+ENG PR,Shallow,H,"D,A"
+FRA D1,Balanced,A,A
+FRA D1,Balanced,H,"D,A"
+FRA D1,Deep,H,H
+FRA D1,Lucky,H,"D,A"
+FRA D1,Medium,A,A
+FRA D1,Shallow,A,"H,D"
+FRA D1,Shallow,H,"D,A"
+GER D1,Balanced,A,"H,D"
+GER D1,Balanced,H,H
+GER D1,Deep,A,"H,D"
+GER D1,Deep,H,H
+GER D1,Shallow,A,"H,D"
+GER D2,Balanced,A,A
+GER D2,Deep,H,H
+GER D2,Lucky,H,"D,A"
+GER D2,Medium,A,"H,D"
+GER D2,Medium,H,H
+HOL D1,Balanced,A,"H,D"
+HOL D1,Deep,A,A
+HOL D1,Lucky,H,"D,A"
+HOL D1,Shallow,A,A
+HOL D1,Shallow,H,"D,A"
+ITA D1,Deep,A,A
+ITA D1,Lucky,A,"H,D"
+ITA D1,Lucky,H,"D,A"
+ITA D1,Medium,A,A
+ITA D1,Medium,H,H
+ITA D1,Shallow,A,"H,D"
+ITA D1,Shallow,H,"D,A"
+JPN D1,Deep,A,A
+JPN D1,Deep,H,H
+JPN D1,Shallow,A,"H,D"
+SPA D1,Balanced,A,A
+SPA D1,Deep,A,A
+SPA D1,Lucky,A,A
+SPA D1,Medium,A,A
+SPA D1,Medium,H,H
+SPA D1,Shallow,A,"H,D"
+ENG LCH,Medium,H,"D,A"
+GER D2,Shallow,H,"D,A"
+比甲,Balanced,A,"H,D"
+比甲,Balanced,H,H
+比甲,Deep,A,A
+比甲,Deep,H,H
+比甲,Lucky,A,A
+比甲,Shallow,A,"H,D"
+比甲,Shallow,H,"D,A"
+英冠,Balanced,A,"H,D"
+英冠,Deep,H,H
+英冠,Lucky,H,"D,A"
+英冠,Medium,A,"H,D"
+英超,Balanced,A,A
+英超,Balanced,H,H
+英超,Deep,H,H
+英超,Lucky,A,A
+英超,Lucky,H,H
+英超,Medium,A,A
+英超,Medium,H,H
+英超,Shallow,A,"H,D"
+英超,Shallow,H,"D,A"
+法甲,Balanced,A,A
+法甲,Balanced,H,"D,A"
+法甲,Deep,H,H
+法甲,Lucky,H,"D,A"
+法甲,Medium,A,A
+法甲,Shallow,A,"H,D"
+法甲,Shallow,H,"D,A"
+德甲,Balanced,A,"H,D"
+德甲,Balanced,H,H
+德甲,Deep,A,"H,D"
+德甲,Deep,H,H
+德甲,Shallow,A,"H,D"
+德乙,Balanced,A,A
+德乙,Deep,H,H
+德乙,Lucky,H,"D,A"
+德乙,Medium,A,"H,D"
+德乙,Medium,H,H
+荷甲,Balanced,A,"H,D"
+荷甲,Deep,A,A
+荷甲,Lucky,H,"D,A"
+荷甲,Shallow,A,A
+荷甲,Shallow,H,"D,A"
+意甲,Deep,A,A
+意甲,Lucky,A,"H,D"
+意甲,Lucky,H,"D,A"
+意甲,Medium,A,A
+意甲,Medium,H,H
+意甲,Shallow,A,"H,D"
+意甲,Shallow,H,"D,A"
+日职联,Deep,A,A
+日职联,Deep,H,H
+日职联,Shallow,A,"H,D"
+西甲,Balanced,A,A
+西甲,Deep,A,A
+西甲,Lucky,A,A
+西甲,Medium,A,A
+西甲,Medium,H,H
+西甲,Shallow,A,"H,D"
+英冠,Medium,H,"D,A"
+德乙,Shallow,H,"D,A"

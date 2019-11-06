@@ -1,0 +1,121 @@
+League,Handicap,Trend,kly_min,kly_max,options,lang
+BEL D1,Balanced,A,1.7,1.98,1,en
+BEL D1,Balanced,H,1.92,1.96,1,en
+BEL D1,Deep,A,1.7,1.94,1,en
+BEL D1,Deep,H,1.7,1.93,1,en
+BEL D1,Lucky,A,1.7,1.98,1,en
+BEL D1,Shallow,A,1.7,1.95,1,en
+BEL D1,Shallow,H,1.7,1.96,1,en
+ENG LCH,Balanced,A,1.92,1.98,2,en
+ENG LCH,Deep,H,1.7,1.96,2,en
+ENG LCH,Lucky,H,1.7,1.94,1,en
+ENG LCH,Medium,A,1.7,1.98,1,en
+ENG LCH,Medium,H,1.7,1.94,3,en
+ENG PR,Balanced,A,1.7,1.92,2,en
+ENG PR,Balanced,H,1.7,1.93,2,en
+ENG PR,Deep,H,1.7,1.94,1,en
+ENG PR,Lucky,A,1.7,1.92,2,en
+ENG PR,Lucky,H,1.7,1.95,2,en
+ENG PR,Medium,A,1.7,1.94,2,en
+ENG PR,Medium,H,1.7,1.94,1,en
+ENG PR,Shallow,A,1.91,1.97,1,en
+ENG PR,Shallow,H,1.7,1.98,1,en
+FRA D1,Balanced,A,1.92,1.98,1,en
+FRA D1,Balanced,H,1.7,1.95,2,en
+FRA D1,Deep,H,1.7,1.95,1,en
+FRA D1,Shallow,H,1.91,1.96,1,en
+FRA D1,Lucky,H,1.7,1.98,2,en
+FRA D1,Medium,A,1.7,1.98,1,en
+FRA D1,Shallow,A,1.7,1.98,2,en
+GER D1,Balanced,H,1.7,1.93,2,en
+GER D1,Deep,A,1.7,1.98,2,en
+GER D1,Deep,H,1.7,1.94,1,en
+GER D1,Shallow,A,1.7,1.94,1,en
+GER D1,Balanced,A,1.7,1.95,1,en
+GER D2,Balanced,A,1.7,1.94,1,en
+GER D2,Medium,H,1.7,1.91,1,en
+GER D2,Deep,H,1.7,1.93,1,en
+GER D2,Lucky,H,1.7,1.94,2,en
+GER D2,Medium,A,1.7,1.97,1,en
+GER D2,Shallow,H,1.7,1.96,3,en
+HOL D1,Deep,A,1.7,1.96,2,en
+HOL D1,Shallow,A,1.7,1.93,1,en
+HOL D1,Shallow,H,1.7,1.95,1,en
+HOL D1,Balanced,A,1.7,1.93,1,en
+HOL D1,Lucky,H,1.7,1.98,2,en
+ITA D1,Lucky,A,1.7,1.92,2,en
+ITA D1,Lucky,H,1.7,1.92,1,en
+ITA D1,Medium,A,1.7,1.94,1,en
+ITA D1,Medium,H,1.7,1.94,1,en
+ITA D1,Shallow,A,1.7,1.98,1,en
+ITA D1,Shallow,H,1.7,1.93,1,en
+ITA D1,Deep,A,1.7,1.95,1,en
+JPN D1,Deep,A,1.7,1.95,2,en
+JPN D1,Deep,H,1.7,1.94,1,en
+JPN D1,Shallow,A,1.7,1.98,1,en
+SPA D1,Balanced,A,1.7,1.94,2,en
+SPA D1,Deep,A,1.7,1.94,1,en
+SPA D1,Lucky,A,1.7,1.95,2,en
+SPA D1,Medium,A,1.7,1.96,1,en
+SPA D1,Shallow,A,1.7,1.98,1,en
+SPA D1,Medium,H,1.7,1.94,2,en
+比甲,Balanced,A,1.7,1.98,1,zh_cn
+比甲,Balanced,H,1.92,1.96,1,zh_cn
+比甲,Deep,A,1.7,1.94,1,zh_cn
+比甲,Deep,H,1.7,1.93,1,zh_cn
+比甲,Lucky,A,1.7,1.98,1,zh_cn
+比甲,Shallow,A,1.7,1.95,1,zh_cn
+比甲,Shallow,H,1.7,1.96,1,zh_cn
+英冠,Balanced,A,1.92,1.98,2,zh_cn
+英冠,Deep,H,1.7,1.96,2,zh_cn
+英冠,Lucky,H,1.7,1.94,1,zh_cn
+英冠,Medium,A,1.7,1.98,1,zh_cn
+英冠,Medium,H,1.7,1.94,3,zh_cn
+英超,Balanced,A,1.7,1.92,2,zh_cn
+英超,Balanced,H,1.7,1.93,2,zh_cn
+英超,Deep,H,1.7,1.94,1,zh_cn
+英超,Lucky,A,1.7,1.92,2,zh_cn
+英超,Lucky,H,1.7,1.95,2,zh_cn
+英超,Medium,A,1.7,1.94,2,zh_cn
+英超,Medium,H,1.7,1.94,1,zh_cn
+英超,Shallow,A,1.91,1.97,1,zh_cn
+英超,Shallow,H,1.7,1.98,1,zh_cn
+法甲,Balanced,A,1.92,1.98,1,zh_cn
+法甲,Balanced,H,1.7,1.95,2,zh_cn
+法甲,Deep,H,1.7,1.95,1,zh_cn
+法甲,Shallow,H,1.91,1.96,1,zh_cn
+法甲,Lucky,H,1.7,1.98,2,zh_cn
+法甲,Medium,A,1.7,1.98,1,zh_cn
+法甲,Shallow,A,1.7,1.98,2,zh_cn
+德甲,Balanced,H,1.7,1.93,2,zh_cn
+德甲,Deep,A,1.7,1.98,2,zh_cn
+德甲,Deep,H,1.7,1.94,1,zh_cn
+德甲,Shallow,A,1.7,1.94,1,zh_cn
+德甲,Balanced,A,1.7,1.95,1,zh_cn
+德乙,Balanced,A,1.7,1.94,1,zh_cn
+德乙,Medium,H,1.7,1.91,1,zh_cn
+德乙,Deep,H,1.7,1.93,1,zh_cn
+德乙,Lucky,H,1.7,1.94,2,zh_cn
+德乙,Medium,A,1.7,1.97,1,zh_cn
+德乙,Shallow,H,1.7,1.96,3,zh_cn
+荷甲,Deep,A,1.7,1.96,2,zh_cn
+荷甲,Shallow,A,1.7,1.93,1,zh_cn
+荷甲,Shallow,H,1.7,1.95,1,zh_cn
+荷甲,Balanced,A,1.7,1.93,1,zh_cn
+荷甲,Lucky,H,1.7,1.98,2,zh_cn
+意甲,Lucky,A,1.7,1.92,2,zh_cn
+意甲,Lucky,H,1.7,1.92,1,zh_cn
+意甲,Medium,A,1.7,1.94,1,zh_cn
+意甲,Medium,H,1.7,1.94,1,zh_cn
+意甲,Shallow,A,1.7,1.98,1,zh_cn
+意甲,Shallow,H,1.7,1.93,1,zh_cn
+意甲,Deep,A,1.7,1.95,1,zh_cn
+日职联,Deep,A,1.7,1.95,2,zh_cn
+日职联,Deep,H,1.7,1.94,1,zh_cn
+日职联,Shallow,A,1.7,1.98,1,zh_cn
+西甲,Balanced,A,1.7,1.94,2,zh_cn
+西甲,Deep,A,1.7,1.94,1,zh_cn
+西甲,Lucky,A,1.7,1.95,2,zh_cn
+西甲,Medium,A,1.7,1.96,1,zh_cn
+西甲,Shallow,A,1.7,1.98,1,zh_cn
+西甲,Medium,H,1.7,1.94,2,zh_cn

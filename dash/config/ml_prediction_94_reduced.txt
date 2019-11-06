@@ -1,0 +1,67 @@
+League,Handicap,Trend,Prediction
+BEL D1,Balanced,A,"H,D"
+BEL D1,Deep,A,A
+BEL D1,Deep,H,H
+BEL D1,Lucky,A,A
+BEL D1,Shallow,A,"H,D"
+BEL D1,Shallow,H,"D,A"
+ENG LCH,Deep,A,"H,D"
+ENG LCH,Lucky,H,"D,A"
+ENG LCH,Medium,A,"H,D"
+ENG PR,Deep,H,H
+ENG PR,Medium,H,H
+ENG PR,Shallow,H,"D,A"
+FRA D1,Balanced,A,"H,D"
+FRA D1,Deep,H,H
+FRA D1,Medium,A,"H,D"
+FRA D1,Shallow,A,"H,D"
+GER D1,Balanced,A,"H,D"
+GER D1,Deep,H,H
+GER D1,Medium,A,"H,D"
+GER D2,Balanced,A,"H,D"
+GER D2,Deep,A,"H,D"
+GER D2,Deep,H,H
+GER D2,Medium,A,"H,D"
+ITA D1,Deep,A,A
+ITA D1,Medium,A,A
+ITA D1,Medium,H,H
+JPN D1,Deep,H,H
+JPN D1,Shallow,A,"H,D"
+SPA D1,Deep,A,A
+SPA D1,Medium,A,A
+SPA D1,Shallow,A,"H,D"
+HOL D1,Balanced,A,"H,D"
+HOL D1,Shallow,H,"D,A"
+比甲,Balanced,A,"H,D"
+比甲,Deep,A,A
+比甲,Deep,H,H
+比甲,Lucky,A,A
+比甲,Shallow,A,"H,D"
+比甲,Shallow,H,"D,A"
+英冠,Deep,A,"H,D"
+英冠,Lucky,H,"D,A"
+英冠,Medium,A,"H,D"
+英超,Deep,H,H
+英超,Medium,H,H
+英超,Shallow,H,"D,A"
+法甲,Balanced,A,"H,D"
+法甲,Deep,H,H
+法甲,Medium,A,"H,D"
+法甲,Shallow,A,"H,D"
+德甲,Balanced,A,"H,D"
+德甲,Deep,H,H
+德甲,Medium,A,"H,D"
+德乙,Balanced,A,"H,D"
+德乙,Deep,A,"H,D"
+德乙,Deep,H,H
+德乙,Medium,A,"H,D"
+意甲,Deep,A,A
+意甲,Medium,A,A
+意甲,Medium,H,H
+日职联,Deep,H,H
+日职联,Shallow,A,"H,D"
+西甲,Deep,A,A
+西甲,Medium,A,A
+西甲,Shallow,A,"H,D"
+荷甲,Balanced,A,"H,D"
+荷甲,Shallow,H,"D,A"
