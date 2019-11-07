@@ -10,6 +10,8 @@ import os
 PARAM_DICT = {
     'url_jrj_1': 'http://summary.jrj.com.cn/scfl/index.shtml?q=cn|s|sa&c=m&n=hqa&o=tm,d&p=1050',
     'url_jrj_2': 'http://summary.jrj.com.cn/scfl/index.shtml?q=cn|s|sa&c=m&n=hqa&o=tm,d&p=2050',
+    'url_jrj_msci_1': 'http://summary.jrj.com.cn/scfl/msci.shtml?q=cn|s|msci&c=m&n=hqa&o=pl,d&p=1050',
+    'url_jrj_msci_2': 'http://summary.jrj.com.cn/scfl/msci.shtml?q=cn|s|msci&c=m&n=hqa&o=pl,d&p=2050',
     'url_jrj_etf': 'http://summary.jrj.com.cn/fund/etfhq.shtml?q=cn|f|etf&n=fundClose&c=code,' +
                    'name,np,pl,ta,tm,hp,lp,op,lcp&o=tm,d&p=1050',
     'url_jrj_smry': 'http://summary.jrj.com.cn/',
@@ -34,7 +36,8 @@ def get_jrj_etf_info(url):
     df = pd.DataFrame(result, columns=['code', 'name', 'close', 'change', 'txn_vol', 'txn_amt',
                                        'high', 'low', 'open', 'last_close', 'drop1'])
     df['txn_amt'] = df['txn_amt'].astype(float)
-    return df.drop('drop1', axis=1), market_dt
+    df = df.sort_values('txn_amt', ascending=False)
+    return df.drop(['high', 'low', 'open', 'last_close', 'drop1'], axis=1), market_dt
 
 
 def get_jrj_txn_info(url):
@@ -52,7 +55,8 @@ def get_jrj_txn_info(url):
     df['views'] = [i.split('次')[0] for i in df['views'].values]
     df['code'] = ['SH' + i if i.startswith('6') else 'SZ' + i for i in df['code'].values]
     df['txn_amt'] = df['txn_amt'].astype(float)
-    return df.drop(['drop1', 'drop2', 'drop3'], axis=1)
+    df = df.sort_values('txn_amt', ascending=False)
+    return df.drop(['drop1', 'drop2', 'drop3', 'high_low'], axis=1)
 
 
 def get_jrj_summary(url):
@@ -109,6 +113,7 @@ def main_func():
     today = datetime.today()
     fn_eft_txn_top50 = 'etf_txn_top50_' + str(today)[:10] + '.txt'
     fn_sec_txn_top100 = 'sec_txn_top100_' + str(today)[:10] + '.txt'
+    fn_sec_txn_msci_top100 = 'sec_txn_msci_top100_' + str(today)[:10] + '.txt'
     fn_smry_sec = 'sec_txn_summary.txt'
     if (not os.path.exists(PARAM_DICT['path_sec'] + fn_sec_txn_top100)) or (
     not os.path.exists(PARAM_DICT['path_sec'] + fn_eft_txn_top50)):
@@ -123,12 +128,19 @@ def main_func():
         txn_top50 = get_jrj_txn_info(PARAM_DICT['url_jrj_1'])
         txn_50_100 = get_jrj_txn_info(PARAM_DICT['url_jrj_2'])
         txn_top100 = pd.concat([txn_top50, txn_50_100], ignore_index=True)
-        txn_top100.to_csv((PARAM_DICT['path_sec'] + fn_sec_txn_top100), index=False)
+        txn_top100.to_csv(os.path.join(PARAM_DICT['path_sec'], fn_sec_txn_top100), index=False)
         print("write csv: {}".format(fn_sec_txn_top100))
+
+        txn_top50_msci = get_jrj_txn_info(PARAM_DICT['url_jrj_msci_1'])
+        txn_50_100_msci = get_jrj_txn_info(PARAM_DICT['url_jrj_msci_2'])
+        txn_top100_msci = pd.concat([txn_top50_msci, txn_50_100_msci], ignore_index=True)
+        txn_top100_msci.to_csv(os.path.join(PARAM_DICT['path_sec'], fn_sec_txn_msci_top100), index=False)
 
         jrj_smry = get_jrj_summary(PARAM_DICT['url_jrj_smry'])
         jrj_smry['txn_sec_top50'] = int(txn_top100['txn_amt'][:50].sum())
         jrj_smry['txn_sec_top100'] = int(txn_top100['txn_amt'].sum())
+        jrj_smry['txn_sec_msci_top50'] = int(txn_top100_msci['txn_amt'][:50].sum())
+        jrj_smry['txn_sec_msci_top100'] = int(txn_top100_msci['txn_amt'].sum())
         jrj_smry['txn_etf_top50'] = int(txn_etf['txn_amt'].sum())
         jrj_smry['date'] = str(today)[:10]
 
