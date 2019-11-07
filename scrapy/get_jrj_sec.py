@@ -10,8 +10,8 @@ import os
 PARAM_DICT = {
     'url_jrj_1': 'http://summary.jrj.com.cn/scfl/index.shtml?q=cn|s|sa&c=m&n=hqa&o=tm,d&p=1050',
     'url_jrj_2': 'http://summary.jrj.com.cn/scfl/index.shtml?q=cn|s|sa&c=m&n=hqa&o=tm,d&p=2050',
-    'url_jrj_msci_1': 'http://summary.jrj.com.cn/scfl/msci.shtml?q=cn|s|msci&c=m&n=hqa&o=pl,d&p=1050',
-    'url_jrj_msci_2': 'http://summary.jrj.com.cn/scfl/msci.shtml?q=cn|s|msci&c=m&n=hqa&o=pl,d&p=2050',
+    'url_jrj_msci_1': 'http://summary.jrj.com.cn/scfl/msci.shtml?q=cn|s|msci&c=m&n=hqa&o=tm,d&p=1050',
+    'url_jrj_msci_2': 'http://summary.jrj.com.cn/scfl/msci.shtml?q=cn|s|msci&c=m&n=hqa&o=tm,d&p=2050',
     'url_jrj_etf': 'http://summary.jrj.com.cn/fund/etfhq.shtml?q=cn|f|etf&n=fundClose&c=code,' +
                    'name,np,pl,ta,tm,hp,lp,op,lcp&o=tm,d&p=1050',
     'url_jrj_smry': 'http://summary.jrj.com.cn/',

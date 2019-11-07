@@ -14,7 +14,7 @@ external_stylesheets = [
     # 'https://codepen.io/chriddyp/pen/bWLwgP.css',
     'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
-    # "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+    "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
     'static/css/style.css']
 external_scripts = ['https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css',
                     'static/js/script.js', ]

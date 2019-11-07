@@ -42,7 +42,7 @@ layout = html.Div([
                         html.Div([
                             html.A(" 全球指数 ",  href='/wealth', className='tag'),
                             "|",
-                            html.A(" 沪深市场 ", href='/wealth/hs', className='tag'),
+                            html.A(" 沪深市场 ", href='/wealth/sec', className='tag'),
                             "|",
                             html.A(" ETF追踪 ", className='tag'),
                             # "|",
