@@ -422,10 +422,10 @@ layout = html.Div([
                     html.H5(children='Today\'s Prediction (Temp)', style={"textAlign": 'center'}),
                     html.H5(children='{} {}'.format(today[:11], (datetime.now() - timedelta(hours=11)).strftime('%A')),
                             style={"textAlign": 'center'}),
-                    html.H6("初盘"),
+                    html.H6("初盘", style={'font-size': '13px', }),
                     html.Div(easy_table(trend_begin)),
 
-                    html.H6("即时(暂停更新)"),
+                    html.H6("即时(暂停更新)", style={'font-size': '13px', }),
                     html.Div(id='table-container-6')
                 ]),
             ],

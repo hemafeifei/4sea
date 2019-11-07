@@ -79,7 +79,7 @@ footer_layout = dash_dangerously_set_inner_html.DangerouslySetInnerHTML('''
     <div class="container">
       <div class="content has-text-centered">    
         <p>
-          <strong>Represent</strong> by 4Sea Quant & Tech
+          <strong>Represent</strong> by 4Sea Tech.
           <span class="icon is-small">
             <i class="fa fa-copyright"></i>
           </span>2019</a>

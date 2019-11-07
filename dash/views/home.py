@@ -138,7 +138,7 @@ layout = html.Div([
                         html.Img(src=ABT_IMAGE)
                     ], className='card-image'),
                     html.Div([
-                        html.A("About", className="title is-3", style={'color': 'turquoise'}),
+                        html.A("About", className="title is-3", href='/about', style={'color': 'turquoise'}),
                         html.Hr(),
                         html.H5("The Beast stumbled in the dark for it could no longer see the path. It started to "
                                 "fracture and weaken, trying to reshape itself into the form of metal. Even the witches "
@@ -149,4 +149,4 @@ layout = html.Div([
             ], className='column is-one-third'),
         ], className='row columns is-multiline')
     ], className='section'),
-], className='container')
+], className='container',)
