@@ -64,7 +64,12 @@ def get_jrj_summary(url):
     df = pd.DataFrame(result, columns=['drop1', 'name', 'close', 'change_pt', 'change', 'txn_amt', 'drop2'])
     df['txn_amt'] = [i.split('亿')[0] for i in df['txn_amt'].values]
     df_raw = df.drop(['drop1', 'drop2'], axis=1)
-    df_smry = pd.DataFrame({'txn_amt_sh': [int(df_raw['txn_amt'][0])],
+    df_smry = pd.DataFrame({'idx_sh': [float(df_raw['close'][0])],
+                            'idx_sz': [float(df_raw['close'][1])],
+                            'idx_hs300': [float(df_raw['close'][2])],
+                            'idx_zz500': [float(df_raw['close'][5])],
+                            'idx_cyb': [float(df_raw['close'][3])],
+                            'txn_amt_sh': [int(df_raw['txn_amt'][0])],
                             'txn_amt_sz': [int(df_raw['txn_amt'][1])],
                             'txn_amt_hs300': [int(df_raw['txn_amt'][2])],
                             'txn_amt_zz500': [int(df_raw['txn_amt'][5])],

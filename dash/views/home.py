@@ -44,7 +44,7 @@ layout = html.Div([
                             "|",
                             html.A(" 沪深市场 ", href='/wealth/hs', className='tag'),
                             "|",
-                            html.A(" ETF追踪 ", href='/wealth/etf', className='tag'),
+                            html.A(" ETF追踪 ", className='tag'),
                             # "|",
                             # html.A(" 外汇 ", ),
                         ], className='row'),

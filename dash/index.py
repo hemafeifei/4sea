@@ -163,7 +163,7 @@ def display_page(pathname):
         else:
             return logout.layout
     else:
-        return '404'
+        return '404 - 施工中'
 
 
 @app.callback(
