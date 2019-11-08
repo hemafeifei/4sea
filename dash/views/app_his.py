@@ -8,7 +8,7 @@ import plotly.graph_objs as go
 from datetime import datetime, timedelta
 import pandas as pd
 
-enddate = datetime.now() - timedelta(days=4, hours=11)
+enddate = datetime.now() - timedelta(days=1, hours=10)
 # tomorrow = str(pd.to_datetime(str(enddate)[:10], format='%Y-%m-%d') + timedelta(days=1))
 data_path = '../../database/football/'
 his_path = data_path + 'his_data/'

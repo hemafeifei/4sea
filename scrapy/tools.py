@@ -1,22 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from settings import *
+from _settings import *
 import pandas as pd
 from datetime import datetime, timedelta
 
 df_name = pd.read_csv('league_name.txt', encoding='utf8')
 path_parms = {
     # Main path
-    'base_dir': '/home/centos/PythonApp/4sea/scrapy/',
-    'data_dir': '/home/centos/PythonApp/database/football/',
-    'model_dir': '/home/centos/PythonApp/model/',
+    'base_dir': './',
+    'data_dir': '../../database/football/',
+    'model_dir': '../../model/',
     # Sub Path
-    'match_path': '/home/centos/PythonApp/database/football/match_data/',
-    'odds_path': '/home/centos/PythonApp/database/football/odds_data/',
-    'differ_path': '/home/centos/PythonApp/database/football/differ_data/',
-    'his_path': '/home/centos/PythonApp/database/football/his_data/',
-    'kelly_path': '/home/centos/PythonApp/database/football/ml_data/',
+    'match_path': '../../database/football/match_data/',
+    'odds_path': '../../database/football/odds_data/',
+    'differ_path': '../../database/football/differ_data/',
+    'his_path': '../../database/football/his_data/',
+    'kelly_path': '../../database/football/ml_data/',
     # URL
     'base_url_nsc': 'http://score.nowscore.com/index.aspx',
     'base_url_007': 'http://live.win007.com',  # updated on 2019-08-12
