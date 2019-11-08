@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 import pandas as pd
 
 
-today = str(datetime.now() - timedelta(hours=11, days=4))
+today = str(datetime.now() - timedelta(hours=11, days=0))
 tomorrow = str(pd.to_datetime(today[:10], format='%Y-%m-%d') + timedelta(days=1))
 cur_path = './'
 config_path = 'config/'

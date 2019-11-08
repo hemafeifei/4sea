@@ -10,7 +10,7 @@ import plotly.graph_objs as go
 from datetime import datetime, timedelta
 import pandas as pd
 
-today = str(datetime.now() - timedelta(hours=9, days=4))  # for fixing
+today = str(datetime.now() - timedelta(hours=11, days=0))  # for fixing
 tomorrow = str(pd.to_datetime(today[:10], format='%Y-%m-%d') + timedelta(days=1))
 match_path = '../../database/football/match_data/'
 odds_path = '../../database/football/odds_data/'

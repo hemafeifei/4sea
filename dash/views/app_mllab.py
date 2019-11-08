@@ -14,7 +14,7 @@ from server import app
 from datetime import datetime, timedelta
 import pandas as pd
 
-today = str(datetime.now() - timedelta(hours=11, days=4))
+today = str(datetime.now() - timedelta(hours=11, days=0))
 tomorrow = str(pd.to_datetime(today[:10], format='%Y-%m-%d') + timedelta(days=1))
 cur_path = './'
 config_path = 'config/'
@@ -44,7 +44,7 @@ dummy_data = pd.read_csv(os.path.join(config_path, 'league_dummy.txt'))
 now = datetime.today()
 idx = (now.weekday() + 1) % 7
 sat = now - timedelta(7 + idx - 6)
-enddate = datetime.now() - timedelta(days=4, hours=10)
+enddate = datetime.now() - timedelta(days=1, hours=10)
 
 
 def generate_table(dataframe, max_rows=20):
