@@ -7,7 +7,6 @@ from datetime import datetime, timedelta
 import time
 import pandas as pd
 
-
 df_name = pd.read_csv('league_name.txt', encoding='utf8')
 today = str(datetime.now())
 today_utc0 = str(datetime.now() - timedelta(hours=8))
@@ -46,9 +45,11 @@ def daily_scrapy_match_and_odds():
             df_eu, df_asia = tools.get_trend_en(href)
             df_eu.to_csv(today_utc0_path + '/' + str(href) + '_eu.txt', index=False, encoding='utf-8')
             df_asia.to_csv(today_utc0_path + '/' + str(href) + '_asia.txt', index=False, encoding='utf-8')
-            time.sleep(1.1)
+            # time.sleep(1.1)
 
     end = str(datetime.now())[:16]
     print("End Time is ", end)
 
-daily_scrapy_match_and_odds()
+
+if __name__ == '__main__':
+    daily_scrapy_match_and_odds()

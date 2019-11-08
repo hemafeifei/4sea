@@ -8,12 +8,11 @@ from datetime import datetime, timedelta
 import os
 import time
 
-
 df_name = pd.read_csv('league_name.txt', encoding='utf8')
 today = str(datetime.now())
 today_utc0 = str(datetime.now() - timedelta(hours=8))
 weekday_utc0 = (datetime.now() - timedelta(hours=8)).strftime('%a').upper()
-base_url = 'https://g10oal.com/?day=' + weekday_utc0 # replace with g10oal.com
+base_url = 'https://g10oal.com/?day=' + weekday_utc0  # replace with g10oal.com
 
 league_mapping = {
     '俄羅斯超級聯賽': 'RUS PR',
@@ -58,7 +57,7 @@ def get_g10oal_match(url, lty=True):
         result.append(away)
         result.append(link)
         result[0] = weekday + result[0]
-#         result[3] = result[3].strip()
+        #         result[3] = result[3].strip()
         result_tbl.append(result)
     df = pd.DataFrame(result_tbl, columns=['href_goal', 'league_goal', 'null1', 'date', 'time', 'home', 'away', 'link'])
     df = df.drop('null1', axis=1)
@@ -143,19 +142,19 @@ def get_trend_begin(dataframe, kelly_sum):
                 df_trend.loc[i, 'asian_hdp'] = 'Shallow'
 
             if (df_trend.loc[i, 'differ_dw'] > 0) & (df_trend.loc[i, 'differ_hw'] > 0) & (
-                        df_trend.loc[i, 'differ_aw'] < 0) & (
+                    df_trend.loc[i, 'differ_aw'] < 0) & (
                     df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'A'
                 df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_a2'] + df_trend.loc[i, 'kly_a1']
 
             elif (df_trend.loc[i, 'differ_dw'] > 0) & (df_trend.loc[i, 'differ_aw'] > 0) & (
-                        df_trend.loc[i, 'differ_hw'] < 0) & (
+                    df_trend.loc[i, 'differ_hw'] < 0) & (
                     df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'H'
                 df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_h2'] + df_trend.loc[i, 'kly_h1']
 
             elif (df_trend.loc[i, 'differ_hw'] > 0) & (df_trend.loc[i, 'differ_aw'] > 0) & (
-                        df_trend.loc[i, 'differ_dw'] < 0) & (
+                    df_trend.loc[i, 'differ_dw'] < 0) & (
                     df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1'] < kelly_sum):
                 df_trend.loc[i, 'trend'] = 'D'
                 df_trend.loc[i, 'kelly_sum'] = df_trend.loc[i, 'kly_d2'] + df_trend.loc[i, 'kly_d1']
@@ -182,34 +181,37 @@ def get_trend_begin(dataframe, kelly_sum):
     return df_table
 
 
-# get match
-my_path = tools.path_parms['match_path']
-match_file_gl = today[:10] + '_gl.txt'
-
-if not os.path.exists(my_path + match_file_gl):
-    df_gl = get_g10oal_match(base_url)
-    df_gl.to_csv(my_path + match_file_gl, index=False, encoding='utf-8')
-    print("generated file: ", match_file_gl)
-else:
-    print("Match file existed.")
-
-
-# get begin trend
-def get_gl_differ():
-    df_gl = pd.read_csv(my_path + match_file_gl)
-    print("Match Shape", df_gl.shape)
-
-    df_differ = get_trend_begin(df_gl, kelly_sum=1.98)
-    print("Trend Shape", df_differ.shape)
-    return df_differ
-
-differ_path = tools.path_parms['differ_path']
-if not os.path.exists(differ_path + match_file_gl):
-    differ = get_gl_differ()
-    if len(differ >0):
-        print("Now updated: ", today[:16])
-        differ.to_csv(differ_path + match_file_gl, index=False)
+def main_control():
+    # get match
+    my_path = tools.path_parms['match_path']
+    match_file_gl = today[:10] + '_gl.txt'
+    if not os.path.exists(my_path + match_file_gl):
+        df_gl = get_g10oal_match(base_url)
+        df_gl.to_csv(my_path + match_file_gl, index=False, encoding='utf-8')
+        print("generated file: ", match_file_gl)
     else:
-        print("no result writen")
-else:
-    print("Trend begin exsited")
+        print("Match file existed.")
+
+    # get begin trend
+    def get_gl_differ():
+        df_gl = pd.read_csv(my_path + match_file_gl)
+        print("Match Shape", df_gl.shape)
+
+        df_differ = get_trend_begin(df_gl, kelly_sum=1.98)
+        print("Trend Shape", df_differ.shape)
+        return df_differ
+
+    differ_path = tools.path_parms['differ_path']
+    if not os.path.exists(differ_path + match_file_gl):
+        differ = get_gl_differ()
+        if len(differ) > 0:
+            print("Now updated: ", today[:16])
+            differ.to_csv(differ_path + match_file_gl, index=False)
+        else:
+            print("no result writen")
+    else:
+        print("Trend begin exsited")
+
+
+if __name__ == '__main__':
+    main_control()
