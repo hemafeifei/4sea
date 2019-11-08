@@ -23,7 +23,7 @@ def get_soup(url, timesleep=1.1):
         return soup
     else:
         from pyvirtualdisplay import Display
-        chrome_path = '/home/centos/PythonApp/chromedriver'
+        chrome_path = '../../chromedriver'
 
         display = Display(visible=0, size=(800, 600))
         display.start()

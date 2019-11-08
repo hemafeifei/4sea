@@ -14,39 +14,32 @@ layout = html.Div([
         html.P("About US", className='title is-3'),
         html.Div([
 
-
             html.Div([
-
                 html.Div(children=[
+                    html.Div([
+                        html.P("Latest", className='title is-5'),
+                        html.P("You will never walk alone."),
+                        html.P(" 2018/19 season, accuracy: 66% (95 matches, 63 correct)")
+                    ], className='column'),
 
-                    dcc.Markdown('''
-                    ## Latest
-                    __You will never walk alone.__
+                    html.Div([
+                        html.P("Milestone", className='title is-5'),
+                        html.P("2018-07-24 new to born", className='subtitle is-7'),
+                        html.P("2018-08-08 add result query", className='subtitle is-7'),
+                        html.P("2018-12-10 add ML History query", className='subtitle is-7'),
+                        html.P("2018-12-28 add Email message, add observation model", className='subtitle is-7'),
+                        html.P("2019-01-19 stack Lightgbm, SVM and KNN models to reduce variance, but bad results", className='subtitle is-7'),
+                        html.P("2019-05-18 replace Observation1 with a non-standardized features", className='subtitle is-7'),
+                        html.P("2019-11-08 add Finance module, framework 2.0 online", className='subtitle is-7 is-tag is-primary'),
 
-                    2018/19 season, accuracy: 66% (95 matches, 63 correct)
+                    ], className='column'),
 
-
-                    ## Focus
-                    * Data Visualization
-                    * Use machine Learning to predict result
-                    * data driven development
-
-                    ## Milestone
-                    * __2018-07-24__  new to born
-                    * __2018-08-08__  add result query
-                    * __2018-12-10__  add ML History query
-                    * __2018-12-28__  add Email message, add observation model
-                    * __2019-01-19__  stack Lightgbm, SVM and KNN models to reduce variance, but bad results
-                    * __2019-05-18__  replace Observation1 with a non-standardized features
-
-
-                    ## 关于本站
-                    本站主要专注于数据驱动下的比赛分析。
-                    * 使用爬虫收集数据
-                    * 交互式的数据可视化
-                    * 基于机器学习与深度学习来预测比赛结果与进球
-                    '''),
-
+                    html.Div([
+                        html.P("Focus", className='title is-5'),
+                        html.P("爬虫任务采集数据", className='subtitle is-7'),
+                        html.P("交互式的数据可视化", className='subtitle is-7'),
+                        html.P("基于机器学习与深度学习建立预测模型", className='subtitle is-7'),
+                    ], className='column'),
 
                 ])
                 ,
@@ -58,10 +51,10 @@ layout = html.Div([
 
 
             html.Div([
-                html.Div(children=[
 
+                html.Div(children=[
+                    html.P("Code and Technology", className='title is-5'),
                     dcc.Markdown('''
-                    # Code and Technology
                     ### Dash
                     This Website was developed with Python Dash. Other apps running backstage are also writen in python.
                     The mainly used tools are:
