@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from settings import *
+from _settings import *
 import pandas as pd
 from datetime import datetime, timedelta
 import os
@@ -9,7 +9,7 @@ import os
 
 url = 'http://www.boc.cn/sourcedb/whpj/index.html'
 today = str(datetime.now())[:10]
-fx_path = '/home/centos/PythonApp/database/finance/fx/'
+fx_path = '../../database/finance/fx/'
 fx_fn = 'fx_' + today + '.txt'
 
 def get_fx(url):

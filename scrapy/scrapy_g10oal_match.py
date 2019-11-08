@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from settings import *
+from _settings import *
 import tools as tools
 import pandas as pd
 from datetime import datetime, timedelta

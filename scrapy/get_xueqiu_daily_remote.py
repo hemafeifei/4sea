@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from settings import *
+from _settings import *
 import pandas as pd
 from datetime import datetime, timedelta
 import os
 
 url = 'https://danjuanapp.com/djmodule/value-center?channel=1300100141'
 today = str(datetime.now())[:10]
-etf_path = '/home/centos/PythonApp/database/finance/etf/'
+etf_path = '../../database/finance/etf/'
 etf_fn = 'xq_' + today + '.txt'
 
 soup_xq = get_soup(url)
