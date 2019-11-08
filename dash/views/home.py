@@ -108,7 +108,7 @@ layout = html.Div([
                         html.Img(src=LRN_IMAGE)
                     ], className='card-image'),
                     html.Div([
-                        html.A("Learning", className="title is-3", style={'color': 'turquoise'}),
+                        html.A("Labs", className="title is-3", style={'color': 'turquoise'}),
                         html.Hr(),
                         html.H5("趣味实验室。一切新奇的想法都可以进行测试，比如已经蓄势待发近N年的：地图炮、转会市场网...",
                                 className='content')
