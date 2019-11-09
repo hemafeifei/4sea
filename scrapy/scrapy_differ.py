@@ -30,10 +30,10 @@ def get_nowscore_asian_differ(hours=0):
 def main_control():
     differ = get_nowscore_asian_differ()
     if len(differ) > 0:
-        print("Now updated: ", today[:16])
         with open(tools.path_parms['differ_path'] + match_file, 'a+') as f:
             differ.to_csv(f, header=False, index=False)
         print("write files: ", differ.shape)
+        print("Updated at: ", str(datetime.now)[:16])
     else:
         print("no result writen")
     print("****Finished****")
