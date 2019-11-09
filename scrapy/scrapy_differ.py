@@ -19,7 +19,7 @@ def get_nowscore_asian_differ(hours=0):
     print(match_nsc.shape)
     match_nsc = match_nsc.loc[match_nsc.mtype.isin(df_name['league_007'])].reset_index(drop=True)
 
-    now_to_hours = str(datetime.today() + timedelta(hours=hours, minutes=40))
+    now_to_hours = str(datetime.today() + timedelta(hours=hours, minutes=35)) # depends on server performance
     match_nsc = match_nsc.loc[(match_nsc.dt_utc08 >= today[:16]) &
                               (match_nsc.dt_utc08 < now_to_hours)].reset_index(drop=True)
     print(match_nsc.shape)
