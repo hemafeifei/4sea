@@ -33,10 +33,12 @@ def main_control():
         with open(tools.path_parms['differ_path'] + match_file, 'a+') as f:
             differ.to_csv(f, header=False, index=False)
         print("write files: ", differ.shape)
-        print("Updated at: ", str(datetime.now)[:16])
+        print("Updated at: ", str(datetime.now())[:16])
+        print(' ')
     else:
         print("no result writen")
     print("****Finished****")
+    print(' ')
 
 
 if __name__ == '__main__':

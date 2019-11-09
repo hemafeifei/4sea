@@ -206,7 +206,7 @@ def main_control():
         differ = get_gl_differ()
         if len(differ) > 0:
             differ.to_csv(differ_path + match_file_gl, index=False)
-            print("Now updated: ", str(datetime.now)[:16])
+            print("Now updated: ", str(datetime.now())[:16])
             print(' ')
         else:
             print("no result writen")
