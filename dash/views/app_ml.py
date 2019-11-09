@@ -424,9 +424,9 @@ layout = html.Div([
                             style={"textAlign": 'center'}),
                     html.H6("初盘", style={'font-size': '13px', }),
                     html.Div(easy_table(trend_begin)),
-
+                    html.Br(),
                     html.H6("即时(暂停更新)", style={'font-size': '13px', }),
-                    html.Div(id='table-container-6')
+                    # html.Div(id='table-container-6')
                 ]),
             ],
                 className='column is-three-quarters')
@@ -517,40 +517,40 @@ def update_table(value):
     return easy_table(dff)
 
 
-# Tab 6
-@app.callback(Output('table-container-6', 'children'),
-              [Input('lang-select', 'value')])
-def update_table(value):
-    df = match_nsc_all.loc[match_nsc_all.lang == value]  # update with your own logic
-    dff = get_differ_gl10oal(trend_latest_file)
-
-    ks_filter = kelly_filter.loc[kelly_filter.lang == 'en'].reset_index(drop=True)
-
-    dff = dff.merge(ks_filter, on=['League', 'Handicap', 'Trend'], how='left').reset_index(drop=True)
-    dff_ml = dff.loc[((dff.kelly_sum >= dff.kly_min) & (dff.kelly_sum < dff.kly_max))].reset_index(drop=True)
-
-    # df_proba = _calculate_proba_ks_noscaler(dff_ml, ml_pred_new, model_file_6_1)
-    # df_proba_svm = _calculate_proba_ks_svm_noscaler(dff_ml, ml_pred_new, model_file_6_2)
-    # df_proba_lr = _calculate_proba_ks_svm_noscaler(dff_ml, ml_pred_new, model_file_6_3)
-    #
-    # # dff = dff[['href_nsc', 'League', 'Time', 'Home', 'Away', 'Handicap', 'Updated', 'Trend']]
-    dff['Time'] = [i[11:] for i in dff['Time'].values]
-    dff = dff.merge(ml_pred_new, on=['League', 'Handicap', 'Trend'], how='left')
-    dff = dff[['link', 'League', 'Time', 'Home', 'Away', 'Handicap', 'Updated', 'Trend', 'Prediction']]
-    # #
-    # #
-    # if len(df_proba_lr) > 0:
-    #     df_proba = df_proba.rename(columns={'Probability': 'Proba_1'})
-    #     df_proba_svm = df_proba_svm.rename(columns={'Probability': 'Proba_2'})
-    #     df_proba_lr = df_proba_lr.rename(columns={'Probability': 'Proba_3'})
-    #
-    #     dff = dff.merge(df_proba, on='link', how='left')
-    #     dff = dff.merge(df_proba_svm, on='link', how='left')
-    #     dff = dff.merge(df_proba_lr, on='link', how='left')
-    #     dff = dff[['Time', 'League', 'Home', 'Away', 'Updated', 'Handicap', 'Trend', 'Prediction', 'Proba_1', 'Proba_2',
-    #                'Proba_3']]
-    #
-    # else:
-    #     dff = dff[['Time', 'League', 'Home', 'Away', 'Updated', 'Handicap', 'Trend']]
-
-    return easy_table(dff)
+# # Tab 6
+# @app.callback(Output('table-container-6', 'children'),
+#               [Input('lang-select', 'value')])
+# def update_table(value):
+#     df = match_nsc_all.loc[match_nsc_all.lang == value]  # update with your own logic
+#     dff = get_differ_gl10oal(trend_latest_file)
+#
+#     ks_filter = kelly_filter.loc[kelly_filter.lang == 'en'].reset_index(drop=True)
+#
+#     dff = dff.merge(ks_filter, on=['League', 'Handicap', 'Trend'], how='left').reset_index(drop=True)
+#     dff_ml = dff.loc[((dff.kelly_sum >= dff.kly_min) & (dff.kelly_sum < dff.kly_max))].reset_index(drop=True)
+#
+#     # df_proba = _calculate_proba_ks_noscaler(dff_ml, ml_pred_new, model_file_6_1)
+#     # df_proba_svm = _calculate_proba_ks_svm_noscaler(dff_ml, ml_pred_new, model_file_6_2)
+#     # df_proba_lr = _calculate_proba_ks_svm_noscaler(dff_ml, ml_pred_new, model_file_6_3)
+#     #
+#     # # dff = dff[['href_nsc', 'League', 'Time', 'Home', 'Away', 'Handicap', 'Updated', 'Trend']]
+#     dff['Time'] = [i[11:] for i in dff['Time'].values]
+#     dff = dff.merge(ml_pred_new, on=['League', 'Handicap', 'Trend'], how='left')
+#     dff = dff[['link', 'League', 'Time', 'Home', 'Away', 'Handicap', 'Updated', 'Trend', 'Prediction']]
+#     # #
+#     # #
+#     # if len(df_proba_lr) > 0:
+#     #     df_proba = df_proba.rename(columns={'Probability': 'Proba_1'})
+#     #     df_proba_svm = df_proba_svm.rename(columns={'Probability': 'Proba_2'})
+#     #     df_proba_lr = df_proba_lr.rename(columns={'Probability': 'Proba_3'})
+#     #
+#     #     dff = dff.merge(df_proba, on='link', how='left')
+#     #     dff = dff.merge(df_proba_svm, on='link', how='left')
+#     #     dff = dff.merge(df_proba_lr, on='link', how='left')
+#     #     dff = dff[['Time', 'League', 'Home', 'Away', 'Updated', 'Handicap', 'Trend', 'Prediction', 'Proba_1', 'Proba_2',
+#     #                'Proba_3']]
+#     #
+#     # else:
+#     #     dff = dff[['Time', 'League', 'Home', 'Away', 'Updated', 'Handicap', 'Trend']]
+#
+#     return easy_table(dff)
