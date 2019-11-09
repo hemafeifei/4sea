@@ -28,4 +28,5 @@ if not os.path.exists(tools.path_parms['his_path'] + his_file):
     print(df.shape)
     print("generated file: ", his_file)
     print("****Finished {}****".format(str(datetime.now())[:16]))
+    print(' ')
 

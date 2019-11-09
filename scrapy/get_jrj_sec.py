@@ -154,9 +154,11 @@ def main_func():
                     jrj_smry.to_csv(f, header=False, index=False)
                     print("Update file {} As of {}".format(fn_smry_sec, str(today)[:16]))
                     print("---End Time: {}----".format(str(datetime.now())[:16]))
+                    print(' ')
 
     else:
         print("---Break cauz {} exist---".format(fn_sec_txn_top100))
+        print(' ')
 
 
 if __name__ == '__main__':

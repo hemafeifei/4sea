@@ -190,7 +190,7 @@ def main_control():
         df_gl.to_csv(my_path + match_file_gl, index=False, encoding='utf-8')
         print("generated file: ", match_file_gl)
     else:
-        print("Match file existed.")
+        print("Check 1: Match file existed.")
 
     # get begin trend
     def get_gl_differ():
@@ -205,12 +205,13 @@ def main_control():
     if not os.path.exists(differ_path + match_file_gl):
         differ = get_gl_differ()
         if len(differ) > 0:
-            print("Now updated: ", today[:16])
             differ.to_csv(differ_path + match_file_gl, index=False)
+            print("Now updated: ", str(datetime.now)[:16])
+            print(' ')
         else:
             print("no result writen")
     else:
-        print("Trend begin exsited")
+        print("Check 2: Trend file exsited")
 
 
 if __name__ == '__main__':
