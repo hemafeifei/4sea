@@ -461,7 +461,7 @@ def update_table(value):
 
     # dff = dff[['href_nsc', 'League', 'Time', 'Home', 'Away', 'Handicap', 'Updated', 'Trend']]
     dff['Time'] = [i[5:] for i in dff['Time'].values]
-    dff = dff.merge(ml_pred_new, on=['League', 'Handicap', 'Trend'], how='inner')
+    dff = dff.merge(ml_pred_new, on=['League', 'Handicap', 'Trend'], how='left') # left or inner, to show more or less
 
     if len(df_proba) > 0:
 

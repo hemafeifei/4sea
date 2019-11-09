@@ -218,7 +218,7 @@ layout = html.Div([
                 html.Br(),
                 dcc.DatePickerSingle(
                     id='my-date-picker-single',
-                    min_date_allowed=enddate - timedelta(days=21),
+                    min_date_allowed=enddate - timedelta(days=85),
                     max_date_allowed=enddate,
                     display_format='YYYY-MM-DD',
                     initial_visible_month=enddate,
