@@ -23,7 +23,8 @@ def get_nowscore_asian_differ(hours=0):
     match_nsc = match_nsc.loc[(match_nsc.dt_utc08 >= today[:16]) &
                               (match_nsc.dt_utc08 < now_to_hours)].reset_index(drop=True)
     print(match_nsc.shape)
-    df_differ = tools.get_odds_differ(match_nsc, kelly_sum=ks_sum)
+    # scrapy from nowscore or nowgoal.com
+    df_differ = tools.get_odds_differ_nsc(match_nsc, kelly_sum=ks_sum)
     return df_differ
 
 

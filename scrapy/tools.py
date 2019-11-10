@@ -152,7 +152,7 @@ def get_odds_differ(dataframe, kelly_sum):
 
             oddstr_list = [tr['id'] for tr in tb.find_all('tr')]
             if ('oddstr_80' in oddstr_list) & ('oddstr_432' in oddstr_list) & ('oddstr_649' in oddstr_list):
-                print(ref, ",该比赛包含香港-澳门赔率，继续分析....")
+                print(ref, ",Contains Macau and HKJC....")
                 odd_list = [ref]
 
                 mac = tb.find('tr', {'id': 'oddstr_80'})
@@ -262,7 +262,7 @@ def get_odds_differ_nsc(dataframe, kelly_sum):
             oddstr_list = [tr['id'] for tr in tb.find_all('tr')]
             if ('oddstr_80' in oddstr_list) & ('oddstr_432' in oddstr_list) & ('oddstr_649' in oddstr_list) & (
                     'oddstr_81' in oddstr_list):
-                print(ref, ",该比赛包含香港-澳门赔率，继续分析....")
+                print(ref, ",Contains Macau and HKJC....")
                 odd_list = [ref]
 
                 mac = tb.find('tr', {'id': 'oddstr_80'})
