@@ -240,6 +240,7 @@ def get_odds_differ(dataframe, kelly_sum):
     return df_table
 
 
+# get differ from nsc
 def get_odds_differ_nsc(dataframe, kelly_sum):
     now = str(datetime.now())
     end = datetime.now() - timedelta(minutes=30)
@@ -336,22 +337,20 @@ def get_odds_differ_nsc(dataframe, kelly_sum):
         df_trend['updated'] = now[11:16]
         # df_trend = df_trend.loc[(df_trend.hw1 >= 1.3) & (df_trend.aw1 >= 1.3)].reset_index(drop=True)
 
-        df_table = df_trend.merge(dataframe[['href_nsc', 'dt_utc08', 'mtype', 'home', 'result', 'away']], on='href_nsc',
+        df_table = df_trend.merge(dataframe[['href_nsc', 'dt_utc08', 'mtype', 'home', 'away']], on='href_nsc',
                                   how='left')
         df_table = df_table[
-            ['dt_utc08', 'mtype', 'home', 'result', 'away', 'trend', 'href_nsc', 'asian_hdp', 'hw1', 'dw1', 'aw1',
-             'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2',
-             'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum']]
+            ['dt_utc08', 'mtype', 'home', 'away', 'trend', 'updated', 'href_nsc', 'asian_hdp', 'hw1', 'dw1', 'aw1',
+             'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw',
+             'differ_aw', 'kelly_sum']]
         # df_table = df_table.loc[df_table.trend!='None']
 
     else:
         print('No match found')
         df_table = pd.DataFrame(
-            columns=['dt_utc08', 'mtype', 'home', 'result', 'away', 'trend', 'href_nsc', 'asian_hdp', 'hw1', 'dw1',
-                     'aw1',
-                     'hw2', 'dw2', 'aw2', 'hw3', 'dw3', 'aw3', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2',
-                     'kly_a2', 'kly_a2',
-                     'differ_hw', 'differ_dw', 'differ_aw', 'kelly_sum'])
+            columns=['dt_utc08', 'mtype', 'home', 'away', 'trend', 'updated', 'href_nsc', 'asian_hdp', 'hw1', 'dw1', 'aw1',
+             'hw2', 'dw2', 'aw2', 'kly_h1', 'kly_d1', 'kly_a1', 'kly_h2', 'kly_d2', 'kly_a2', 'differ_hw', 'differ_dw',
+             'differ_aw', 'kelly_sum'])
 
     return df_table
 
