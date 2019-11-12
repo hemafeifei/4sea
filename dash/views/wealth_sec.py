@@ -250,7 +250,7 @@ def refresh_data(num):
     df_sec = df_top[:num].loc[df_top.code.isin(df_top_msci.code)]
     df_sec = df_sec.drop('views', axis=1)
     m = len(df_sec)
-    pe = df_sec.loc[df_sec.pe > 1]['pe'].median()
+    pe = round(df_sec.loc[df_sec.pe > 1]['pe'].median(), 2)
     return "市场交易Top{}股票，而且也在MSCI成分中的一共{}支, 它们的PE中位数(移出异常值)为{}".format(num, m, pe), easy_table(df_sec)
 
 
@@ -262,7 +262,7 @@ def refresh_data(num):
     df_sec = df_top[:num].loc[~df_top.code.isin(df_top_msci.code)]
     df_sec = df_sec.drop('views', axis=1)
     m = len(df_sec)
-    pe = df_sec.loc[df_sec.pe > 1]['pe'].median()
+    pe = round(df_sec.loc[df_sec.pe > 1]['pe'].median(), 2)
     return "市场交易Top{}股票，而且不在MSCI成分中的一共{}支, 它们的PE中位数(移出异常值)为{}".format(num, m, pe), easy_table(df_sec)
 
 
