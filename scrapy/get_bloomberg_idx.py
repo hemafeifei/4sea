@@ -42,7 +42,7 @@ def parse_index_data_1(url):
 
     df = pd.DataFrame(result, columns=['date', 'close', 'open', 'high', 'low', 'vol', 'change'])
     try:
-        df['date'] = pd.to_datetime(df['date'], format="%b%d%Y")
+        df['date'] = pd.to_datetime(df['date'], format="%b %d, %Y")
     except:
         df['date'] = pd.to_datetime(df['date'], format="%Y年%m月%d日") # As my server locates in CN, if not, use %Y-%m-%d
     for col in ['close', 'open', 'high', 'low']:
@@ -69,7 +69,7 @@ def parse_index_data_2(url):
 
     df = pd.DataFrame(result, columns=['date', 'close', 'open', 'high', 'low', 'vol', 'change'])
     try:
-        df['date'] = pd.to_datetime(df['date'], format="%b%d%Y")
+        df['date'] = pd.to_datetime(df['date'], format="%b %d, %Y")
     except:
         df['date'] = pd.to_datetime(df['date'], format="%Y年%m月%d日") # As my server locates in CN, if not, use %Y-%m-%d
     print("Max date:", df['date'].max())
@@ -93,7 +93,7 @@ def parse_index_data_3(url):
 
     df = pd.DataFrame(result, columns=['date', 'close', 'open', 'high', 'low', 'change'])
     try:
-        df['date'] = pd.to_datetime(df['date'], format="%b%d%Y")
+        df['date'] = pd.to_datetime(df['date'], format="%b %d, %Y")
     except:
         df['date'] = pd.to_datetime(df['date'], format="%Y年%m月%d日") # As my server locates in CN, if not, use %Y-%m-%d
     print("Max date:", df['date'].max())
