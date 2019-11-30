@@ -500,16 +500,20 @@ def update_table(value):
     dff['Time'] = [i[11:] for i in dff['Time'].values]
     dff = dff.merge(ml_pred_3, on=['League', 'Handicap', 'Trend'], how='inner')
 
-    if len(df_proba) > 0:
+    if len(dff) > 0:
 
-        df_proba = df_proba.rename(columns={'Probability': 'Proba_lgb'})
-        df_proba_svm = df_proba_svm.rename(columns={'Probability': 'Proba_svm'})
+        if len(df_proba) > 0:
 
-        dff = dff.merge(df_proba, on='href_nsc', how='left')
-        dff = dff.merge(df_proba_svm, on='href_nsc', how='left')
-        # dff = dff.merge(df_proba_knn, on='href_nsc', how='left')
-        dff = dff[
-            ['Time', 'League', 'Home', 'Away', 'Updated', 'Handicap', 'Trend', 'Prediction', 'Proba_lgb', 'Proba_svm']]
+            df_proba = df_proba.rename(columns={'Probability': 'Proba_lgb'})
+            df_proba_svm = df_proba_svm.rename(columns={'Probability': 'Proba_svm'})
+
+            dff = dff.merge(df_proba, on='href_nsc', how='left')
+            dff = dff.merge(df_proba_svm, on='href_nsc', how='left')
+            # dff = dff.merge(df_proba_knn, on='href_nsc', how='left')
+            dff = dff[
+                ['Time', 'League', 'Home', 'Away', 'Updated', 'Handicap', 'Trend', 'Prediction', 'Proba_lgb', 'Proba_svm']]
+        else:
+            dff = dff
 
     else:
         dff = pd.DataFrame(columns=['Time', 'League', 'Home', 'Away', 'Updated', 'Handicap', 'Trend', 'Prediction'])
