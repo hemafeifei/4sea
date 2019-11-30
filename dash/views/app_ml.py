@@ -513,7 +513,7 @@ def update_table(value):
             dff = dff[
                 ['Time', 'League', 'Home', 'Away', 'Updated', 'Handicap', 'Trend', 'Prediction', 'Proba_lgb', 'Proba_svm']]
         else:
-            dff = dff
+            dff = dff[['Time', 'League', 'Home', 'Away', 'Updated', 'Handicap', 'Trend', 'Prediction']]
 
     else:
         dff = pd.DataFrame(columns=['Time', 'League', 'Home', 'Away', 'Updated', 'Handicap', 'Trend', 'Prediction'])
