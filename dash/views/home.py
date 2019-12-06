@@ -49,7 +49,7 @@ layout = html.Div([
                         html.Img(src=FT_IMAGE)
                     ], className='card-image'),
                     html.Div([
-                        html.A("Football", className="title is-3 no-padding", href='/customer',
+                        html.A("Football", className="title is-3 no-padding", href='/football',
                                style={'color': 'turquoise'}),
                         html.Div([
                             html.A(" 今日赛事 ", href='/football', className='tag'),
