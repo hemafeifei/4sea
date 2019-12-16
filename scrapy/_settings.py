@@ -45,7 +45,7 @@ def get_pn_validation(url, pn_id, pn, clk_class):
         driver.get(url)
         driver.find_element_by_id(pn_id).send_keys(str(pn))
         driver.find_element_by_class_name(clk_class).click()
-        time.sleep(30)
+        time.sleep(31)
 
         driver.quit()
 
@@ -59,7 +59,7 @@ def get_pn_validation(url, pn_id, pn, clk_class):
         driver.get(url)
         driver.find_element_by_id(pn_id).send_keys(pn)
         driver.find_element_by_class_name(clk_class).click()
-        time.sleep(30)
+        time.sleep(31)
 
         driver.quit()
         display.stop()
