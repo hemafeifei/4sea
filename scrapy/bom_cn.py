@@ -5,7 +5,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 import os
 
-# pn = "18925103199"
+pn_0 = "13302330050"
 pn = "13397662615"
 url = 'https://danjuanapp.com/ccount?channel=1100104020'
 pn_id = 'tel'
@@ -22,4 +22,5 @@ def bob(url, pn_id, pn, clk, lim):
         print(n)
 
 if __name__ == '__main__':
+    bob(url=url, pn_id=pn_id, pn=pn_0, clk=clk, lim=2)
     bob(url=url, pn_id=pn_id, pn=pn, clk=clk, lim=600)
