@@ -19,6 +19,7 @@ def bob(url, pn_id, pn, clk, lim):
                           pn=pn,
                           clk_class=clk)
         n+=1
+        print(n)
 
 if __name__ == '__main__':
     bob(url=url, pn_id=pn_id, pn=pn, clk=clk, lim=600)
