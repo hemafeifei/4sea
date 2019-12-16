@@ -63,5 +63,4 @@ def get_pn_validation(url, pn_id, pn, clk_class):
 
         driver.quit()
         display.stop()
-        return soup
 
