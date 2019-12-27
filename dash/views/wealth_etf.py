@@ -83,9 +83,11 @@ layout = html.Div([
 
 
         ], className='columns'),
-        html.Hr(),
+        # html.Hr(),
         # Row 2
-
+        html.Div([
+            html.Label("* Source: Xueqiu", style={'textAlign': 'center'}),
+        ], className='columns')
 
     ], className='container')
 
