@@ -62,6 +62,10 @@ layout = html.Div([
 
     html.Div([
         html.Div([
+            html.P(" ", className='column is-one-third'),
+            html.H5("ETF指数估值表", className='column is-two-thirds title is-5', style={'textAlign': 'center'}),
+        ], className='columns'),
+        html.Div([
             # Row 1
             html.Div([
                 html.Label('选择指数: ', className='title is-7'),
