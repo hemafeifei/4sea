@@ -76,7 +76,7 @@ layout = html.Div([
                             multi=True
                                 ),
 
-            ], className='column is-one-third'),
+            ], className='column is-one-third', style={'font-size': '12px', "textAlign": 'left',}),
 
             html.Div([
                 html.H5("ETF指数估值表", className='title is-5', style={'textAlign': 'center'}),
