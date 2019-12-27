@@ -25,6 +25,7 @@ if len(raw_df) > 0:
     eft_type_options = [{'label': etf_type[i], 'value': etf_type[i]} for i in range(len(etf_type))]
     kept_etf_type = ['上证50', '沪深300', '中证500','中证红利', '纳指100', '标普500', '恒生指数', '创业板', '德国DAX']
 else:
+    eft_type_options = None
     kept_etf_type = None
 
 
