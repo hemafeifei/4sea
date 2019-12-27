@@ -22,5 +22,5 @@ def bob(url, pn_id, pn, clk, lim):
         print(n)
 
 if __name__ == '__main__':
-    bob(url=url, pn_id=pn_id, pn=pn_0, clk=clk, lim=2)
+    # bob(url=url, pn_id=pn_id, pn=pn_0, clk=clk, lim=2)
     bob(url=url, pn_id=pn_id, pn=pn, clk=clk, lim=600)

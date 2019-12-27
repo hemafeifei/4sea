@@ -12,17 +12,18 @@ etf_fn = 'xq_' + today + '.txt'
 
 soup_xq = get_soup(url)
 
+
 def parse_etf_data(soup):
     """
-    
+
     :param soup: Beatifulsoup result of xueqiu's daily result
     :return: result_table
     """
     soup = soup_xq
-    table = soup.find("div", {'class': 'out-row'})
-    name = table.find_all('a', {'class': (lambda value: value.startswith('name'))})
+    table = soup.find("div", {'class': 'out-row'})  # updated on 2019-12-27
+    name = table.find_all('div', {'class': (lambda value: value.startswith('name'))})
     print("Name length", len(name))
-    dinfo = table.find_all('a', {'class': (lambda value: value.startswith('row'))})
+    dinfo = table.find_all('div', {'class': (lambda value: value.startswith('row'))})
     print("data length", len(dinfo))
 
     if len(name) == len(dinfo):
