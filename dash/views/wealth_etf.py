@@ -19,11 +19,17 @@ import os
 csv_path = '../../database/finance/etf/'
 fn = sorted(os.listdir(csv_path))[-2]
 raw_df = pd.read_csv(os.path.join(csv_path, fn))
+raw_df_bkp = pd.read_csv(os.path.join(csv_path, sorted(os.listdir(csv_path))[0]))
 
 if len(raw_df) > 0:
     etf_type = list(raw_df['name'])
     eft_type_options = [{'label': etf_type[i], 'value': etf_type[i]} for i in range(len(etf_type))]
     kept_etf_type = ['上证50', '沪深300', '中证500','中证红利', '纳指100', '标普500', '恒生指数', '创业板', '德国DAX']
+elif len(raw_df_bkp) > 0:
+    raw_df = raw_df_bkp
+    etf_type = list(raw_df['name'])
+    eft_type_options = [{'label': etf_type[i], 'value': etf_type[i]} for i in range(len(etf_type))]
+    kept_etf_type = ['上证50', '沪深300', '中证500', '中证红利', '纳指100', '标普500', '恒生指数', '创业板', '德国DAX']
 else:
     eft_type_options = None
     kept_etf_type = None
