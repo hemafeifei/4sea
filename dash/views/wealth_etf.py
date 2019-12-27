@@ -62,12 +62,11 @@ layout = html.Div([
 
     html.Div([
         html.Div([
-            html.P(" ", className='column is-one-third'),
-            html.H5("ETF指数估值表", className='column is-two-thirds title is-5', style={'textAlign': 'center'}),
-        ], className='columns'),
-        html.Div([
             # Row 1
             html.Div([
+                html.Br(),
+                html.Br(),
+                html.Br(),
                 html.Label('选择指数: ', className='title is-7'),
                 dcc.Dropdown(
                             id='etf-type-checklist',
@@ -80,7 +79,8 @@ layout = html.Div([
             ], className='column is-one-third'),
 
             html.Div([
-                html.P("Internal Error", id='etf-updated', className='title is-7', style={'textAlign': 'center'}),
+                html.H5("ETF指数估值表", className='title is-5', style={'textAlign': 'center'}),
+                html.P("Internal Error", id='etf-updated', className='title is-7', style={'textAlign': 'left'}),
                 html.Div(id='etf-table-1')
 
             ], className='column is-two-thirds')
