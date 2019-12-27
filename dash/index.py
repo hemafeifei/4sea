@@ -11,7 +11,7 @@ import dash_dangerously_set_inner_html
 from server import app, server
 from flask_login import logout_user, current_user
 from views import home, login, login_fd, logout, success, about
-from views import wealth, wealth_sec
+from views import wealth, wealth_sec, wealth_etf
 from views import   app_home, app_ml, app_mllab, app_his
 
 MY_LOGO = 'https://i.loli.net/2019/11/04/yEUzIGS2YLTtWCV.png'
@@ -129,6 +129,8 @@ def display_page(pathname):
         return wealth.layout
     elif pathname == '/wealth/sec':
         return wealth_sec.layout
+    elif pathname == '/wealth/etf':
+        return wealth_etf.layout
 
     # Football channel
     elif pathname == '/football':
