@@ -17,7 +17,7 @@ from dateutil.relativedelta import relativedelta
 import os
 
 csv_path = '../../database/finance/etf/'
-fn = sorted(os.listdir(csv_path))[-2]
+fn = sorted(os.listdir(csv_path))[-1]
 raw_df = pd.read_csv(os.path.join(csv_path, fn))
 
 if len(raw_df) > 0:
