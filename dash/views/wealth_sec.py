@@ -174,8 +174,8 @@ layout = html.Div([
             ], className='column is-half'),
             html.Div([
 
-                html.P("全市场成交额-Top5", className='title is-7'),
-                html.Div(easy_table(df_top.drop(['pe', 'views', 'close', 'change'], axis=1)[:5])),
+                html.P("全市场成交额-Top10", className='title is-7'),
+                html.Div(easy_table(df_top.drop(['pe', 'views', 'close', 'change'], axis=1)[:10])),
                 # html.A("more", href='http://summary.jrj.com.cn/scfl/index.shtml?q=cn|s|sa&c=m&n=hqa&o=tm,d&p=1050'),
 
                 html.Br(),
