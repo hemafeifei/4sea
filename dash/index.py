@@ -21,7 +21,7 @@ header = html.Div([
         html.Div([
             html.Div([
                 html.A(html.Img(src=MY_LOGO, alt='Logo', style={'height': '3.25rem'}),
-                       className='navbar-item', href='https://www.win4sea.com/', ),
+                       className='navbar-item', href='http://www.win4sea.com/', ),
                 html.A("4Sea", className='title is-6', href='/', style={'color': 'turquoise'})
             ], className='navbar-item'),
             html.Div([
