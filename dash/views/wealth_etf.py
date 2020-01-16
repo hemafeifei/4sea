@@ -106,5 +106,6 @@ layout = html.Div([
 def refresh_etf_data(type):
     selected_df = raw_df.loc[raw_df.name.isin(type)].reset_index(drop=True)
     updated_dt = selected_df['dt'][0]
-    selected_df = selected_df.drop(['code_xq', 'dt', 'since'], axis=1)
+    selected_df = selected_df.drop(['code_xq', 'dt'], axis=1)
+    selected_df = selected_df.rename(columns={'since':'PEG'})
     return "Last updated on {}".format(updated_dt), ge_table(selected_df)
