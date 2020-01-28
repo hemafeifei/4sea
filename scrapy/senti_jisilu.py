@@ -48,17 +48,21 @@ def scrapy_page(soup):
     return result_table
 
 if __name__ == '__main__':
-    for url in jisilu_dict['url_list']:
-        soup = get_soup(url)
-        table = scrapy_page(soup)
-        senti.append(table)
-    print(len(senti))
-    if len(senti) > 0:
-        df = pd.concat([pd.DataFrame(i, columns=['topic', 'title', 'link', 'reply', 'viewers', 'updated']) for i in senti])
-        df['updated'] = pd.to_datetime(df['updated'], format="%Y-%m-%d %H:%M")
-        df = df.loc[df['updated'] > before_24h].reset_index(drop=True)
-        df.to_csv(os.path.join(jisilu_dict['path_senti'], "{}.txt".format(today)))
-        print("wtrited file as of {}".format(today))
+    if not os.path.exists(os.path.join(jisilu_dict['path_senti'], "{}.txt".format(today))):
+        for url in jisilu_dict['url_list']:
+            soup = get_soup(url)
+            table = scrapy_page(soup)
+            senti.append(table)
+        print(len(senti))
+        if len(senti) > 0:
+            df = pd.concat([pd.DataFrame(i, columns=['topic', 'title', 'link', 'reply', 'viewers', 'updated']) for i in senti])
+            df['updated'] = pd.to_datetime(df['updated'], format="%Y-%m-%d %H:%M")
+            df = df.loc[df['updated'] > before_24h].reset_index(drop=True)
+            df.to_csv(os.path.join(jisilu_dict['path_senti'], "{}.txt".format(today)))
+            print("wtrited file as of {}".format(today))
+            print("***Finished***")
+    else:
+        print("File exists, break")
 
 
 
