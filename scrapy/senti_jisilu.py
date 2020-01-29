@@ -59,7 +59,7 @@ if __name__ == '__main__':
             df['updated'] = pd.to_datetime(df['updated'], format="%Y-%m-%d %H:%M")
             df = df.loc[df['updated'] > before_24h].reset_index(drop=True)
             df.to_csv(os.path.join(jisilu_dict['path_senti'], "{}.txt".format(today)))
-            print("wtrited file as of {}".format(today))
+            print("wtrited file as of {}".format(str(datetime.now())[:16]))
             print("***Finished***")
     else:
         print("File exists, break")
