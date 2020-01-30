@@ -78,7 +78,7 @@ layout = html.Div([
                     html.Br(),
                     html.Br(),
                     html.P("实时热搜请前往：", className='title is-7'),
-                    html.A("Weibo", href='https://s.weibo.com/top/summary?cate=realtimehot',),
+                    html.A("weibo", href='https://s.weibo.com/top/summary?cate=realtimehot',),
 
                 ]),
             ], className='column is-one-quarter'),
@@ -93,7 +93,7 @@ layout = html.Div([
         # html.Hr(),
         # Row 2
         html.Div([
-            html.Label("* Source: Weibo", style={'textAlign': 'center'}),
+            html.Label("* Source: weibo", style={'textAlign': 'center'}),
         ], className='columns')
 
     ], className='container')
