@@ -75,6 +75,8 @@ layout = html.Div([
                         date=control_dt),
 
                     html.Br(),
+                    html.Br(),
+                    html.Br(),
                     html.P("实时热搜请前往：", className='title is-7'),
                     html.A("Weibo", href='https://s.weibo.com/top/summary?cate=realtimehot',),
 
