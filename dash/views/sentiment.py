@@ -32,6 +32,11 @@ def ge_table(dataframe):
         data=df.to_dict('records'),
         sort_action="native",
         style_cell={'fontSize': 13, 'font-family': 'sans-serif'},
+        style_header={
+            'backgroundColor': 'rgb(230, 230, 230)',
+            'fontWeight': 'bold',
+            # 'textAlign': 'center',
+        },
         style_data_conditional=[
             {
                 'if': {'column_id': 'rank'},
@@ -50,7 +55,10 @@ layout = html.Div([
         ], className='row'),
     ],className='hero'),
 
+
+
     html.Div([
+        # html.P("Weibo", className='tag is-info title is-7'),
         html.Div([
             # Row 1
             html.Div([
@@ -68,6 +76,7 @@ layout = html.Div([
 
                 ]),
             ], className='column is-one-quarter'),
+
 
             html.Div([
                 html.P("Internal Error", id='weibo-updated', className='title is-5', style={'textAlign': 'center'}),

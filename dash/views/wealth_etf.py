@@ -32,8 +32,11 @@ else:
 def ge_table(dataframe):
     df = dataframe.copy()
     df = df.rename(columns={'name': '指数',
-                                          'pe_pct': 'pe百分位(%)',
-                                          'pb_pct': 'pb百分位(%)',
+                            'pe': 'PE',
+                            'pb': 'PB',
+                            'roe': 'ROE',
+                                          'pe_pct': 'PE百分位(%)',
+                                          'pb_pct': 'PB百分位(%)',
                                           'dyr': '股息率',
                                           })
     return dash_table.DataTable(
@@ -42,6 +45,10 @@ def ge_table(dataframe):
         data=df.to_dict('records'),
         sort_action="native",
         style_cell={'fontSize': 13, 'font-family': 'sans-serif'},
+        style_header={
+            'backgroundColor': 'rgb(230, 230, 230)',
+            'fontWeight': 'bold'
+        },
         style_data_conditional=[
             {
                 'if': {'column_id': '指数'},

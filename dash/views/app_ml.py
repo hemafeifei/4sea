@@ -91,6 +91,10 @@ def easy_table(dataframe):
         data=dataframe.to_dict('records'),
         sort_action="native",
         style_cell={'fontSize': 13, 'font-family': 'sans-serif'},
+        style_header={
+            'backgroundColor': 'rgb(230, 230, 230)',
+            'fontWeight': 'bold'
+        },
         style_data_conditional=[
             {
                 'if': {'column_id': '指数'},

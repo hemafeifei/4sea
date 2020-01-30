@@ -19,15 +19,21 @@ from dateutil.relativedelta import relativedelta
 
 def ge_table(dataframe):
     df = dataframe.copy()
-    df = df.rename(columns={'rank': '排名',
-                            'topic': '话题',
-                            'heat': '热度',})
+    df = df.rename(columns={'topic': '板块',
+                            'title': '话题',
+                            'reply': '回复数',
+                            'viewers': '浏览数',
+                            'updated': '最后更新',})
     return dash_table.DataTable(
         id='table',
         columns=[{"name": i, "id": i} for i in df.columns],
         data=df.to_dict('records'),
         sort_action="native",
         style_cell={'fontSize': 13, 'font-family': 'sans-serif'},
+        style_header={
+            'backgroundColor': 'rgb(230, 230, 230)',
+            'fontWeight': 'bold'
+        },
         style_data_conditional=[
             {
                 'if': {'column_id': 'rank'},
@@ -65,7 +71,7 @@ layout = html.Div([
 
     html.Div([
         html.Br(),
-        html.P("投资论坛热度", className='title is-5'),
+        html.P("Trend", className='tag is-info title is-7'),
         html.Div([
             # Row 1
 
@@ -74,14 +80,15 @@ layout = html.Div([
                 dcc.Checklist(
                     id='senti-checklist-multi',
                     # multi=True,
-                    labelStyle={'display': 'inline-block',
+                    labelStyle={
+                        'display': 'inline-block',
                                 'font-size': 13,
                                 'text-align': 'vertical',
                                 'margin-right': 50},
                     options=[
-                        {'label': '活跃话题数', 'value': 'title'},
-                        {'label': '话题回帖数', 'value': 'reply'},
-                        {'label': '话题浏览数', 'value': 'viewers'},
+                        {'label': '话题数      #', 'value': 'title'},
+                        {'label': '回帖数      #', 'value': 'reply'},
+                        {'label': '浏览数      #', 'value': 'viewers'},
 
                     ],
                     value=['title']
@@ -89,20 +96,33 @@ layout = html.Div([
             ], className='column is-one-fifth'),
 
             html.Div([
-                html.P("活跃度走势", className='title is-7', style={'textAlign': 'center'}),
+                html.P("活跃度走势", className='title is-5', style={'textAlign': 'center'}),
                 dcc.Graph(id='jisilu-trend'),
                 # dcc.Graph(id='price-trend'),
 
-                html.Hr(),
-                html.P("热门话题 Top 10", className='title is-7', style={'textAlign': 'center'}),
-                html.P(ge_table(rank_df) ,id='table-jisilu',),
 
-            ], className='column is-four-fifths'),
+
+
+            ], className='column is-three-fifths'),
 
 
         ], className='columns'),
+
+        html.Hr(),
+        html.P("Topic", className='tag is-info title is-7'),
+
+        html.Div([
+            html.P(className='column is-one-fifth'),
+            html.Div([
+                html.P("热门话题 Top 10", className='title is-5', style={'textAlign': 'center'}),
+                html.P(ge_table(rank_df) ,id='table-jisilu',),
+            ], className='column is-three-fifths'),
+
+
+        ], className='columns'),
+
         # html.Hr(),
-        # Row 2
+        # Row 3
         html.Div([
             html.Label("* Source: ******", style={'textAlign': 'center'}),
         ], className='columns')
