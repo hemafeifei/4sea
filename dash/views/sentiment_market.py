@@ -79,9 +79,9 @@ layout = html.Div([
                                 'text-align': 'vertical',
                                 'margin-right': 50},
                     options=[
-                        {'label': '主题数', 'value': 'title'},
-                        {'label': '回帖数', 'value': 'reply'},
-                        {'label': '浏览数', 'value': 'viewers'},
+                        {'label': '活跃话题数', 'value': 'title'},
+                        {'label': '话题回帖数', 'value': 'reply'},
+                        {'label': '话题浏览数', 'value': 'viewers'},
 
                     ],
                     value=['title']
