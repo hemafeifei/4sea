@@ -74,21 +74,17 @@ layout = html.Div([
                         initial_visible_month=control_dt,
                         date=control_dt),
 
+                    html.Br(),
+                    html.P("实时热搜请前往：", className='title is-7'),
+                    html.A("Weibo", href='https://s.weibo.com/top/summary?cate=realtimehot',),
+
                 ]),
             ], className='column is-one-quarter'),
-
 
             html.Div([
                 html.P("Internal Error", id='weibo-updated', className='title is-5', style={'textAlign': 'center'}),
                 html.Div(id='weibo-table-1')
             ], className='column is-half'),
-
-            html.Div([
-                html.Br(),
-                html.Br(),
-                html.P("实时热搜请前往：", className='title is-7'),
-                html.A("Weibo", href='https://s.weibo.com/top/summary?cate=realtimehot',),
-            ], className='column is-one-quarter', style={'textAlign': 'right'}),
 
 
         ], className='columns'),
