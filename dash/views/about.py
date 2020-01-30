@@ -31,7 +31,7 @@ layout = html.Div([
                         html.P("2019-01-19 stack Lightgbm, SVM and KNN models to reduce variance, but bad results", className='subtitle is-7'),
                         html.P("2019-05-18 replace Observation1 with a non-standardized features", className='subtitle is-7'),
                         html.P("2019-11-08 add Finance module, framework 2.0 online", className='subtitle is-7'),
-                        html.P("2020-01-30 add Sentiment module", className='title is-7 is-tag is-primary'),
+                        html.P("2020-01-30 add Sentiment module", className='subtitle is-7 is-primary'),
 
                     ], className='column'),
 
