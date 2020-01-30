@@ -58,7 +58,7 @@ if __name__ == '__main__':
             df = pd.concat([pd.DataFrame(i, columns=['topic', 'title', 'link', 'reply', 'viewers', 'updated']) for i in senti])
             df['updated'] = pd.to_datetime(df['updated'], format="%Y-%m-%d %H:%M")
             df = df.loc[df['updated'] > before_24h].reset_index(drop=True)
-            df.to_csv(os.path.join(jisilu_dict['path_senti'], "{}.txt".format(today)))
+            df.to_csv(os.path.join(jisilu_dict['path_senti'], "{}.txt".format(today)), index=False)
             print("wtrited file as of {}".format(str(datetime.now())[:16]))
             print("***Finished***")
     else:

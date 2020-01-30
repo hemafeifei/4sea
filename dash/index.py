@@ -13,6 +13,7 @@ from flask_login import logout_user, current_user
 from views import home, login, login_fd, logout, success, about
 from views import wealth, wealth_sec, wealth_etf
 from views import   app_home, app_ml, app_mllab, app_his
+from views import sentiment, sentiment_market
 
 MY_LOGO = 'https://i.loli.net/2019/11/04/yEUzIGS2YLTtWCV.png'
 
@@ -36,7 +37,7 @@ header = html.Div([
                 html.A("Home", className='navbar-item', href='/'),
                 html.A("Finance", className='navbar-item ', href='/wealth'),
                 html.A("Football", className='navbar-item ', href='/football'),
-                html.A("Sentiment", className='navbar-item disabled'),
+                html.A("Sentiment", className='navbar-item', href='/sentiment'),
                 html.Div([
                     html.A('More', className='navbar-link', style={'vertical-align': 'middle'}),
                     html.Div([
@@ -141,6 +142,12 @@ def display_page(pathname):
         return app_ml.layout
     elif pathname == '/football/mllabs':
         return app_mllab.layout
+
+    # Sentiment channel
+    elif pathname == '/sentiment':
+        return sentiment.layout
+    elif pathname == '/sentiment/market':
+        return sentiment_market.layout
 
     # About
     elif pathname == '/about':
