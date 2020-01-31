@@ -96,7 +96,7 @@ layout = html.Div([
             ], className='column is-one-fifth'),
 
             html.Div([
-                html.P("活跃度走势", className='title is-5', style={'textAlign': 'center'}),
+                html.P("财经BBS社区活跃度走势", className='title is-5', style={'textAlign': 'center'}),
                 dcc.Graph(id='jisilu-trend'),
                 # dcc.Graph(id='price-trend'),
 
@@ -124,7 +124,7 @@ layout = html.Div([
         # html.Hr(),
         # Row 3
         html.Div([
-            html.Label("* Source: ******", style={'textAlign': 'center'}),
+            html.Label("* Source: *", style={'textAlign': 'center'}),
         ], className='columns')
 
     ], className='container')
