@@ -48,12 +48,14 @@ control_dt = str(today - relativedelta(days=1))[:10]
 parm_dict = {'reply': '回帖数',
              'viewers': '浏览数',
              'title': '主题数'}
-raw_df = pd.concat([pd.read_csv(os.path.join(csv_path, f), index_col=False) for f in os.listdir(csv_path)],
+
+select_file = sorted([f for f in os.listdir(csv_path) if f.endswith('txt')])
+raw_df = pd.concat([pd.read_csv(os.path.join(csv_path, f), index_col=False) for f in select_file[-90:]],
                    axis=0, ignore_index=True)
 raw_df = raw_df[['topic', 'title', 'reply', 'viewers', 'updated']]
 raw_df['date'] = [i[:10] for i in list(raw_df['updated'])]
 
-rank_df = raw_df.drop_duplicates(subset=['topic', 'title'], keep='first')
+rank_df = raw_df.drop_duplicates(subset=['topic', 'title'], keep='last')
 rank_df = rank_df.drop(['date'], axis=1).sort_values('reply', ascending=False).head(10)
 raw_grouped = raw_df.groupby('date')['title', 'reply', 'viewers'].agg({'title': 'count',
                                                                        'reply': 'sum',
