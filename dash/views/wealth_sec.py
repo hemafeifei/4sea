@@ -144,6 +144,7 @@ layout = html.Div([
             html.A("全球指数", href='/wealth', className='tag subtitle is-7'),
             html.A("沪深市场", href='/wealth/sec', className='tag is-primary subtitle is-7'),
             html.A("ETF追踪", href='/wealth/etf', className='tag subtitle is-7'),
+            html.A("RPS研究", href='/wealth/sec_rps', className='tag subtitle is-7'),
             # html.A(" 外汇 ", ),
         ], className='row'),
     ], className='hero'),

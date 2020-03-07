@@ -8,8 +8,6 @@ from server import app
 
 layout = html.Div([
 
-    # html.Br(),
-
     html.Div([
         html.P("About US", className='title is-3'),
         html.Div([
@@ -30,8 +28,9 @@ layout = html.Div([
                         html.P("2018-12-28 add Email message, add observation model", className='subtitle is-7'),
                         html.P("2019-01-19 stack Lightgbm, SVM and KNN models to reduce variance, but bad results", className='subtitle is-7'),
                         html.P("2019-05-18 replace Observation1 with a non-standardized features", className='subtitle is-7'),
-                        html.P("2019-11-08 add Finance module, framework 2.0 online", className='subtitle is-7'),
-                        html.P("2020-01-30 add Sentiment module", className='subtitle is-7 is-primary'),
+                        html.P("2019-11-08 create Finance module, framework 2.0 online", className='subtitle is-7'),
+                        html.P("2020-01-30 create Sentiment module", className='subtitle is-7 is-primary'),
+                        html.P("2020-03-07 add RPS to Finance module", className='subtitle is-7 is-primary'),
 
                     ], className='column'),
 

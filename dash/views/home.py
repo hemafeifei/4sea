@@ -32,13 +32,13 @@ layout = html.Div([
                             html.A(" 沪深市场 ", href='/wealth/sec', className='tag'),
                             "|",
                             html.A(" ETF追踪 ", href='/wealth/etf',className='tag'),
-                            # "|",
-                            # html.A(" 外汇 ", ),
+                            "|",
+                            html.A(" RPS研究 ", href='/wealth/sec_rps',className='tag'),
                         ], className='row'),
                         html.Hr(),
                         html.H5("巴菲特建议普通人购买的SP500指数，在过去40年期间，年化收益可达7.5%左右。在中国融入全球化近20年后的今天，"
                                 "证券市场显然是值得关注的地方。当然中国很多好的企业在境外上市，因此投资中国证券市场需要关注全球市场。"
-                                "如果你还懂一点量化策略，可以预期收益10%-15%",
+                                "如果你还懂一点量化策略，可以预期收益10%-15%。",
                                 className='content')
                     ], className='card-content')
                 ], className='card large round')
