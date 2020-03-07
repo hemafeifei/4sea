@@ -150,14 +150,14 @@ layout = html.Div([
             html.Div([
                 html.Label('Please Select', className='title is-7'),
 
-                html.P("RPS in before 1 week >=:"),
+                html.P("RPS before 1 week >=:"),
                 dcc.Input(id="input_range_1", type="number", placeholder="input with range", value=90,
                           min=80, max=100, step=2, className='input is-info'),
 
-                html.P("RPS in before 2 weeks <=:"),
+                html.P("RPS before 2 weeks <=:"),
                 dcc.Input(id="input_range_2", type="number", placeholder="input with range", value=80,
                           min=50, max=100, step=5, className='input is-info'),
-                html.P("RPS in before 3 weeks <=:"),
+                html.P("RPS before 3 weeks <=:"),
                 dcc.Input(id="input_range_3", type="number", placeholder="input with range", value=70,
                           min=50, max=100, step=5, className='input is-info'),
 

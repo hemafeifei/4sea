@@ -40,7 +40,7 @@ def get_stock_list():
     df = df.loc[df['list_date'].apply(int).values <= int(before_1y_str)].reset_index(drop=True)
     print("Stock Listing after 1 year, # is ", len(df))
     # filtering with province and cities
-    # df = df.loc[df['area'].isin(['浙江', '江苏', '北京', '广东', '深圳', '上海', '山东', '福建', '湖北'])].reset_index(drop=True)
+    # df = df.loc[df['area'].isin(['浙江', '江苏', '北京', '广东', '深圳', '上海', '山东', '福建', '湖北', '湖南', '安徽', '重庆', '天津'])].reset_index(drop=True)
     # print("After area filtering, # Stock is ", len(df))
 
     df_kept = df.rename(columns={'symbol': 'code'})
