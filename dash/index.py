@@ -89,7 +89,7 @@ footer_layout = dash_dangerously_set_inner_html.DangerouslySetInnerHTML('''
           <a class="icon has-text-primary" href="http://www.4sea.site/" target="_blank">
             <i class="fa fa-globe"></i>
           </a>
-          <a class="icon has-text-primary" href="https://alm-github.systems.uk.hsbc/RBWM-Analytics" target="_blank">
+          <a class="icon has-text-primary" href="https://github.com/hemafeifei/4sea" target="_blank">
             <i class="fa fa-github"></i>
           </a>
           <a class="icon has-text-primary" href="mailto:4sea.club@gmail.com" target="_blank">
