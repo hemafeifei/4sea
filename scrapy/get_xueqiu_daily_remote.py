@@ -10,8 +10,15 @@ today = str(datetime.now())[:10]
 etf_path = '../../database/finance/etf/'
 etf_fn = 'xq_' + today + '.txt'
 
-soup_xq = get_soup(url)
+url_jsl = 'https://www.jisilu.cn/data/cbnew/#cb'
+cb_path = '../../database/finance/cb/'
+cb_fn = 'cb_jisilu.txt'
+if not os.path.exists(cb_path):
+    os.makedirs(cb_path)
+    print("make dir for {}".format(cb_path))
 
+soup_xq = get_soup(url)
+soup_jsl = get_soup(url_jsl)
 
 def parse_etf_data(soup):
     """
@@ -59,12 +66,60 @@ def parse_etf_data(soup):
             df_final.to_csv(os.path.join(etf_path, etf_fn), index=False)
             with open(etf_path + 'ETF_his_xq.txt', 'a+') as f:
                 df_final.to_csv(f, header=False, index=False)
-            print("write files append")
+            print("write ETF files append")
             print("****" * 5)
 
 
+def parse_cb_data(soup):
+    table = []
+    for tr in soup.find_all('tr')[2:]:
+        lst = []
+        for td in tr.find_all("td"):
+            lst.append(td.get_text())
+        table.append(lst)
+    cols_name = ['code_cb',
+                     'name_cb',
+                     'price_cb',
+                     'price_cb_chg',
+                     'name_sec',
+                     'price_sec',
+                     'price_sec_chg',
+                     'pb_sec',
+                     'price_converted',
+                     'value_converted',
+                     'premium_rate',
+                     'value_bond',
+                     'risk_lvl',
+                     'value_qq',
+                     'price_backsell',
+                     'price_redemption',
+                     'pct_cb',
+                     'hld_by_instit',
+                     'mature_dt',
+                     'left_year',
+                     'left_amount',
+                     'ytm_pre_tax',
+                     'ytm_after_tax',
+                     'ytm_backsell',
+                     'amount',
+                     'low_low',
+                     'other']
+    df = pd.DataFrame(table, columns=cols_name).drop(['value_bond', 'value_qq', 'other',
+                                                          'hld_by_instit', 'ytm_backsell'], axis=1)
+    df['image_dt'] = str(datetime.now())[:11]
+    print(df.shape)
+    with open(os.path.join(cb_path, cb_fn), 'a+') as f:
+        df.to_csv(f, header=True, index=False)
+    print("write CB files append")
+    print("****" * 5)
+
+
 if today in soup_xq.find("title").get_text():
+    print("----"*5)
     parse_etf_data(soup_xq)
+
+    print("----"*5)
+    parse_cb_data(soup_jsl)
 else:
     print("No updates found on {}".format(today))
 
