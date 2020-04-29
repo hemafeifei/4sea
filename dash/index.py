@@ -83,7 +83,7 @@ footer_layout = dash_dangerously_set_inner_html.DangerouslySetInnerHTML('''
           <strong>Represent</strong> by 4Sea Tech.
           <span class="icon is-small">
             <i class="fa fa-copyright"></i>
-          </span>2019</a>
+          </span>2018-2020</a>
         </p>
         <p>
           <a class="icon has-text-primary" href="http://www.4sea.site/" target="_blank">
