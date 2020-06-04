@@ -98,10 +98,10 @@ def parse_cb_data(soup):
                      'mature_dt',
                      'left_year',
                      'left_amount',
+                      'amount',
+                     'changehand_rate',
                      'ytm_pre_tax',
-                     'ytm_after_tax',
                      'ytm_backsell',
-                     'amount',
                      'low_low',
                      'other']
     df = pd.DataFrame(table, columns=cols_name).drop(['value_bond', 'value_qq', 'other',
