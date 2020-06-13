@@ -108,8 +108,13 @@ def parse_cb_data(soup):
                                                           'hld_by_instit', 'ytm_backsell'], axis=1)
     df['image_dt'] = str(datetime.now())[:11]
     print(df.shape)
-    with open(os.path.join(cb_path, cb_fn), 'a+') as f:
-        df.to_csv(f, header=True, index=False)
+    if os.path.exists(os.path.join(cb_path, cb_fn)):
+        with open(os.path.join(cb_path, cb_fn), 'a+') as f:
+            df.to_csv(f, header=False, index=False)
+    else:
+        with open(os.path.join(cb_path, cb_fn), 'a+') as f:
+            df.to_csv(f, header=True, index=False)
+
     print("write CB files append")
     print("****" * 5)
 
