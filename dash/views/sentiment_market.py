@@ -50,7 +50,7 @@ parm_dict = {'reply': '回帖数',
              'title': '主题数'}
 
 select_file = sorted([f for f in os.listdir(csv_path) if f.endswith('txt')])
-raw_df = pd.concat([pd.read_csv(os.path.join(csv_path, f), index_col=False) for f in select_file[-90:]],
+raw_df = pd.concat([pd.read_csv(os.path.join(csv_path, f), index_col=False) for f in select_file[-1200:]],
                    axis=0, ignore_index=True)
 raw_df = raw_df[['topic', 'title', 'reply', 'viewers', 'updated']]
 raw_df['date'] = [i[:10] for i in list(raw_df['updated'])]
