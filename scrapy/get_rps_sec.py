@@ -5,6 +5,7 @@ import pandas as pd
 import tushare as ts
 from datetime import datetime, timedelta
 import os
+import time
 
 PARAM_DICT = {
     # token
@@ -13,9 +14,10 @@ PARAM_DICT = {
     'path_sec': '../../database/finance/sec/'
 }
 
+before_8y = datetime.now() - timedelta(days=2920)
 before_1y = datetime.now() - timedelta(days=365)
-dt_start = str(datetime.now() - timedelta(days=2920))[:10]
-dt_today = str(datetime.now())[:10]
+dt_start = datetime.strftime(before_8y, format='%Y%m%d')
+dt_today = datetime.strftime(datetime.now(), format='%Y%m%d')
 before_1y_str = datetime.strftime(before_1y, format='%Y%m%d')
 today_str = datetime.strftime(datetime.now(), format='%Y%m%d')
 print("Start = {}, \nEnd = {}".format(dt_start, dt_today))
@@ -40,7 +42,8 @@ def get_stock_list():
     df = df.loc[df['list_date'].apply(int).values <= int(before_1y_str)].reset_index(drop=True)
     print("Stock Listing after 1 year, # is ", len(df))
     # filtering with province and cities
-    # df = df.loc[df['area'].isin(['浙江', '江苏', '北京', '广东', '深圳', '上海', '山东', '福建', '湖北', '湖南', '安徽', '重庆', '天津'])].reset_index(drop=True)
+    # df = df.loc[df['area'].isin(['浙江', '江苏', '北京', '广东', '深圳', '上海', '山东', '福建', '湖北', '湖南',
+    #                              '安徽', '重庆', '天津'])].reset_index(drop=True)
     # print("After area filtering, # Stock is ", len(df))
 
     df_kept = df.rename(columns={'symbol': 'code'})
@@ -64,16 +67,33 @@ def get_his_data(code,start='20180101', end='20190319', ktype='W'):
     return df.close
 
 
+def get_data_pro(code, start='20180101', end='20190319', ):
+    # config
+    token = PARAM_DICT['tu_share_pro']
+    ts.set_token(token)
+    pro = ts.pro_api()
+    df = pro.weekly(ts_code=code, start_date=start, end_date=end,
+                    fields='ts_code,trade_date,open,high,low,close,vol,amount')
+
+    df = df[['trade_date', 'close']].rename(columns={'trade_date': 'date'})
+    df['date'] = pd.to_datetime(df['date'], format='%Y%m%d')
+    return df.set_index('date')
+
+
 def weekly_price_update(stock_info):
     print("*** Start at ", str(datetime.now())[:16])
     data = pd.DataFrame()
     for i, row in stock_info.iterrows():
         name = row['name']
         code = row['code']
+        ts_code = row['ts_code']
         if i % 500 == 0:
             print("Loops of {}".format(i))
-            print(name, code)
-        data[name] = get_his_data(code, start=dt_start, end=dt_today, ktype='W')
+            print(name, code, ts_code)
+        if i % 199 == 0 and i > 0:
+            time.sleep(60)
+        # data[name] = get_his_data(code, start=dt_start, end=dt_today, ktype='W')
+        data[name] = get_data_pro(ts_code, start=dt_start, end=dt_today)['close']
     print(data.shape)
     print("**** Finished at ", str(datetime.now())[:16])
     data.to_csv(os.path.join(PARAM_DICT['path_sec'], 'rps_stock_price.csv')) # keep date as index
