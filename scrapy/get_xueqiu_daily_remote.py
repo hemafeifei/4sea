@@ -12,7 +12,8 @@ etf_fn = 'xq_' + today + '.txt'
 
 url_jsl = 'https://www.jisilu.cn/data/cbnew/#cb'
 cb_path = '../../database/finance/cb/'
-cb_fn = 'cb_jisilu.txt'
+# cb_fn = 'cb_jisilu.txt'
+cb_fn = 'jsl_' + today + '.txt'
 if not os.path.exists(cb_path):
     os.makedirs(cb_path)
     print("make dir for {}".format(cb_path))
@@ -90,6 +91,7 @@ def parse_cb_data(soup):
                      'premium_rate',
                      'value_bond',
                      'risk_lvl',
+                     'fluctuate',
                      'value_qq',
                      'price_backsell',
                      'price_redemption',
@@ -104,16 +106,11 @@ def parse_cb_data(soup):
                      'ytm_backsell',
                      'low_low',
                      'other']
-    df = pd.DataFrame(table, columns=cols_name).drop(['value_bond', 'value_qq', 'other',
+    df = pd.DataFrame(table, columns=cols_name).drop(['value_bond', 'fluctuate', 'value_qq', 'other',
                                                           'hld_by_instit', 'ytm_backsell'], axis=1)
     df['image_dt'] = str(datetime.now())[:11]
     print(df.shape)
-    if os.path.exists(os.path.join(cb_path, cb_fn)):
-        with open(os.path.join(cb_path, cb_fn), 'a+') as f:
-            df.to_csv(f, header=False, index=False)
-    else:
-        with open(os.path.join(cb_path, cb_fn), 'a+') as f:
-            df.to_csv(f, header=True, index=False)
+    df.to_csv(os.path.join(cb_path, cb_fn), index=False)
 
     print("write CB files append")
     print("****" * 5)
