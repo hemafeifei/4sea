@@ -65,8 +65,8 @@ def parse_etf_data(soup):
             print(df_final.shape)
             print(today, "Update")
             df_final.to_csv(os.path.join(etf_path, etf_fn), index=False)
-            with open(etf_path + 'ETF_his_xq.txt', 'a+') as f:
-                df_final.to_csv(f, header=False, index=False)
+            # with open(etf_path + 'ETF_his_xq.txt', 'a+') as f:
+            #     df_final.to_csv(f, header=False, index=False)
             print("write ETF files append")
             print("****" * 5)
 
