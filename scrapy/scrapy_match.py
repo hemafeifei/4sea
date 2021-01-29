@@ -42,7 +42,7 @@ def daily_scrapy_match_and_odds():
         if df.loc[i, 'dt_utc08'] >= now:
             href = df.loc[i, 'href_nsc']
             print("odds of ", href)
-            df_eu, df_asia = tools.get_trend_en(href)
+            df_eu, df_asia = tools.get_trend_cn(href)
             df_eu.to_csv(today_utc0_path + '/' + str(href) + '_eu.txt', index=False, encoding='utf-8')
             df_asia.to_csv(today_utc0_path + '/' + str(href) + '_asia.txt', index=False, encoding='utf-8')
             # time.sleep(1.1)

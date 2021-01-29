@@ -20,7 +20,7 @@ path_parms = {
     # URL
     'base_url_nsc': 'http://score.nowscore.com/index.aspx',
     'base_url_007': 'http://live.win007.com',  # updated on 2019-08-12
-    'base_url_en': 'http://www.nowgoal.com/',
+    'base_url_en': 'http://www.nowgoal3.com/', # updated on 2021-01-29
 
 }
 
@@ -118,6 +118,50 @@ def get_trend_en(ref):
         df_odds = pd.DataFrame(odds, columns=['na1', 'na2', 'home',
                                               'draw', 'away', 'dt', 'others']).loc[:, 'home':]
         df_odds.dt = [(now[:5] + df_odds.loc[i, 'dt'][-11:]) for i in range(len(df_odds))]
+        df_odds = df_odds.loc[df_odds.dt >= str(odd_start)[:16]]
+        df_odds.dt = pd.to_datetime(df_odds.dt, format='%Y-%m-%d %H:%M')
+        df_odds = df_odds.sort_values(by='dt').reset_index(drop=True)
+        # df_odds['title'] = title
+    else:
+        df_odds = pd.DataFrame(columns=['home', 'draw', 'away', 'dt', 'others'])
+    df_odds = df_odds.drop('others', axis=1)
+
+    return df_odds, df_asian
+
+
+# Get trend
+def get_trend_cn(ref):
+    now = str(datetime.now())
+    odd_start = datetime.now() - timedelta(hours=12)
+    trend_url = 'http://score.nowscore.com/odds/3in1Odds.aspx?companyid=14&id=' + str(ref) # nowscore
+    soup = get_soup(trend_url)
+
+    asian = []
+    e0 = soup.find_all('table', {'class': 'gts'})[1]
+    for tr in e0.find_all('tr')[1:14]:  # nowgoal:2, nsc:1
+        asian.append([td.get_text() for td in tr.find_all('td')])
+
+    if len(asian) > 0:
+        df_asian = pd.DataFrame(asian, columns=['na1', 'na2', 'home',
+                                                'pankou', 'away', 'dt', 'others']).loc[:, 'home':]
+        df_asian.dt = [(now[:5] + df_asian.loc[i, 'dt'][:5] + ' ' + df_asian.loc[i, 'dt'][5:]) for i in
+                       range(len(df_asian))]
+        df_asian = df_asian.sort_values(by='dt').reset_index(drop=True)
+        df_asian = df_asian.loc[df_asian.dt >= str(odd_start)[:16]]
+        df_asian.dt = pd.to_datetime(df_asian.dt, format='%Y-%m-%d %H:%M')
+    else:
+        df_asian = pd.DataFrame(asian, columns=['home', 'pankou', 'away', 'dt', 'others'])
+    df_asian = df_asian.drop('others', axis=1)
+
+    odds = []
+    e2 = soup.find_all('table', {'class': 'gts'})[2]  # nowscore
+    for tr in e2.find_all('tr')[1:14]:  # nsc
+        odds.append([td.get_text() for td in tr.find_all('td')])
+    if len(odds) > 0:
+        df_odds = pd.DataFrame(odds, columns=['na1', 'na2', 'home',
+                                              'draw', 'away', 'dt', 'others']).loc[:, 'home':]
+        df_odds.dt = [(now[:5] + df_odds.loc[i, 'dt'][:5] + ' ' + df_odds.loc[i, 'dt'][5:]) for i in
+                      range(len(df_odds))]
         df_odds = df_odds.loc[df_odds.dt >= str(odd_start)[:16]]
         df_odds.dt = pd.to_datetime(df_odds.dt, format='%Y-%m-%d %H:%M')
         df_odds = df_odds.sort_values(by='dt').reset_index(drop=True)

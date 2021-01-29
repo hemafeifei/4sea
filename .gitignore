@@ -1,2 +1,4 @@
 __pycache__
 .AppleDouble
+*.ipynb
+.DS_Store
