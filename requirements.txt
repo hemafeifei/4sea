@@ -69,7 +69,7 @@ SQLAlchemy==1.3.10
 tempora==1.14.1
 tornado==6.0.3
 traitlets==4.3.3
-urllib3==1.25.6
+urllib3==1.25.8
 wcwidth==0.1.7
 Werkzeug==0.16.0
 yarg==0.1.9
