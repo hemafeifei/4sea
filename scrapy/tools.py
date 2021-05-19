@@ -5,6 +5,7 @@ from _settings import *
 from sqlalchemy import create_engine
 import pandas as pd
 from datetime import datetime, timedelta
+from io import StringIO
 
 df_name = pd.read_csv('league_name.txt', encoding='utf8')
 path_parms = {
