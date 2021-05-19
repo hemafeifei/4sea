@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from _settings import *
+import tools as tools
 import pandas as pd
 from datetime import datetime, timedelta
 import os
@@ -111,6 +112,8 @@ def parse_cb_data(soup):
     df['image_dt'] = str(datetime.now())[:11]
     print(df.shape)
     df.to_csv(os.path.join(cb_path, cb_fn), index=False)
+    tools.insert_table(df, 'finance', 'cb_jsl_daily_price')
+    print("updated to postgresql")
 
     print("write CB files append")
     print("****" * 5)
