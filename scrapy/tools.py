@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from _settings import *
+from sqlalchemy import create_engine
 import pandas as pd
 from datetime import datetime, timedelta
 
@@ -27,6 +28,20 @@ path_parms = {
 
 # chrome_path = '/Users/weizheng/PycharmProjects/tickets/chromedriver'
 
+def insert_table(df, database, db_table):
+    engine = create_engine('postgresql://postgres:postgres@localhost:5432/{}'.format(database))
+    conn = engine.raw_connection()
+
+    # Initialize a string buffer
+    sio = StringIO()
+    sio.write(df.to_csv(index=None, header=None))  # Write the Pandas DataFrame as a csv to the buffer
+    sio.seek(0)  # Be sure to reset the position to the start of the stream
+
+    # Copy the string buffer to the database, as if it were an actual file
+    with conn.cursor() as c:
+        c.copy_from(sio, db_table, columns=df.columns, sep=',')
+        conn.commit()
+        c.close()
 
 # Get matches
 def get_match_007(url, lty=True):
