@@ -30,7 +30,7 @@ path_parms = {
 # chrome_path = '/Users/weizheng/PycharmProjects/tickets/chromedriver'
 
 def insert_table(df, database, db_table):
-    engine = create_engine('postgresql://postgres:postgres@localhost:5432/{}'.format(database))
+    engine = create_engine('postgresql://postgres:Dobe123#@localhost:5432/{}'.format(database))
     conn = engine.raw_connection()
 
     # Initialize a string buffer
