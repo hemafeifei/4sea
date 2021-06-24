@@ -11,7 +11,8 @@ today = str(datetime.now())[:10]
 etf_path = '../../database/finance/etf/'
 etf_fn = 'xq_' + today + '.txt'
 
-url_jsl = 'https://www.jisilu.cn/data/cbnew/#cb'
+# url_jsl = 'https://www.jisilu.cn/data/cbnew/#cb'
+url_jsl = 'https://www.jisilu.cn/web/data/cb/list'
 cb_path = '../../database/finance/cb/'
 # cb_fn = 'cb_jisilu.txt'
 cb_fn = 'jsl_' + today + '.txt'
@@ -118,13 +119,73 @@ def parse_cb_data(soup):
     print("write CB files append")
     print("****" * 5)
 
+def parse_cb_data_list(soup):
+    cols_list = ['row',
+                 'code_cb',
+                 'name_cb',
+                 'price_cb',
+                 'price_cb_chg',
+                 'code_sec',
+                 'name_sec',
+                 'price_sec',
+                 'price_sec_chg',
+                 'pb_sec',
+                 'price_converted',
+                 'value_converted',
+                 'premium_rate',
+                 'low_low',
+                 'drop_1',
+                 'value_bond',
+                 'risk_lvl',
+                 'drop_2',
+                 'price_redemption',
+                 'pct_cb',
+                 'hld_by_instit',
+                 'mature_dt',
+                 'left_year',
+                 'left_amount',
+                 'amount',
+                 'changehand_rate',
+                 'ytm_pre_tax']
+    tbl = soup.find('div', {'class': 'jsl-table-body-wrapper'})
+    table = []
+    for tr in tbl.find_all('tr'):
+        lst = []
+        for td in tr.find_all("td")[:-2]:
+            txt = td.get_text()
+            if '*' in txt:
+                txt = txt.split('*')[0]
+            txt = re.sub('\n', '', txt)
+            txt = re.sub(' ', '', txt)
+            txt = re.sub('!', '', txt)
+            lst.append(txt)
+        table.append(lst)
+    df = pd.DataFrame(table, columns=cols_list).drop(['value_bond', 'drop_1', 'drop_2', 
+                                                          'hld_by_instit'], axis=1)
+    df = df.loc[df.row.notnull()].reset_index(drop=True)
+    df = df.drop('row', axis=1)
+    df['image_dt'] = str(datetime.now())[:11]
+    print(df.shape)
+    if len(df) > 0:
+        df = df[['code_cb', 'name_cb', 'price_cb', 'price_cb_chg', 'name_sec',
+       'price_sec', 'price_sec_chg', 'pb_sec', 'price_converted',
+       'value_converted', 'premium_rate', 'risk_lvl', 'price_backsell',
+       'price_redemption', 'pct_cb', 'mature_dt', 'left_year', 'left_amount',
+       'amount', 'changehand_rate', 'ytm_pre_tax', 'low_low', 'image_dt']]  
+        
+        df.to_csv(os.path.join(cb_path, cb_fn), index=False)
+        tools.insert_table(df, 'finance', 'cb_jsl_daily_price')
+        print("updated to postgresql")
+
+        print("write CB files append")
+        print("****" * 5)
 
 if today in soup_xq.find("title").get_text():
     print("----"*5)
     parse_etf_data(soup_xq)
 
     print("----"*5)
-    parse_cb_data(soup_jsl)
+    parse_cb_data_list(soup_jsl)
 else:
     print("No updates found on {}".format(today))
 
