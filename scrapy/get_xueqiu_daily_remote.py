@@ -5,6 +5,7 @@ import tools as tools
 import pandas as pd
 from datetime import datetime, timedelta
 import os
+import re
 
 url = 'https://danjuanapp.com/djmodule/value-center?channel=1300100141'
 today = str(datetime.now())[:10]
