@@ -230,6 +230,8 @@ def get_odds_differ(dataframe, kelly_sum):
                     odd_list.append((td.get_text()))
 
                 odds_table.append(odd_list)
+            else:
+                print('not found all 3 companies')
 
     if len(odds_table) > 0:
 
@@ -321,7 +323,7 @@ def get_odds_differ_nsc(dataframe, kelly_sum):
         if tb is not None:
 
             oddstr_list = [tr['id'] for tr in tb.find_all('tr')]
-            if ('oddstr_80' in oddstr_list) & ('oddstr_432' in oddstr_list) & ('oddstr_649' in oddstr_list) & (
+            if ('oddstr_80' in oddstr_list) & ('oddstr_432' in oddstr_list) & ('oddstr_499' in oddstr_list) & (
                     'oddstr_81' in oddstr_list):
                 print(ref, ",Contains Macau and HKJC....")
                 odd_list = [ref]
@@ -330,7 +332,7 @@ def get_odds_differ_nsc(dataframe, kelly_sum):
                 hk = tb.find('tr', {'id': 'oddstr_432'})
                 wede = tb.find('tr', {'id': 'oddstr_81'})
                 kbb_kelly = tb.find('tr', {'id': 'oddstr_499'})
-                ibcbet_kelly = tb.find('tr', {'id': 'oddstr_649'})
+                bet365 = tb.find('tr', {'id': 'oddstr_281'})
 
                 for td in mac.find_all('td')[3:6]:
                     odd_list.append((td.get_text()))
@@ -340,10 +342,12 @@ def get_odds_differ_nsc(dataframe, kelly_sum):
                     odd_list.append(td.get_text())
                 for td in kbb_kelly.find_all('td')[10:13]:
                     odd_list.append((td.get_text()))
-                for td in ibcbet_kelly.find_all('td')[10:13]:
+                for td in bet365.find_all('td')[10:13]:
                     odd_list.append((td.get_text()))
 
                 odds_table.append(odd_list)
+            else:
+                print("not found 4 companies")
 
     if len(odds_table) > 0:
 
