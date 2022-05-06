@@ -2,3 +2,12 @@ __pycache__
 .AppleDouble
 *.ipynb
 .DS_Store
+*.pyc
+__pycache__
+*.log
+*.egg-info
+.pytest_cache
+extra-index.txt
+.idea
+venv
+*.DS_Store
