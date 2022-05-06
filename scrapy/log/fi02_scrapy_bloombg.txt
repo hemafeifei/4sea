@@ -1,0 +1,70 @@
+****Start 2022-05-03 11:19****
+['idx_sp500_his.txt', 'idx_gold_his.txt', 'idx_dax30_his.txt', 'idx_shanghai_his.txt', 'idx_hsi_his.txt']
+Traceback (most recent call last):
+  File "get_bloomberg_idx.py", line 170, in <module>
+    main_control()
+  File "get_bloomberg_idx.py", line 130, in main_control
+    upd_dax30 = parse_index_data_1(bloombg_dict['url_dax30'])
+  File "get_bloomberg_idx.py", line 35, in parse_index_data_1
+    for tr in table.find_all('tr')[1:]:
+AttributeError: 'NoneType' object has no attribute 'find_all'
+****Start 2022-05-04 06:10****
+['idx_sp500_his.txt', 'idx_gold_his.txt', 'idx_dax30_his.txt', 'idx_shanghai_his.txt', 'idx_hsi_his.txt']
+Traceback (most recent call last):
+  File "get_bloomberg_idx.py", line 170, in <module>
+    main_control()
+  File "get_bloomberg_idx.py", line 130, in main_control
+    upd_dax30 = parse_index_data_1(bloombg_dict['url_dax30'])
+  File "get_bloomberg_idx.py", line 35, in parse_index_data_1
+    for tr in table.find_all('tr')[1:]:
+AttributeError: 'NoneType' object has no attribute 'find_all'
+****Start 2022-05-04 07:10****
+['idx_sp500_his.txt', 'idx_gold_his.txt', 'idx_dax30_his.txt', 'idx_shanghai_his.txt', 'idx_hsi_his.txt']
+Traceback (most recent call last):
+  File "get_bloomberg_idx.py", line 170, in <module>
+    main_control()
+  File "get_bloomberg_idx.py", line 130, in main_control
+    upd_dax30 = parse_index_data_1(bloombg_dict['url_dax30'])
+  File "get_bloomberg_idx.py", line 35, in parse_index_data_1
+    for tr in table.find_all('tr')[1:]:
+AttributeError: 'NoneType' object has no attribute 'find_all'
+****Start 2022-05-05 06:10****
+['idx_sp500_his.txt', 'idx_gold_his.txt', 'idx_dax30_his.txt', 'idx_shanghai_his.txt', 'idx_hsi_his.txt']
+Traceback (most recent call last):
+  File "get_bloomberg_idx.py", line 170, in <module>
+    main_control()
+  File "get_bloomberg_idx.py", line 130, in main_control
+    upd_dax30 = parse_index_data_1(bloombg_dict['url_dax30'])
+  File "get_bloomberg_idx.py", line 35, in parse_index_data_1
+    for tr in table.find_all('tr')[1:]:
+AttributeError: 'NoneType' object has no attribute 'find_all'
+****Start 2022-05-05 07:10****
+['idx_sp500_his.txt', 'idx_gold_his.txt', 'idx_dax30_his.txt', 'idx_shanghai_his.txt', 'idx_hsi_his.txt']
+Traceback (most recent call last):
+  File "get_bloomberg_idx.py", line 170, in <module>
+    main_control()
+  File "get_bloomberg_idx.py", line 130, in main_control
+    upd_dax30 = parse_index_data_1(bloombg_dict['url_dax30'])
+  File "get_bloomberg_idx.py", line 35, in parse_index_data_1
+    for tr in table.find_all('tr')[1:]:
+AttributeError: 'NoneType' object has no attribute 'find_all'
+****Start 2022-05-06 06:10****
+['idx_sp500_his.txt', 'idx_gold_his.txt', 'idx_dax30_his.txt', 'idx_shanghai_his.txt', 'idx_hsi_his.txt']
+Traceback (most recent call last):
+  File "get_bloomberg_idx.py", line 170, in <module>
+    main_control()
+  File "get_bloomberg_idx.py", line 130, in main_control
+    upd_dax30 = parse_index_data_1(bloombg_dict['url_dax30'])
+  File "get_bloomberg_idx.py", line 35, in parse_index_data_1
+    for tr in table.find_all('tr')[1:]:
+AttributeError: 'NoneType' object has no attribute 'find_all'
+****Start 2022-05-06 07:10****
+['idx_sp500_his.txt', 'idx_gold_his.txt', 'idx_dax30_his.txt', 'idx_shanghai_his.txt', 'idx_hsi_his.txt']
+Traceback (most recent call last):
+  File "get_bloomberg_idx.py", line 170, in <module>
+    main_control()
+  File "get_bloomberg_idx.py", line 130, in main_control
+    upd_dax30 = parse_index_data_1(bloombg_dict['url_dax30'])
+  File "get_bloomberg_idx.py", line 35, in parse_index_data_1
+    for tr in table.find_all('tr')[1:]:
+AttributeError: 'NoneType' object has no attribute 'find_all'

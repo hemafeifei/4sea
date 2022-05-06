@@ -1,0 +1,1254 @@
+(14, 6)
+(0, 6)
+2022-05-03 12:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(2, 6)
+2022-05-03 12:21  start parsing match...
+2148856 ,Contains Macau and HKJC....
+2148857 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(14, 6)
+(2, 6)
+2022-05-03 12:42  start parsing match...
+2148856 ,Contains Macau and HKJC....
+2148857 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(14, 6)
+(2, 6)
+2022-05-03 13:00  start parsing match...
+2148856 ,Contains Macau and HKJC....
+2148857 ,Contains Macau and HKJC....
+write files:  (1, 24)
+Updated at:  2022-05-03 13:00
+ 
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 13:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 13:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 14:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 14:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 14:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 15:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 15:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 15:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 16:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 16:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 16:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 17:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 17:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 17:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 18:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 18:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 18:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 19:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 19:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 19:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 20:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 20:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 20:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 21:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 21:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 21:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 22:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 22:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 22:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 23:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-03 23:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(1, 6)
+2022-05-03 23:42  start parsing match...
+2036916 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(14, 6)
+(1, 6)
+2022-05-04 00:00  start parsing match...
+2036916 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(14, 6)
+(3, 6)
+2022-05-04 00:21  start parsing match...
+2143907 ,Contains Macau and HKJC....
+2143909 ,Contains Macau and HKJC....
+2143910 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(14, 6)
+(3, 6)
+2022-05-04 00:42  start parsing match...
+2143907 ,Contains Macau and HKJC....
+2143909 ,Contains Macau and HKJC....
+2143910 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(14, 6)
+(3, 6)
+2022-05-04 01:00  start parsing match...
+2143907 ,Contains Macau and HKJC....
+2143909 ,Contains Macau and HKJC....
+2143910 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-04 01:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(2, 6)
+2022-05-04 01:42  start parsing match...
+2032980 ,Contains Macau and HKJC....
+2032984 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(14, 6)
+(4, 6)
+2022-05-04 02:00  start parsing match...
+2032980 ,Contains Macau and HKJC....
+2032984 ,Contains Macau and HKJC....
+2053659 ,Contains Macau and HKJC....
+2035339 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(14, 6)
+(6, 6)
+2022-05-04 02:21  start parsing match...
+2032980 ,Contains Macau and HKJC....
+2032984 ,Contains Macau and HKJC....
+2053659 ,Contains Macau and HKJC....
+2035339 ,Contains Macau and HKJC....
+2028134 ,Contains Macau and HKJC....
+2038666 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(14, 6)
+(5, 6)
+2022-05-04 02:42  start parsing match...
+2053659 ,Contains Macau and HKJC....
+2035339 ,Contains Macau and HKJC....
+2028134 ,Contains Macau and HKJC....
+2038666 ,Contains Macau and HKJC....
+2046781 ,Contains Macau and HKJC....
+write files:  (1, 24)
+Updated at:  2022-05-04 02:42
+ 
+****Finished****
+ 
+(14, 6)
+(3, 6)
+2022-05-04 03:00  start parsing match...
+2028134 ,Contains Macau and HKJC....
+2038666 ,Contains Macau and HKJC....
+2046781 ,Contains Macau and HKJC....
+write files:  (1, 24)
+Updated at:  2022-05-04 03:00
+ 
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-04 03:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-04 03:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-04 04:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-04 04:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(14, 6)
+(0, 6)
+2022-05-04 04:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 12:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(1, 6)
+2022-05-04 12:21  start parsing match...
+2148862 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(16, 6)
+(1, 6)
+2022-05-04 12:42  start parsing match...
+2148862 ,Contains Macau and HKJC....
+write files:  (1, 24)
+Updated at:  2022-05-04 12:42
+ 
+****Finished****
+ 
+(16, 6)
+(1, 6)
+2022-05-04 13:00  start parsing match...
+2148862 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 13:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 13:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 14:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 14:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 14:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 15:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 15:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 15:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 16:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 16:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 16:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 17:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 17:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 17:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 18:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 18:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 18:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 19:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 19:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 19:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 20:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 20:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 20:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 21:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 21:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 21:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 22:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 22:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 22:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 23:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 23:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-04 23:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-05 00:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-05 00:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-05 00:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-05 01:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-05 01:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-05 01:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-05 02:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(1, 6)
+2022-05-05 02:21  start parsing match...
+2190685 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(16, 6)
+(1, 6)
+2022-05-05 02:42  start parsing match...
+2190685 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(16, 6)
+(1, 6)
+2022-05-05 03:00  start parsing match...
+2190685 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-05 03:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-05 03:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-05 04:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-05 04:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(16, 6)
+(0, 6)
+2022-05-05 04:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 12:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(2, 6)
+2022-05-05 12:21  start parsing match...
+2141173 ,Contains Macau and HKJC....
+2141174 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(2, 6)
+2022-05-05 12:42  start parsing match...
+2141173 ,Contains Macau and HKJC....
+2141174 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(2, 6)
+2022-05-05 13:00  start parsing match...
+2141173 ,Contains Macau and HKJC....
+2141174 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 13:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 13:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 14:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 14:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(2, 6)
+2022-05-05 14:42  start parsing match...
+2141171 ,Contains Macau and HKJC....
+2141172 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(2, 6)
+2022-05-05 15:00  start parsing match...
+2141171 ,Contains Macau and HKJC....
+2141172 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(2, 6)
+2022-05-05 15:21  start parsing match...
+2141171 ,Contains Macau and HKJC....
+2141172 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 15:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 16:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 16:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 16:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 17:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(2, 6)
+2022-05-05 17:21  start parsing match...
+2141169 ,Contains Macau and HKJC....
+2141170 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(2, 6)
+2022-05-05 17:42  start parsing match...
+2141169 ,Contains Macau and HKJC....
+2141170 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(2, 6)
+2022-05-05 18:00  start parsing match...
+2141169 ,Contains Macau and HKJC....
+2141170 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 18:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 18:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 19:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 19:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 19:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 20:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 20:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 20:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 21:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 21:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 21:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 22:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 22:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 22:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-05 23:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(1, 6)
+2022-05-05 23:21  start parsing match...
+2053513 ,Contains Macau and HKJC....
+write files:  (1, 24)
+Updated at:  2022-05-05 23:21
+ 
+****Finished****
+ 
+(11, 6)
+(1, 6)
+2022-05-05 23:42  start parsing match...
+2053513 ,Contains Macau and HKJC....
+write files:  (1, 24)
+Updated at:  2022-05-05 23:42
+ 
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-06 00:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(1, 6)
+2022-05-06 00:21  start parsing match...
+2143983 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(1, 6)
+2022-05-06 00:42  start parsing match...
+2143983 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(1, 6)
+2022-05-06 01:00  start parsing match...
+2143983 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-06 01:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-06 01:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-06 02:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(2, 6)
+2022-05-06 02:21  start parsing match...
+2191142 ,Contains Macau and HKJC....
+2191143 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(2, 6)
+2022-05-06 02:42  start parsing match...
+2191142 ,Contains Macau and HKJC....
+2191143 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(2, 6)
+2022-05-06 03:00  start parsing match...
+2191142 ,Contains Macau and HKJC....
+2191143 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-06 03:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-06 03:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-06 04:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-06 04:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(11, 6)
+(0, 6)
+2022-05-06 04:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 12:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 12:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 12:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 13:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 13:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 13:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 14:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 14:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 14:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 15:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 15:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 15:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 16:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 16:21  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 16:42  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(0, 6)
+2022-05-06 17:00  start parsing match...
+No match found
+no result writen
+****Finished****
+ 
+(22, 6)
+(1, 6)
+2022-05-06 17:21  start parsing match...
+2148865 ,Contains Macau and HKJC....
+write files:  (1, 24)
+Updated at:  2022-05-06 17:21
+ 
+****Finished****
+ 
+(22, 6)
+(1, 6)
+2022-05-06 17:42  start parsing match...
+2148865 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 
+(22, 6)
+(1, 6)
+2022-05-06 18:00  start parsing match...
+2148865 ,Contains Macau and HKJC....
+no result writen
+****Finished****
+ 

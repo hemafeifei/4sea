@@ -1,0 +1,83 @@
+(7, 9)
+generated file:  2022-05-03_gl.txt
+Match Shape (7, 9)
+https://g10oal.com/match/3c8eb875-a22a-43dc-9d8c-dd3882bd4fa7/odds
+https://g10oal.com/match/c700cde1-5783-40a3-8e53-defd45528ed2/odds
+https://g10oal.com/match/ebeebad8-1391-437b-84a6-e9d22453a947/odds
+https://g10oal.com/match/40525876-9e64-47bf-b5dd-ba581ac5367b/odds
+https://g10oal.com/match/edc83ab9-79a6-4423-a3ee-e0978313313e/odds
+https://g10oal.com/match/d8863e3d-ba02-48da-9ca5-c5bef18aaa33/odds
+https://g10oal.com/match/cd9d613e-1ea7-4edb-9a3e-5c6488061918/odds
+match shape,  7
+Trend Shape (2, 24)
+Now updated:  2022-05-03 11:32
+ 
+(10, 9)
+generated file:  2022-05-04_gl.txt
+Match Shape (10, 9)
+https://g10oal.com/match/8d45d25a-4d09-4ca9-af63-810da3286004/odds
+https://g10oal.com/match/86aff23b-7e55-4b03-af11-38e97a47d557/odds
+https://g10oal.com/match/05fce114-c3b6-414e-8b99-66be1d628345/odds
+https://g10oal.com/match/5c1acc52-c33f-49da-89d0-d7715df2293a/odds
+https://g10oal.com/match/47c16de8-cdac-4062-a971-dde4af6ac7fb/odds
+https://g10oal.com/match/e200bdd2-dcc7-43c8-a991-32e79d767eb4/odds
+https://g10oal.com/match/0dd91616-8cee-46d5-a136-9479f57436ba/odds
+https://g10oal.com/match/a9855dac-1856-4e1f-91bb-5f2e8a590a33/odds
+https://g10oal.com/match/0ac0785e-c18a-4524-a62a-3cdf54a4f963/odds
+https://g10oal.com/match/28a1d803-7e70-42d4-a23c-54f862562d99/odds
+match shape,  4
+Trend Shape (2, 24)
+Now updated:  2022-05-04 10:31
+ 
+Check 1: Match file existed.
+Check 2: Trend file exsited
+(9, 9)
+generated file:  2022-05-05_gl.txt
+Match Shape (9, 9)
+https://g10oal.com/match/e4f6c99e-1dc1-4917-a576-da6751854b4a/odds
+https://g10oal.com/match/b6304184-0cef-4a41-8085-73b24e0fa243/odds
+https://g10oal.com/match/e10e2220-48d6-42d2-8f6c-74cd82a19217/odds
+https://g10oal.com/match/194fe91d-5725-48b2-bec8-c72987f8a0fa/odds
+https://g10oal.com/match/21f6d10f-6b9d-49c8-b5df-c3ee65a2f54e/odds
+https://g10oal.com/match/6bf6772f-b738-46c8-a8c8-630c432354aa/odds
+https://g10oal.com/match/e3a269da-fab2-4212-85b8-f010284d211f/odds
+https://g10oal.com/match/adc7e48f-c0a2-4a9e-a6f6-2278d50b278b/odds
+https://g10oal.com/match/3e24e896-b5ff-4b22-93e7-8b0bfc2b2561/odds
+match shape,  8
+Trend Shape (1, 24)
+Now updated:  2022-05-05 10:31
+ 
+Check 1: Match file existed.
+Check 2: Trend file exsited
+(23, 9)
+generated file:  2022-05-06_gl.txt
+Match Shape (23, 9)
+https://g10oal.com/match/c8b98c3b-9c99-4f74-86ec-e48e93c0e99c/odds
+https://g10oal.com/match/547ffc51-e558-4bfa-8467-8f9f61dd62ed/odds
+https://g10oal.com/match/41364519-beba-42a8-8370-94ac885c5abb/odds
+https://g10oal.com/match/b7364b99-76d4-46bd-9dcc-1a690cc7a570/odds
+https://g10oal.com/match/fcaed1cf-449f-436d-b63b-d4563c13a707/odds
+https://g10oal.com/match/38dd9f55-724a-4fa4-8fe9-a34a00e0ce1a/odds
+https://g10oal.com/match/08f9983a-d30c-46c0-8f93-b96456db49f4/odds
+https://g10oal.com/match/cda44eb0-6a0e-4dc8-baa6-a7843351a15b/odds
+https://g10oal.com/match/00a18055-d926-4a19-a4f3-99bfae25efc3/odds
+https://g10oal.com/match/2e29a375-9aba-4292-9809-b71a0e4241c6/odds
+https://g10oal.com/match/b287532c-cda1-4fac-9a36-a203341826aa/odds
+https://g10oal.com/match/bd0bbc8d-0c7d-4ff6-baff-a8f006989da9/odds
+https://g10oal.com/match/b4eaa3e3-c545-4104-9f90-376fb0cc981d/odds
+https://g10oal.com/match/6f398113-d785-40ec-b164-eb7f0c973ee2/odds
+https://g10oal.com/match/0adc1695-ab0d-4db5-b798-082149caf8ac/odds
+https://g10oal.com/match/aaf22dbc-d5e2-4eb3-a507-ebb3fb39a6f0/odds
+https://g10oal.com/match/9201f13b-889b-49dc-935a-a8c1e309cda7/odds
+https://g10oal.com/match/08bfe59d-7e26-4fbd-86ea-a77ee2d0752e/odds
+https://g10oal.com/match/6f216409-53cc-484e-b1bc-11063f6a2c44/odds
+https://g10oal.com/match/cdc0164c-2311-4685-b22a-6f53e0c61308/odds
+https://g10oal.com/match/ea34e708-03f9-4db2-9efe-a18e2507306e/odds
+https://g10oal.com/match/81450870-0ae8-4041-a5d0-4b2202ce3830/odds
+https://g10oal.com/match/ca8836ae-18fd-43a7-98d4-747833d4e91e/odds
+match shape,  22
+Trend Shape (4, 24)
+Now updated:  2022-05-06 10:36
+ 
+Check 1: Match file existed.
+Check 2: Trend file exsited

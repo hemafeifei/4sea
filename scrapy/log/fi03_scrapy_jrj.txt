@@ -1,0 +1,50 @@
+---Start Time: 2022-05-03 15:45----
+Market date is 04月29日 15:29:48
+Traceback (most recent call last):
+  File "get_jrj_sec.py", line 165, in <module>
+    main_func()
+  File "get_jrj_sec.py", line 124, in main_func
+    assert pd.to_datetime(mkt_dt, format='%m月%d日 %H:%M:%S').day == today.day
+AssertionError
+---Start Time: 2022-05-03 16:45----
+Market date is 04月29日 15:29:48
+Traceback (most recent call last):
+  File "get_jrj_sec.py", line 165, in <module>
+    main_func()
+  File "get_jrj_sec.py", line 124, in main_func
+    assert pd.to_datetime(mkt_dt, format='%m月%d日 %H:%M:%S').day == today.day
+AssertionError
+---Start Time: 2022-05-04 15:45----
+Market date is 04月29日 15:29:48
+Traceback (most recent call last):
+  File "get_jrj_sec.py", line 165, in <module>
+    main_func()
+  File "get_jrj_sec.py", line 124, in main_func
+    assert pd.to_datetime(mkt_dt, format='%m月%d日 %H:%M:%S').day == today.day
+AssertionError
+---Start Time: 2022-05-04 16:45----
+Market date is 04月29日 15:29:48
+Traceback (most recent call last):
+  File "get_jrj_sec.py", line 165, in <module>
+    main_func()
+  File "get_jrj_sec.py", line 124, in main_func
+    assert pd.to_datetime(mkt_dt, format='%m月%d日 %H:%M:%S').day == today.day
+AssertionError
+---Start Time: 2022-05-05 15:45----
+Market date is 05月05日 15:08:47
+write csv: etf_txn_top50_2022-05-05.txt
+write csv: sec_txn_top100_2022-05-05.txt
+Update file sec_txn_summary.txt As of 2022-05-05 15:45
+---End Time: 2022-05-05 15:46----
+ 
+---Break cauz sec_txn_top100_2022-05-05.txt exist---
+ 
+---Start Time: 2022-05-06 15:45----
+Market date is 05月06日 15:08:47
+write csv: etf_txn_top50_2022-05-06.txt
+write csv: sec_txn_top100_2022-05-06.txt
+Update file sec_txn_summary.txt As of 2022-05-06 15:45
+---End Time: 2022-05-06 15:48----
+ 
+---Break cauz sec_txn_top100_2022-05-06.txt exist---
+ 

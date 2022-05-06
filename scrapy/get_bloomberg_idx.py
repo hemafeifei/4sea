@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from _settings import *
 import pandas as pd
 from datetime import datetime, timedelta
@@ -30,10 +29,10 @@ def parse_index_data_1(url):
     price over 1,000. need to be cleaned.
     """
     soup = get_soup(url)
-    table = soup.find('table', {'id': 'curr_table'}).find('tbody')
+    table = soup.find('table', {'id': 'curr_table'})
 
     result = []
-    for tr in table.find_all('tr'):
+    for tr in table.find_all('tr')[1:]:
         line = []
         for td in tr.find_all('td'):
             item = td.get_text()
@@ -57,10 +56,10 @@ def parse_index_data_2(url):
     oil price as less than 1,000
     """
     soup = get_soup(url)
-    table = soup.find('table', {'id': 'curr_table'}).find('tbody')
+    table = soup.find('table', {'id': 'curr_table'})
 
     result = []
-    for tr in table.find_all('tr'):
+    for tr in table.find_all('tr')[1:]:
         line = []
         for td in tr.find_all('td'):
             item = td.get_text()
@@ -81,10 +80,10 @@ def parse_index_data_3(url):
     without volume
     """
     soup = get_soup(url)
-    table = soup.find('table', {'id': 'curr_table'}).find('tbody')
+    table = soup.find('table', {'id': 'curr_table'})
 
     result = []
-    for tr in table.find_all('tr'):
+    for tr in table.find_all('tr')[1:]:
         line = []
         for td in tr.find_all('td'):
             item = td.get_text()

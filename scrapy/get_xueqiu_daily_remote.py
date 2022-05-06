@@ -22,7 +22,7 @@ if not os.path.exists(cb_path):
     print("make dir for {}".format(cb_path))
 
 soup_xq = get_soup(url)
-soup_jsl = get_soup(url_jsl)
+#soup_jsl = get_soup(url_jsl)
 
 def parse_etf_data(soup):
     """
@@ -186,7 +186,7 @@ if today in soup_xq.find("title").get_text():
     parse_etf_data(soup_xq)
 
     print("----"*5)
-    parse_cb_data_list(soup_jsl)
+   # parse_cb_data_list(soup_jsl)
 else:
     print("No updates found on {}".format(today))
 
