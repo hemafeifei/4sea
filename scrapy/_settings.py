@@ -21,7 +21,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 
 def get_soup(url, timesleep=1.1):
     if sys.platform=='darwin':
-        chrome_path = '/Users/wegzheng/opt/chromedriver'
+        chrome_path = '/Users/wei/opt/chromedriver'
 
         driver = webdriver.Chrome(executable_path=chrome_path, chrome_options=chrome_options)
         driver.get(url)
@@ -48,7 +48,7 @@ def get_soup(url, timesleep=1.1):
 
 def get_pn_validation(url, pn_id, pn, clk_class):
     if sys.platform=='darwin':
-        chrome_path = '/Users/wei/PycharmProjects/tickets/chromedriver'
+        chrome_path = '/Users/wei/opt/chromedriver'
 
         driver = webdriver.Chrome(executable_path=chrome_path, chrome_options=chrome_options)
         driver.get(url)
@@ -76,7 +76,7 @@ def get_pn_validation(url, pn_id, pn, clk_class):
 
 def get_jisilu_validation(url_login, user, pwd, url_parse):
     if sys.platform=='darwin':
-        chrome_path = '/Users/wegzheng/opt/chromedriver'
+        chrome_path = '/Users/wei/opt/chromedriver'
 
         driver = webdriver.Chrome(executable_path=chrome_path, chrome_options=chrome_options)
         driver.get(url_login)
@@ -117,7 +117,7 @@ def get_jisilu_validation(url_login, user, pwd, url_parse):
 def get_eastmoney_index(url, tab_xpath, page_xpath=None):
     # scrapy HS300 and SH50 Index
     if sys.platform == 'darwin':
-        chrome_path = '/Users/wegzheng/opt/chromedriver'
+        chrome_path = '/Users/wei/opt/chromedriver'
         driver = webdriver.Chrome(executable_path=chrome_path, chrome_options=chrome_options)
         driver.get(url)
         driver.find_element(by=By.XPATH, value=tab_xpath).click()
