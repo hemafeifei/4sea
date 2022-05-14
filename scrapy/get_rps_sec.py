@@ -6,6 +6,8 @@ import tushare as ts
 from datetime import datetime, timedelta
 import os
 import time
+import warnings
+warnings.filterwarnings('ignore')
 
 PARAM_DICT = {
     # token
