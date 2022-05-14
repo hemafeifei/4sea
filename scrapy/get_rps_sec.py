@@ -101,7 +101,7 @@ def weekly_price_update(stock_info):
        # data = pd.concat([data, _col_df], axis=1)
     print(data.shape)
     print("**** Finished at ", str(datetime.now())[:16])
-    data.reset_index().to_csv(os.path.join(PARAM_DICT['path_sec'], 'rps_stock_price.csv')) # keep date as index
+    data.to_csv(os.path.join(PARAM_DICT['path_sec'], 'rps_stock_price.csv')) # keep date as index
     print("Write Price data, maximal date is {}".format(data.index.max()))
     return data
 
