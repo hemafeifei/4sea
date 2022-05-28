@@ -131,7 +131,7 @@ def weekly_rps_update(price_data, stock_info):
     return_60 = cal_ret(price_data, w=12)
     return_120 = cal_ret(price_data, w=24)
     return_250 = cal_ret(price_data, w=50)
-    return_120.reset_index().to_csv(os.path.join(PARAM_DICT['path_sec'], 'rps_stock_return.txt')) # index=date
+    return_120.reset_index().to_csv(os.path.join(PARAM_DICT['path_sec'], 'rps_stock_return.txt'), index=False) # index=date
 
     rps_med_60 = get_rps_median(return_60, stock_info).rename(columns={'rps_median': 'return_med_60d'})
     rps_med_120 = get_rps_median(return_120, stock_info).rename(columns={'rps_median': 'return_med_120d'})
@@ -145,7 +145,7 @@ def weekly_rps_update(price_data, stock_info):
 
     rps_final = pd.concat([rps_med_60, rps_med_120, rps_med_250], axis=1) # concatat along the columns
     print(rps_final.shape)
-    rps_final.reset_index().to_csv(os.path.join(PARAM_DICT['path_sec'], 'rps_stock_chg_median.txt'))
+    rps_final.reset_index().to_csv(os.path.join(PARAM_DICT['path_sec'], 'rps_stock_chg_median.txt'), index=False)
     print("Wtire Return rate median data.")
 
 
