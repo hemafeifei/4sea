@@ -20,9 +20,9 @@ path_parms = {
     'his_path': '../../database/football/his_data/',
     'kelly_path': '../../database/football/ml_data/',
     # URL
-    'base_url_nsc': 'http://score.nowscore.com/index.aspx',
+    'base_url_nsc': 'http://score.nowscore.com/',
     'base_url_007': 'http://live.win007.com',  # updated on 2019-08-12
-    'base_url_en': 'http://www.nowgoal3.com/', # updated on 2021-01-29
+    'base_url_en': 'http://www.nowgoal5.com/', # updated on 2021-01-29
 
 }
 
@@ -75,10 +75,45 @@ def get_match_007(url, lty=True):
     return df
 
 
+def get_match_nsc(url, lty=True):
+    try:
+        soup = get_soup(url)
+        # print(soup.find('table'))
+    except Exception as e:
+        print(e)
+    match_f = []
+    for e in soup.find_all('table'):
+        mtype = e.find('div', {'class': 'LName'}).get_text()
+        utctime = e.find('div', {'class': 'time'}).get_text()
+        href_nsc = e['data-id']
+        mlist = [td.get_text() for td in e.find_all('td')]
+        match = []
+        match.append(mtype)
+        match.append(utctime)
+        match.append(mlist[5])
+        match.append(mlist[7])
+        match.append(href_nsc)
+        match_f.append(match)
+
+    now = str(datetime.today())
+    tomorrow = pd.to_datetime(now[:10], format='%Y-%m-%d') + timedelta(days=1)
+    df = pd.DataFrame(match_f, columns=['mtype', 'tm_utc08', 'home', 'away', 'href_nsc'])
+    df = df.loc[(df.tm_utc08 >= '12:00') | (df.tm_utc08 < '06:00')].reset_index(drop=True)
+    df['date'] = [str(tomorrow)[:10] if df['tm_utc08'][i] <= '06:00' else now[:10] for i in range(len(df))]
+    #     df['date'] = now[:10]
+    df['dt_utc08'] = [row['date'] + ' ' + row['tm_utc08'] for i, row in df.iterrows()]
+    df = df[['mtype', 'dt_utc08', 'home', 'away', 'href_nsc']]
+    if lty == True:
+        df = df.loc[df.mtype.isin(df_name['league_007'])].reset_index(drop=True)
+    else:
+        df = df
+    return df
+
+
 def get_match_en(url, lty=True):
     soup = get_soup(url)
     match_f = []
-    for e in soup.find_all('tr', {'class': ['', 'b2']}):
+    for e in soup.find_all('tr', {'class': ['', 'tds']}):
         mlist = [td.get_text() for td in e.find_all('td')]
         match = []
         match.append(mlist[1])
@@ -542,6 +577,41 @@ def get_his_007(url, lty=True):
         match.append(mlist[5])
         match.append(mlist[6])
         match.append(e['id'].split('_')[-1])
+        match_f.append(match)
+
+        today = str(datetime.now())
+    today_utc0 = str(datetime.now() - timedelta(hours=10))
+    # tomorrow = pd.to_datetime(now[:10], format='%Y-%m-%d') + timedelta(days=1)
+    df = pd.DataFrame(match_f, columns=['mtype', 'tm_utc08', 'status', 'home', 'result', 'away', 'href_nsc'])
+    df = df.loc[(df.tm_utc08 >= '12:00') | (df.tm_utc08 < '06:00')].reset_index(drop=True)
+    df['date'] = [str(today)[:10] if df['tm_utc08'][i] <= '06:00' else today_utc0[:10] for i in range(len(df))]
+    #     df['date'] = now[:10]
+    df['dt_utc08'] = df['date'] + ' ' + df['tm_utc08']
+    df = df.loc[df.status == '完']
+    df = df[['mtype', 'dt_utc08', 'home', 'result', 'away', 'href_nsc']]
+    if lty == True:
+        df = df.loc[df.mtype.isin(df_name['league_007'])].reset_index(drop=True)
+    else:
+        df = df
+    return df
+
+
+def get_his_nsc(url, lty=True):
+    soup = get_soup(url)
+    match_f = []
+    for e in soup.find_all('table'):
+        mtype = e.find('div', {'class': 'LName'}).get_text()
+        utctime = e.find('div', {'class': 'time'}).get_text()
+        href_nsc = e['data-id']
+        mlist = [td.get_text() for td in e.find_all('td')]
+        match = []
+        match.append(mtype)
+        match.append(utctime)
+        match.append(mlist[1])  # status
+        match.append(mlist[5])  # home
+        match.append(mlist[6])  # result
+        match.append(mlist[7])  # away
+        match.append(href_nsc)
         match_f.append(match)
 
         today = str(datetime.now())

@@ -19,7 +19,7 @@ match_file_en = today_utc0[:10] + '_en.txt'
 
 def daily_scrapy_match_and_odds():
     if not os.path.exists(tools.path_parms['match_path'] + match_file):
-        df = tools.get_match_007(tools.path_parms['base_url_007'])
+        df = tools.get_match_nsc(tools.path_parms['base_url_nsc'])
         df['lang'] = 'zh_cn'
         df.to_csv(tools.path_parms['match_path'] + match_file, index=False, encoding='utf-8')
         print("generated file: ", match_file)
