@@ -76,23 +76,18 @@ def get_match_007(url, lty=True):
 
 
 def get_match_nsc(url, lty=True):
-    try:
-        soup = get_soup(url)
-        # print(soup.find('table'))
-    except Exception as e:
-        print(e)
+    soup = get_soup(url)
     match_f = []
-    for e in soup.find_all('table'):
-        mtype = e.find('div', {'class': 'LName'}).get_text()
-        utctime = e.find('div', {'class': 'time'}).get_text()
-        href_nsc = e['data-id']
-        mlist = [td.get_text() for td in e.find_all('td')]
+    e = soup.find('table', {'id': 'table_live'})
+    for tr in e.find_all('tr', {'class': (lambda value: value and value.startswith("ts"))}):
+        mlist = [td.get_text() for td in tr.find_all('td')]
+
         match = []
-        match.append(mtype)
-        match.append(utctime)
-        match.append(mlist[5])
-        match.append(mlist[7])
-        match.append(href_nsc)
+        match.append(mlist[1]) # mtype
+        match.append(mlist[2]) # utc
+        match.append(mlist[4]) # home
+        match.append(mlist[6]) # awasy
+        match.append(tr['id'].split('_')[-1]) # href
         match_f.append(match)
 
     now = str(datetime.today())
@@ -599,19 +594,18 @@ def get_his_007(url, lty=True):
 def get_his_nsc(url, lty=True):
     soup = get_soup(url)
     match_f = []
-    for e in soup.find_all('table'):
-        mtype = e.find('div', {'class': 'LName'}).get_text()
-        utctime = e.find('div', {'class': 'time'}).get_text()
-        href_nsc = e['data-id']
-        mlist = [td.get_text() for td in e.find_all('td')]
+    e = soup.find('table', {'id': 'table_live'})
+    for tr in e.find_all('tr', {'class': (lambda value: value and value.startswith("ts"))}):
+        mlist = [td.get_text() for td in tr.find_all('td')]
+
         match = []
-        match.append(mtype)
-        match.append(utctime)
-        match.append(mlist[1])  # status
-        match.append(mlist[5])  # home
-        match.append(mlist[6])  # result
-        match.append(mlist[7])  # away
-        match.append(href_nsc)
+        match.append(mlist[1])  # mtype
+        match.append(mlist[2])  # utc
+        match.append(mlist[3])  # status
+        match.append(mlist[4])  # home
+        match.append(mlist[5])  # result
+        match.append(mlist[6])  # awasy
+        match.append(tr['id'].split('_')[-1])  # href
         match_f.append(match)
 
         today = str(datetime.now())
@@ -620,7 +614,6 @@ def get_his_nsc(url, lty=True):
     df = pd.DataFrame(match_f, columns=['mtype', 'tm_utc08', 'status', 'home', 'result', 'away', 'href_nsc'])
     df = df.loc[(df.tm_utc08 >= '12:00') | (df.tm_utc08 < '06:00')].reset_index(drop=True)
     df['date'] = [str(today)[:10] if df['tm_utc08'][i] <= '06:00' else today_utc0[:10] for i in range(len(df))]
-    #     df['date'] = now[:10]
     df['dt_utc08'] = df['date'] + ' ' + df['tm_utc08']
     df = df.loc[df.status == '完']
     df = df[['mtype', 'dt_utc08', 'home', 'result', 'away', 'href_nsc']]
