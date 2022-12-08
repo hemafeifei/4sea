@@ -2,7 +2,7 @@ appnope==0.1.0
 attrs==19.3.0
 backcall==0.1.0
 backports.functools-lru-cache==1.6.1
-certifi==2019.9.11
+certifi==2022.12.7
 chardet==3.0.4
 cheroot==8.2.1
 CherryPy==18.4.0
