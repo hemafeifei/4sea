@@ -38,7 +38,7 @@ def get_soup(url, timesleep=1.1):
 
         display = Display(visible=0, size=(800, 600))
         display.start()
-        driver = webdriver.Chrome(service=service, chrome_options=chrome_options)
+        driver = webdriver.Chrome(service=service, options=chrome_options)
         driver.get(url)
         time.sleep(timesleep)
         html = driver.page_source
@@ -63,10 +63,11 @@ def get_pn_validation(url, pn_id, pn, clk_class):
     else:
         from pyvirtualdisplay import Display
         chrome_path = '/home/ubuntu/tmp/chromedriver'
+        service = Service(executable_path=chrome_path)
 
         display = Display(visible=0, size=(800, 600))
         display.start()
-        driver = webdriver.Chrome(executable_path=chrome_path, chrome_options=chrome_options)
+        driver = webdriver.Chrome(service=service, options=chrome_options)
         driver.get(url)
         driver.find_element_by_id(pn_id).send_keys(pn)
         driver.find_element_by_class_name(clk_class).click()
@@ -98,9 +99,10 @@ def get_jisilu_validation(url_login, user, pwd, url_parse):
     else:
         from pyvirtualdisplay import Display
         chrome_path = '/home/ubuntu/tmp/chromedriver'
+        service = Service(executable_path=chrome_path)
         display = Display(visible=0, size=(800, 600))
         display.start()
-        driver = webdriver.Chrome(executable_path=chrome_path, chrome_options=chrome_options)
+        driver = webdriver.Chrome(service=service, options=chrome_options)
         driver.get(url_login)
         driver.find_element(by=By.NAME, value='user_name').send_keys(user)
         driver.find_element(by=By.NAME, value='password').send_keys(pwd)
@@ -135,9 +137,10 @@ def get_eastmoney_index(url, tab_xpath, page_xpath=None):
     else:
         from pyvirtualdisplay import Display
         chrome_path = '/home/ubuntu/tmp/chromedriver'
+        service = Service(executable_path=chrome_path)
         display = Display(visible=0, size=(800, 600))
         display.start()
-        driver = webdriver.Chrome(executable_path=chrome_path, chrome_options=chrome_options)
+        driver = webdriver.Chrome(service=service, options=chrome_options)
         driver.get(url)
         driver.find_element(by=By.XPATH, value=tab_xpath).click()
         time.sleep(1.1)
