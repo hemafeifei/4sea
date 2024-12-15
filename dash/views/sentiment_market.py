@@ -57,7 +57,7 @@ raw_df['date'] = [i[:10] for i in list(raw_df['updated'])]
 
 rank_df = raw_df.drop_duplicates(subset=['topic', 'title'], keep='last')
 rank_df = rank_df.drop(['date'], axis=1).sort_values('reply', ascending=False).head(10)
-raw_grouped = raw_df.groupby('date')['title', 'reply', 'viewers'].agg({'title': 'count',
+raw_grouped = raw_df.groupby('date')[['title', 'reply', 'viewers']].agg({'title': 'count',
                                                                        'reply': 'sum',
                                                                        'viewers':'sum'}).reset_index()
 
