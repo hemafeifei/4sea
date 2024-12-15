@@ -6,6 +6,7 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -32,11 +33,12 @@ def get_soup(url, timesleep=1.1):
         return soup
     else:
         from pyvirtualdisplay import Display
-        chrome_path = '/home/ubuntu/tmp/chromedriver'
+        # update since selium4.10
+        service = Service(executable_path='/home/ubuntu/tmp/chromedriver')
 
         display = Display(visible=0, size=(800, 600))
         display.start()
-        driver = webdriver.Chrome(executable_path=chrome_path, chrome_options=chrome_options)
+        driver = webdriver.Chrome(service=service, chrome_options=chrome_options)
         driver.get(url)
         time.sleep(timesleep)
         html = driver.page_source
