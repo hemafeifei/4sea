@@ -6,6 +6,10 @@ from sqlalchemy import create_engine
 import pandas as pd
 from datetime import datetime, timedelta
 from io import StringIO
+import smtplib
+from email.message import EmailMessage
+import sys
+
 
 df_name = pd.read_csv('league_name.txt', encoding='utf8')
 path_parms = {
@@ -27,7 +31,29 @@ path_parms = {
 }
 
 
-# chrome_path = '/Users/weizheng/PycharmProjects/tickets/chromedriver'
+
+def send_mail(to_email, subject, message, server='smtp.163.com',
+              from_email='zhengwei8618@163.com'):
+    if sys.platform == 'darwin':
+        credential = None
+    else:
+        with open('/home/ubuntu/envs/credentials.json', 'r') as f:
+            credential = json.loads(f.read())
+
+    msg = EmailMessage()
+    msg['Subject'] = subject
+    msg['From'] = from_email
+    msg['To'] = ', '.join(to_email)
+    msg.set_content(message)
+    print(msg)
+    server = smtplib.SMTP(server)
+    server.set_debuglevel(1)
+    server.login(from_email, credential['stmp']['password'])  # user & password
+    server.send_message(msg)
+    server.quit()
+    print('successfully sent the mail.')
+
+
 
 def insert_table(df, database, db_table):
     engine = create_engine('postgresql://postgres:Dobe123#@localhost:5432/{}'.format(database))

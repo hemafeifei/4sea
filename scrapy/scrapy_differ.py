@@ -38,6 +38,21 @@ def main_control():
         print("write files: ", differ.shape)
         print("Updated at: ", str(datetime.now())[:16])
         print(' ')
+
+        # add email message test
+        now_to_20min = str(datetime.today() + timedelta(hours=0, minutes=20))
+        to_msg = differ.loc[(differ.dt_utc08 < now_to_20min) & (differ.trend=='D')].reset_index(drop=True)
+        if len(to_msg) > 0 :
+            for i, row in to_msg.iterrows():
+                msg = row['dt_utc08'] + ' ' + row['mtype'] + ' ' + row['home'] + row['updated']
+                try:
+                    tools.send_email(to_email=['76382176@qq.com', 'zhengwei8618@163.com'],
+          subject='Match day info', message=msg)
+                    print("--> Sent email, ", str(datetime.now())[:16])
+                except:
+                    pass
+
+
     else:
         print("no result writen")
     print("****Finished****")
