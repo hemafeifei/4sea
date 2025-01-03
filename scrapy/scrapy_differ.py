@@ -40,9 +40,12 @@ def main_control():
         print(' ')
 
         # add email message test
+        if differ.loc[differ.trend=='D'].shape[0] > 0:
+            print("<-- Found opportunities at {}".format(str(datetime.today())))
         now_to_20min = str(datetime.today() + timedelta(hours=0, minutes=20))
         to_msg = differ.loc[(differ.dt_utc08 < now_to_20min) & (differ.trend=='D')].reset_index(drop=True)
         if len(to_msg) > 0 :
+            print("<-- Found opportunities")
             for i, row in to_msg.iterrows():
                 msg = row['dt_utc08'] + ' ' + row['mtype'] + ' ' + row['home'] + row['updated']
                 try:

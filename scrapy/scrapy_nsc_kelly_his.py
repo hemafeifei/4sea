@@ -132,7 +132,7 @@ if not os.path.exists(tools.path_parms['kelly_path'] + match_file):
     print("Start working at {}".format(today[:16]))
     differ = get_nowscore_asian_differ()
 
-    if len(differ) > 0:
+    if (differ is not None) & len(differ) > 0:
         print("UTC0:", today_utc0[:16])
         print("write files, {}".format(today[:16]), match_file)
         with open(tools.path_parms['kelly_path'] + match_file, 'a+') as f:
